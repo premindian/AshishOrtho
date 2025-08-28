@@ -191,9 +191,174 @@
             min-height: 100vh;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
-            align-items: center;
+            flex-direction: column;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Amazing Logo Row */
+        .logo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .amazing-logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .medical-cross {
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .cross-vertical {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(135deg, #ffffff, #f0f9ff);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: crossPulse 2s ease-in-out infinite;
+        }
+
+        .cross-horizontal {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 8px;
+            background: linear-gradient(135deg, #ffffff, #f0f9ff);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: crossPulse 2s ease-in-out infinite 0.5s;
+        }
+
+        .bone-accent {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 20px;
+            animation: boneFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+        }
+
+        @keyframes crossPulse {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        @keyframes boneFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(10deg); }
+        }
+
+        .logo-content .logo-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #ffffff, #f0f9ff, #dbeafe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-content .logo-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Top Language Switcher */
+        .top-language-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-switch-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-label {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .lang-switch-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 50px;
+            justify-content: center;
+        }
+
+        .lang-switch-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-switch-btn.active {
+            background: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Container */
+        .hero-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
         }
 
         .hero::before {
@@ -2229,23 +2394,56 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Amazing Animated Logo Row -->
+        <div class="logo-row">
+            <div class="amazing-logo">
+                <div class="logo-icon">
+                    <div class="medical-cross">
+                        <div class="cross-vertical"></div>
+                        <div class="cross-horizontal"></div>
+                    </div>
+                    <div class="bone-accent">🦴</div>
+                </div>
+                <div class="logo-content">
+                    <h1 class="logo-title">Dr. Ashish</h1>
+                    <p class="logo-subtitle">Orthopedic Excellence</p>
+                </div>
+            </div>
+            
+            <!-- Language Switcher in Top Row -->
+            <div class="top-language-switcher">
+                <div class="lang-switch-container">
+                    <span class="lang-label">Language:</span>
+                    <button class="lang-switch-btn" data-lang="en" onclick="switchLanguage('en')">
+                        <span class="flag">🇺🇸</span> EN
+                    </button>
+                    <button class="lang-switch-btn" data-lang="te" onclick="switchLanguage('te')">
+                        <span class="flag">🇮🇳</span> తె
+                    </button>
+                    <button class="lang-switch-btn" data-lang="hi" onclick="switchLanguage('hi')">
+                        <span class="flag">🇮🇳</span> हि
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Expert Orthopedic Care for a Better Tomorrow</h1>
-                <p class="hero-subtitle">Board-Certified Orthopedic Surgeon</p>
-                <p class="hero-description">
+                <h1 id="heroTitle">Expert Orthopedic Care for a Better Tomorrow</h1>
+                <p class="hero-subtitle" id="heroSubtitle">Board-Certified Orthopedic Surgeon</p>
+                <p class="hero-description" id="heroDescription">
                     With over 15 years of experience in advanced orthopedic surgery, Dr. Ashish provides 
                     comprehensive bone and joint care using the latest minimally invasive techniques and 
                     cutting-edge technology to get you back to living your best life.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#appointment" class="btn-primary">
+                    <a href="#appointment" class="btn-primary" id="scheduleBtn">
                         <i class="fas fa-calendar-plus"></i>
-                        Schedule Consultation
+                        <span>Schedule Consultation</span>
                     </a>
-                    <a href="#services" class="btn-secondary">
+                    <a href="#services" class="btn-secondary" id="servicesBtn">
                         <i class="fas fa-play"></i>
-                        View Services
+                        <span>View Services</span>
                     </a>
                 </div>
             </div>
@@ -2920,11 +3118,7 @@
         // Simple language selection
         
         function selectLanguage(lang) {
-            // Clear the welcome timer
-            if (welcomeTimer) {
-                clearInterval(welcomeTimer);
-                welcomeTimer = null;
-            }
+            console.log('🌍 Language selected: ' + lang);
             
             // Add visual feedback for language selection
             const allLangBtns = document.querySelectorAll('.lang-btn');
@@ -2938,19 +3132,12 @@
                 selectedBtn.classList.add('active');
             }
             
-            // Show language selection feedback
-            const autoTimer = document.getElementById('autoSkipTimer');
-            if (autoTimer) {
-                autoTimer.innerHTML = `<span style="color: var(--success-color); font-weight: bold;">✓ Language Selected: ${getLanguageName(lang)}</span>`;
-            }
-            
             currentLanguage = lang;
-            console.log('Language selected: ' + lang);
             
-            // Delay entrance to show selection feedback
+            // Delay to show selection feedback, then go to welcome screen
             setTimeout(() => {
-                enterWebsite();
-            }, 1000);
+                showWelcomeScreen();
+            }, 800);
         }
         
         function getLanguageName(lang) {
@@ -2960,6 +3147,26 @@
                 'hi': 'हिन्दी'
             };
             return names[lang] || lang;
+        }
+
+        // Top language switcher function
+        function switchLanguage(lang) {
+            console.log('🔄 Switching language to: ' + lang);
+            
+            // Update active state for top language buttons
+            const topLangBtns = document.querySelectorAll('.lang-switch-btn');
+            topLangBtns.forEach(btn => btn.classList.remove('active'));
+            
+            const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+            
+            currentLanguage = lang;
+            
+            // Update all website content
+            updateMainWebsiteContent(currentLanguage);
+            updateLanguageSwitcher(currentLanguage);
         }
         
         function enterWebsite() {
@@ -3110,6 +3317,83 @@
             }, 6000);
         }
 
+        // New flow functions
+        function skipRain() {
+            console.log('🎬 Skipping rain animation');
+            currentLanguage = 'en'; // Default to English when skipping
+            document.getElementById('rainScreen').style.display = 'none';
+            showWelcomeScreen(); // Go directly to welcome screen with Ashish photo
+        }
+
+        function showLanguageScreen() {
+            console.log('🌍 Showing language selection screen');
+            document.getElementById('rainScreen').style.display = 'none';
+            document.getElementById('languageScreen').style.display = 'flex';
+        }
+
+        function showWelcomeScreen() {
+            console.log('👨‍⚕️ Showing welcome screen with Dr. Ashish');
+            document.getElementById('languageScreen').style.display = 'none';
+            document.getElementById('rainScreen').style.display = 'none';
+            document.getElementById('welcomeScreen').style.display = 'flex';
+            
+            // Update welcome text based on selected language
+            updateWelcomeText();
+            
+            // Auto-enter main website after 4 seconds
+            setTimeout(() => {
+                enterMainWebsite();
+            }, 4000);
+        }
+
+        function updateWelcomeText() {
+            const welcomeTexts = {
+                'en': {
+                    welcome: 'Welcome to Our Clinic',
+                    subtext: 'Advanced Bone & Joint Care',
+                    button: 'Enter Website'
+                },
+                'te': {
+                    welcome: 'మా క్లినిక్‌కు స్వాగతం',
+                    subtext: 'అధునాతన ఎముక మరియు కీలు చికిత్స',
+                    button: 'వెబ్‌సైట్ ప్రవేశించండి'
+                },
+                'hi': {
+                    welcome: 'हमारे क्लिनिक में आपका स्वागत है',
+                    subtext: 'उन्नत हड्डी और जोड़ों की देखभाल',
+                    button: 'वेबसाइट में प्रवेश करें'
+                }
+            };
+            
+            const texts = welcomeTexts[currentLanguage] || welcomeTexts['en'];
+            document.getElementById('welcomeText').textContent = texts.welcome;
+            document.getElementById('welcomeSubtext').textContent = texts.subtext;
+            document.getElementById('enterBtnText').textContent = texts.button;
+        }
+
+        function enterMainWebsite() {
+            console.log('🏥 Entering main website with language: ' + currentLanguage);
+            
+            // Hide welcome screen
+            document.getElementById('welcomeScreen').style.display = 'none';
+            
+            // Show language switcher
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (languageSwitcher) {
+                languageSwitcher.classList.add('show');
+            }
+            
+            // Hide preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('hide');
+            }
+            
+            // Update content with selected language
+            updateMainWebsiteContent(currentLanguage);
+            updateLanguageSwitcher(currentLanguage);
+        }
+
         // Initialize everything when page loads
         window.addEventListener('load', function() {
             // Hide preloader immediately when page loads
@@ -3118,47 +3402,30 @@
                 preloader.classList.add('hide');
             }
             
-            // Start medical rain animation
+            // Start medical rain animation immediately
             setTimeout(() => {
                 startMedicalRain();
             }, 500);
             
+            // Show skip button after 3 seconds
+            setTimeout(() => {
+                const skipBtn = document.getElementById('skipRainBtn');
+                if (skipBtn) {
+                    skipBtn.style.display = 'flex';
+                    console.log('⏭️ Skip button now visible');
+                }
+            }, 3000);
+            
+            // Auto-show language screen after 8 seconds if not skipped
+            setTimeout(() => {
+                const rainScreen = document.getElementById('rainScreen');
+                if (rainScreen && rainScreen.style.display !== 'none') {
+                    showLanguageScreen();
+                }
+            }, 8000);
+            
             // Initialize language switcher
             initLanguageSwitcher();
-            
-            // Auto-hide welcome screen with countdown
-            let countdown = 8; // Extended to 8 seconds to enjoy rain
-            const countdownElement = document.getElementById('countdown');
-            console.log('Starting countdown timer...');
-            
-            welcomeTimer = setInterval(function() {
-                countdown--;
-                console.log('Countdown: ' + countdown);
-                if (countdownElement) {
-                    countdownElement.textContent = countdown;
-                }
-                
-                if (countdown <= 0) {
-                    clearInterval(welcomeTimer);
-                    welcomeTimer = null;
-                    console.log('Auto-entering website...');
-                    const welcomeScreen = document.getElementById('welcomeScreen');
-                    if (welcomeScreen && welcomeScreen.style.display !== 'none') {
-                        enterWebsite();
-                    }
-                }
-            }, 1000);
-            
-            // Clear timer if user interacts with welcome screen
-            const welcomeButtons = document.querySelectorAll('#welcomeScreen button');
-            welcomeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    if (welcomeTimer) {
-                        clearInterval(welcomeTimer);
-                        welcomeTimer = null;
-                    }
-                });
-            });
         });
 
         // Navigation
