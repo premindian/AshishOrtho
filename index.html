@@ -181,7 +181,8 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
+            padding: 2rem 0;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             flex-direction: column;
@@ -668,11 +669,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-            min-height: 100vh;
+            display: block;
             width: 100%;
         }
 
@@ -870,24 +867,7 @@
             font-size: 0.9rem;
         }
 
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
-        .hero-image {
-            width: 100%;
-            max-width: 500px;
-            height: 600px;
-            object-fit: cover;
-            object-position: center top;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            animation: slideInRight 1s ease 1.3s forwards;
-        }
 
 
 
@@ -3083,9 +3063,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <img src="img/ashish.jpeg" alt="Dr. Ashish - Orthopedic Surgeon" class="hero-image">
-            </div>
+
         </div>
     </section>
 
