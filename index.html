@@ -990,6 +990,22 @@
             justify-content: center;
             gap: 0.5rem;
         }
+
+        /* Notification animations */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification {
+            animation: slideInRight 0.3s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -1462,6 +1478,7 @@
     </button>
 
     <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Preloader
@@ -1584,7 +1601,19 @@
             });
         });
 
-        // Form submission
+        // Initialize EmailJS
+        // SETUP INSTRUCTIONS:
+        // 1. Go to https://www.emailjs.com/ and create a free account
+        // 2. Create a new service (Gmail/Outlook/etc.) and connect premindian2025@gmail.com
+        // 3. Create an email template with these variables:
+        //    - {{patient_name}}, {{patient_email}}, {{patient_phone}}
+        //    - {{service_requested}}, {{message}}, {{appointment_date}}, {{appointment_time}}
+        // 4. Replace 'YOUR_PUBLIC_KEY' below with your actual EmailJS public key
+        // 5. Replace 'service_orthopedic' and 'template_appointment' with your service/template IDs
+        
+        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+
+        // Form submission with EmailJS
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1592,20 +1621,105 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Simulate form submission
+            // Prepare email template parameters
+            const templateParams = {
+                patient_name: data.name,
+                patient_email: data.email,
+                patient_phone: data.phone,
+                service_requested: data.service,
+                message: data.message || 'No additional message provided',
+                appointment_date: new Date().toLocaleDateString(),
+                appointment_time: new Date().toLocaleTimeString(),
+                to_email: 'premindian2025@gmail.com'
+            };
+            
+            // Get submit button for loading state
             const submitBtn = this.querySelector('.btn-submit');
             const originalText = submitBtn.innerHTML;
             
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Booking...';
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Request...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                alert('Thank you! Your appointment request has been received. We will contact you shortly to confirm your appointment.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
+            // Send email using EmailJS
+            emailjs.send('service_orthopedic', 'template_appointment', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    showNotification('success', 'Appointment request sent successfully! Dr. Ashish will contact you within 24 hours.');
+                    
+                    // Reset form
+                    document.getElementById('appointmentForm').reset();
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message but still provide fallback
+                    showNotification('info', 'Please call us directly at +91-XXXX-XXXX-XX or email info@drashish.com to book your appointment.');
+                })
+                .finally(function() {
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         });
+
+        // Notification system
+        function showNotification(type, message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
+                    <span>${message}</span>
+                    <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Add notification styles
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                z-index: 10000;
+                max-width: 400px;
+                animation: slideInRight 0.3s ease;
+            `;
+            
+            notification.querySelector('.notification-content').style.cssText = `
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            `;
+            
+            notification.querySelector('.notification-close').style.cssText = `
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                font-size: 1.2rem;
+                margin-left: auto;
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Auto remove after 8 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 8000);
+        }
 
         // Initialize AOS (Animate On Scroll)
         AOS.init({
