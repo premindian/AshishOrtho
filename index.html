@@ -1839,6 +1839,9 @@
                 <button onclick="selectLanguage('hi')">🇮🇳 हिन्दी</button>
             </div>
             <button id="skipBtn" onclick="enterWebsite()" style="margin-top: 2rem;">Skip to Website</button>
+            <p id="autoSkipTimer" style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                Auto-entering in <span id="countdown">5</span> seconds...
+            </p>
         </div>
     </div>
 
@@ -2610,6 +2613,32 @@
         window.addEventListener('load', function() {
             // Initialize language switcher
             initLanguageSwitcher();
+            
+            // Auto-hide welcome screen with countdown
+            let countdown = 5;
+            const countdownElement = document.getElementById('countdown');
+            const timer = setInterval(function() {
+                countdown--;
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
+                }
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    const welcomeScreen = document.getElementById('welcomeScreen');
+                    if (welcomeScreen && welcomeScreen.style.display !== 'none') {
+                        enterWebsite();
+                    }
+                }
+            }, 1000);
+            
+            // Clear timer if user interacts with welcome screen
+            const welcomeButtons = document.querySelectorAll('#welcomeScreen button');
+            welcomeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    clearInterval(timer);
+                });
+            });
         });
 
         // Navigation
