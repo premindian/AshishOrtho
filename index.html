@@ -594,12 +594,13 @@
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
             align-items: center;
             min-height: 100vh;
+            width: 100%;
         }
 
         .hero-content {
@@ -785,10 +786,11 @@
         .stats-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
+            width: 100%;
         }
 
         .stat-item {
@@ -829,7 +831,8 @@
         .services-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
+            width: 100%;
         }
 
         .section-header {
@@ -931,11 +934,12 @@
         .about-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
             align-items: center;
+            width: 100%;
         }
 
         .about-content h2 {
@@ -1010,7 +1014,8 @@
         .testimonials-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
+            width: 100%;
         }
 
         .testimonials-grid {
@@ -1084,10 +1089,11 @@
         .contact-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
+            width: 100%;
         }
 
         .contact-info {
@@ -1185,10 +1191,11 @@
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            width: 100%;
         }
 
         .footer-section h3 {
@@ -1393,14 +1400,23 @@
         }
 
         /* Proper body styling for medical website */
-        body {
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        body {
             background: var(--light-color);
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
 
