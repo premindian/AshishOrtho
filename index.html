@@ -2223,168 +2223,193 @@
     <script>
         // Global Variables
         let currentLanguage = 'en';
-        let welcomeScreens = {
-            shown: false,
-            currentStep: 'welcome'
-        };
+        let animationStep = 0;
+        let selectedLanguage = null;
 
         // Language Translations
         const translations = {
             en: {
-                welcomeTitle: "Dr. Ashish Orthopedic Clinic",
-                welcomeSubtitle: "Expert Bone & Joint Care",
-                languagePrompt: "Select Your Language",
-                introTitle: "Welcome to Excellence in Orthopedic Care",
-                introDescription: "Dr. Ashish provides world-class treatment for all bone and joint conditions",
-                statYearsLabel: "Years Experience",
-                statPatientsLabel: "Happy Patients", 
-                statSuccessLabel: "Success Rate",
-                enterText: "Enter Website",
-                emergencyText: "24/7 Emergency Orthopedic Care Available - Call: +91-XXXX-XXXX-XX",
                 heroTitle: "Expert Orthopedic Care for a Better Tomorrow",
                 heroSubtitle: "Board-Certified Orthopedic Surgeon",
                 heroDescription: "With over 15 years of experience in advanced orthopedic surgery, Dr. Ashish provides comprehensive bone and joint care using the latest minimally invasive techniques and cutting-edge technology to get you back to living your best life.",
                 scheduleConsultation: "Schedule Consultation",
                 viewServices: "View Services",
                 sectionTitle: "Comprehensive Orthopedic Services",
-                sectionSubtitle: "Specialized treatments for all your bone, joint, and musculoskeletal needs using the most advanced techniques and personalized care plans."
+                sectionSubtitle: "Specialized treatments for all your bone, joint, and musculoskeletal needs using the most advanced techniques and personalized care plans.",
+                emergencyText: "24/7 Emergency Orthopedic Care Available - Call: +91-XXXX-XXXX-XX"
             },
             te: {
-                welcomeTitle: "డా. ఆశిష్ ఆర్థోపెడిక్ క్లినిక్",
-                welcomeSubtitle: "ఎముక మరియు కీలుల నిపుణ చికిత్స",
-                languagePrompt: "మీ భాషను ఎంచుకోండి",
-                introTitle: "ఆర్థోపెడిక్ చికిత్సలో అత్యుత్తమతకు స్వాగతం",
-                introDescription: "డా. ఆశిష్ అన్ని ఎముక మరియు కీలుల వ్యాధులకు ప్రపంచ స్థాయి చికిత్స అందిస్తారు",
-                statYearsLabel: "సంవత్సరాల అనుభవం",
-                statPatientsLabel: "సంతుష్ట రోగులు",
-                statSuccessLabel: "విజయ రేటు",
-                enterText: "వెబ్‌సైట్‌లోకి ప్రవేశించండి",
-                emergencyText: "24/7 అత్యవసర ఆర్థోపెడిక్ చికిత్స అందుబాటులో - కాల్ చేయండి: +91-XXXX-XXXX-XX",
                 heroTitle: "మెరుగైన రేపటి కోసం నిపుణ ఆర్థోపెడిక్ చికిత్స",
                 heroSubtitle: "బోర్డ్ సర్టిఫైడ్ ఆర్థోపెడిక్ సర్జన్",
                 heroDescription: "అధునాతన ఆర్థోపెడిక్ శస్త్రచికిత్సలో 15 సంవత్సరాలకు మించిన అనుభవంతో, డా. ఆశిష్ అత్యధునిక సాంకేతికతను ఉపయోగించి సమగ్ర ఎముక మరియు కీలుల చికిత్సను అందిస్తారు.",
                 scheduleConsultation: "సంప్రదింపులు బుక్ చేయండి",
                 viewServices: "సేవలను చూడండి",
                 sectionTitle: "సమగ్ర ఆర్థోపెడిక్ సేవలు",
-                sectionSubtitle: "అత్యధునిక పద్ధతులు మరియు వ్యక్తిగత చికిత్స ప్రణాళికలను ఉపయోగించి మీ ఎముక, కీలు మరియు కండరాల అవసరాలకు ప్రత్యేక చికిత్సలు."
+                sectionSubtitle: "అత్యధునిక పద్ధతులు మరియు వ్యక్తిగత చికిత్స ప్రణాళికలను ఉపయోగించి మీ ఎముక, కీలు మరియు కండరాల అవసరాలకు ప్రత్యేక చికిత్సలు.",
+                emergencyText: "24/7 అత్యవసర ఆర్థోపెడిక్ చికిత్స అందుబాటులో - కాల్ చేయండి: +91-XXXX-XXXX-XX"
             },
             hi: {
-                welcomeTitle: "डॉ. आशिष आर्थोपेडिक क्लिनिक",
-                welcomeSubtitle: "हड्डी और जोड़ों की विशेषज्ञ देखभाल",
-                languagePrompt: "अपनी भाषा चुनें",
-                introTitle: "आर्थोपेडिक देखभाल में उत्कृष्टता में आपका स्वागत है",
-                introDescription: "डॉ. आशिष सभी हड्डी और जोड़ों की स्थितियों के लिए विश्व स्तरीय उपचार प्रदान करते हैं",
-                statYearsLabel: "वर्षों का अनुभव",
-                statPatientsLabel: "खुश मरीज़",
-                statSuccessLabel: "सफलता दर",
-                enterText: "वेबसाइट में प्रवेश करें",
-                emergencyText: "24/7 आपातकालीन आर्थोपेडिक देखभाल उपलब्ध - कॉल करें: +91-XXXX-XXXX-XX",
                 heroTitle: "बेहतर कल के लिए विशेषज्ञ आर्थोपेडिक देखभाल",
                 heroSubtitle: "बोर्ड प्रमाणित आर्थोपेडिक सर्जन",
                 heroDescription: "उन्नत आर्थोपेडिक सर्जरी में 15 से अधिक वर्षों के अनुभव के साथ, डॉ. आशिष नवीनतम तकनीक का उपयोग करके व्यापक हड्डी और जोड़ों की देखभाल प्रदान करते हैं।",
                 scheduleConsultation: "परामर्श बुक करें",
                 viewServices: "सेवाएं देखें",
                 sectionTitle: "व्यापक आर्थोपेडिक सेवाएं",
-                sectionSubtitle: "सबसे उन्नत तकनीकों और व्यक्तिगत देखभाल योजनाओं का उपयोग करके आपकी सभी हड्डी, जोड़ और मांसपेशियों की जरूरतों के लिए विशेष उपचार।"
+                sectionSubtitle: "सबसे उन्नत तकनीकों और व्यक्तिगत देखभाल योजनाओं का उपयोग करके आपकी सभी हड्डी, जोड़ और मांसपेशियों की जरूरतों के लिए विशेष उपचार।",
+                emergencyText: "24/7 आपातकालीन आर्थोपेडिक देखभाल उपलब्ध - कॉल करें: +91-XXXX-XXXX-XX"
             }
         };
 
-        // Rain Animation using Three.js
-        function initRainAnimation() {
-            const canvas = document.getElementById('rainCanvas');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+        // Advanced Orthopedic Dynamic Experience
+        function initOrthopedicExperience() {
+            const introElement = document.getElementById('orthopedicIntro');
             
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            
-            // Create rain drops
-            const rainGeometry = new THREE.BufferGeometry();
-            const rainCount = 1500;
-            const rainPositions = new Float32Array(rainCount * 3);
-            const rainVelocities = [];
-            
-            for (let i = 0; i < rainCount; i++) {
-                rainPositions[i * 3] = (Math.random() - 0.5) * 2000;
-                rainPositions[i * 3 + 1] = Math.random() * 2000;
-                rainPositions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
-                
-                rainVelocities.push({
-                    x: 0,
-                    y: -Math.random() * 10 - 5,
-                    z: 0
-                });
-            }
-            
-            rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3));
-            
-            const rainMaterial = new THREE.PointsMaterial({
-                color: 0x87CEEB,
-                size: 2,
-                transparent: true,
-                opacity: 0.6
-            });
-            
-            const rain = new THREE.Points(rainGeometry, rainMaterial);
-            scene.add(rain);
-            
-            camera.position.z = 100;
-            
-            function animateRain() {
-                const positions = rain.geometry.attributes.position.array;
-                
-                for (let i = 0; i < rainCount; i++) {
-                    const velocity = rainVelocities[i];
-                    
-                    positions[i * 3] += velocity.x;
-                    positions[i * 3 + 1] += velocity.y;
-                    positions[i * 3 + 2] += velocity.z;
-                    
-                    if (positions[i * 3 + 1] < -1000) {
-                        positions[i * 3 + 1] = 1000;
-                        positions[i * 3] = (Math.random() - 0.5) * 2000;
-                        positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
-                    }
-                }
-                
-                rain.geometry.attributes.position.needsUpdate = true;
-                rain.rotation.y += 0.001;
-                
-                renderer.render(scene, camera);
-                requestAnimationFrame(animateRain);
-            }
-            
-            animateRain();
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
+            // Step 1: Show animated spine and text (2 seconds)
+            setTimeout(() => {
+                animationStep = 1;
+                updateProgressText("Loading Orthopedic Systems...");
+                updateProgress(25);
+            }, 1000);
+
+            // Step 2: Show language selection (4 seconds)
+            setTimeout(() => {
+                animationStep = 2;
+                showLanguageSelection();
+                updateProgressText("Choose Your Language...");
+                updateProgress(50);
+            }, 3000);
+
+            // Step 3: Show expertise preview (6 seconds)
+            setTimeout(() => {
+                animationStep = 3;
+                showExpertisePreview();
+                updateProgressText("Loading Dr. Ashish's Expertise...");
+                updateProgress(75);
+            }, 5000);
+
+            // Step 4: Show enter portal (8 seconds)
+            setTimeout(() => {
+                animationStep = 4;
+                showEnterPortal();
+                updateProgressText("Ready to Enter Clinic");
+                updateProgress(100);
+            }, 7000);
         }
 
-        // Language Management
-        function updateContent(lang) {
-            const elements = {
-                welcomeTitle: 'welcomeTitle',
-                welcomeSubtitle: 'welcomeSubtitle', 
-                languagePrompt: 'languagePrompt',
-                introTitle: 'introTitle',
-                introDescription: 'introDescription',
-                statYearsLabel: 'statYearsLabel',
-                statPatientsLabel: 'statPatientsLabel',
-                statSuccessLabel: 'statSuccessLabel',
-                enterText: 'enterText'
-            };
+        function updateProgressText(text) {
+            const progressText = document.getElementById('progressText');
+            if (progressText) {
+                progressText.textContent = text;
+            }
+        }
 
-            Object.keys(elements).forEach(key => {
-                const element = document.getElementById(elements[key]);
-                if (element && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
+        function updateProgress(percentage) {
+            const progressFill = document.getElementById('progressFill');
+            if (progressFill) {
+                progressFill.style.width = percentage + '%';
+            }
+        }
 
+        function showLanguageSelection() {
+            const container = document.getElementById('languageMorphContainer');
+            if (container) {
+                container.style.opacity = '1';
+                container.style.animation = 'containerReveal 1s ease-out forwards';
+                
+                // Add language selection handlers
+                const languageCards = document.querySelectorAll('.lang-card');
+                languageCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        selectedLanguage = this.dataset.lang;
+                        currentLanguage = selectedLanguage;
+                        
+                        // Visual feedback
+                        languageCards.forEach(c => c.style.opacity = '0.5');
+                        this.style.opacity = '1';
+                        this.style.transform = 'translateY(-10px) scale(1.1)';
+                        this.style.borderColor = '#3b82f6';
+                        
+                        // Update text content immediately
+                        updateTextContent();
+                        
+                        // Update progress
+                        updateProgressText("Language Selected: " + this.querySelector('.lang-name').textContent);
+                    });
+                });
+            }
+        }
+
+        function showExpertisePreview() {
+            const preview = document.getElementById('expertisePreview');
+            if (preview) {
+                preview.style.opacity = '1';
+                preview.style.animation = 'containerReveal 1s ease-out forwards';
+                
+                // Add hover effects for expertise items
+                const expertiseItems = document.querySelectorAll('.expertise-item');
+                expertiseItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }
+        }
+
+        function showEnterPortal() {
+            const portal = document.getElementById('enterPortal');
+            if (portal) {
+                portal.style.opacity = '1';
+                portal.style.animation = 'containerReveal 1s ease-out forwards';
+                
+                // Add enter portal click handler
+                portal.addEventListener('click', function() {
+                    enterMainWebsite();
+                });
+            }
+        }
+
+        function updateTextContent() {
+            if (!selectedLanguage) return;
+            
+            const lang = translations[selectedLanguage];
+            document.getElementById('line1').textContent = 'Dr. Ashish';
+            document.getElementById('line2').textContent = selectedLanguage === 'en' ? 'Orthopedic Specialist' : 
+                                                        selectedLanguage === 'te' ? 'ఆర్థోపెడిక్ నిపుణుడు' : 'आर्थोपेडिक विशेषज्ञ';
+            document.getElementById('line3').textContent = selectedLanguage === 'en' ? 'Excellence in Bone & Joint Care' :
+                                                        selectedLanguage === 'te' ? 'ఎముక మరియు కీలుల శ్రేష్ఠత' : 'हड्डी और जोड़ों की देखभाल में उत्कृष्टता';
+        }
+
+        function enterMainWebsite() {
+            const introElement = document.getElementById('orthopedicIntro');
+            
+            // Apply selected language to main website
+            if (selectedLanguage) {
+                updateMainWebsiteContent(selectedLanguage);
+                updateLanguageSwitcher(selectedLanguage);
+            }
+            
+            // Hide intro with animation
+            introElement.classList.add('hide');
+            
+            setTimeout(() => {
+                introElement.style.display = 'none';
+                
+                // Show language switcher
+                document.getElementById('languageSwitcher').classList.add('show');
+                
+                // Hide preloader
+                const preloader = document.getElementById('preloader');
+                setTimeout(() => {
+                    preloader.classList.add('hide');
+                }, 300);
+                
+            }, 1000);
+        }
+
+        function updateMainWebsiteContent(lang) {
+            const content = translations[lang];
+            
             // Update main website content
             const heroTitle = document.querySelector('.hero h1');
             const heroSubtitle = document.querySelector('.hero-subtitle');
@@ -2395,14 +2420,14 @@
             const sectionSubtitle = document.querySelector('.section-subtitle');
             const emergencyText = document.querySelector('.emergency-text');
 
-            if (heroTitle) heroTitle.textContent = translations[lang].heroTitle;
-            if (heroSubtitle) heroSubtitle.textContent = translations[lang].heroSubtitle;
-            if (heroDescription) heroDescription.textContent = translations[lang].heroDescription;
-            if (scheduleBtn) scheduleBtn.innerHTML = `<i class="fas fa-calendar-plus"></i> ${translations[lang].scheduleConsultation}`;
-            if (viewServicesBtn) viewServicesBtn.innerHTML = `<i class="fas fa-play"></i> ${translations[lang].viewServices}`;
-            if (sectionTitle) sectionTitle.textContent = translations[lang].sectionTitle;
-            if (sectionSubtitle) sectionSubtitle.textContent = translations[lang].sectionSubtitle;
-            if (emergencyText) emergencyText.innerHTML = `<i class="fas fa-phone-alt"></i> ${translations[lang].emergencyText}`;
+            if (heroTitle) heroTitle.textContent = content.heroTitle;
+            if (heroSubtitle) heroSubtitle.textContent = content.heroSubtitle;
+            if (heroDescription) heroDescription.textContent = content.heroDescription;
+            if (scheduleBtn) scheduleBtn.innerHTML = `<i class="fas fa-calendar-plus"></i> ${content.scheduleConsultation}`;
+            if (viewServicesBtn) viewServicesBtn.innerHTML = `<i class="fas fa-play"></i> ${content.viewServices}`;
+            if (sectionTitle) sectionTitle.textContent = content.sectionTitle;
+            if (sectionSubtitle) sectionSubtitle.textContent = content.sectionSubtitle;
+            if (emergencyText) emergencyText.innerHTML = `<i class="fas fa-phone-alt"></i> ${content.emergencyText}`;
         }
 
         function updateLanguageSwitcher(lang) {
@@ -2416,97 +2441,42 @@
             if (currentLangName) currentLangName.textContent = names[lang];
         }
 
-        // Welcome Screen Management
-        function showWelcomeScreen() {
-            const welcomeScreen = document.getElementById('welcomeScreen');
-            welcomeScreen.style.display = 'flex';
-            
-            // Language selection handlers
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const selectedLang = this.dataset.lang;
-                    currentLanguage = selectedLang;
-                    
-                    // Update content
-                    updateContent(selectedLang);
-                    updateLanguageSwitcher(selectedLang);
-                    
-                    // Transition to intro screen
-                    welcomeScreen.classList.add('hide');
-                    setTimeout(() => {
-                        welcomeScreen.style.display = 'none';
-                        showLanguageIntro();
-                    }, 500);
-                });
-            });
-        }
-
-        function showLanguageIntro() {
-            const languageIntro = document.getElementById('languageIntro');
-            languageIntro.classList.add('show');
-            
-            // Enter website handler
-            document.getElementById('enterWebsite').addEventListener('click', function() {
-                languageIntro.classList.add('hide');
-                setTimeout(() => {
-                    languageIntro.style.display = 'none';
-                    showMainWebsite();
-                }, 800);
-            });
-        }
-
-        function showMainWebsite() {
-            // Show language switcher
-            document.getElementById('languageSwitcher').classList.add('show');
-            
-            // Hide preloader
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('hide');
-            }, 500);
-            
-            welcomeScreens.shown = true;
-        }
-
         // Language Switcher Functionality
         function initLanguageSwitcher() {
             const currentLang = document.getElementById('currentLang');
             const langDropdown = document.getElementById('langDropdown');
             
-            currentLang.addEventListener('click', function(e) {
-                e.stopPropagation();
-                langDropdown.classList.toggle('show');
-            });
-            
-            document.addEventListener('click', function() {
-                langDropdown.classList.remove('show');
-            });
-            
-            document.querySelectorAll('.dropdown-lang').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const newLang = this.dataset.lang;
-                    if (newLang !== currentLanguage) {
-                        currentLanguage = newLang;
-                        updateContent(newLang);
-                        updateLanguageSwitcher(newLang);
-                    }
+            if (currentLang && langDropdown) {
+                currentLang.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function() {
                     langDropdown.classList.remove('show');
                 });
-            });
+                
+                document.querySelectorAll('.dropdown-lang').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const newLang = this.dataset.lang;
+                        if (newLang !== currentLanguage) {
+                            currentLanguage = newLang;
+                            updateMainWebsiteContent(newLang);
+                            updateLanguageSwitcher(newLang);
+                        }
+                        langDropdown.classList.remove('show');
+                    });
+                });
+            }
         }
 
         // Initialize everything when page loads
         window.addEventListener('load', function() {
-            // Initialize rain animation
-            initRainAnimation();
-            
             // Initialize language switcher
             initLanguageSwitcher();
             
-            // Show welcome screen after a brief delay
-            setTimeout(() => {
-                showWelcomeScreen();
-            }, 500);
+            // Start the orthopedic experience
+            initOrthopedicExperience();
         });
 
         // Navigation
