@@ -1007,306 +1007,478 @@
             animation: slideInRight 0.3s ease-out;
         }
 
-        /* Rain Animation */
-        #rainCanvas {
+        /* Dynamic Orthopedic Intro Experience */
+        .orthopedic-intro {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            z-index: 10000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .orthopedic-intro.hide {
+            animation: fadeOutFull 1s ease-in-out forwards;
+        }
+
+        /* Animated Background */
+        .intro-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0.3;
         }
 
-        /* Welcome Screen Styles */
-        .welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.95));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .welcome-screen.hide {
-            animation: fadeOut 0.5s ease-out forwards;
-        }
-
-        .welcome-content {
-            text-align: center;
-            color: white;
-            max-width: 600px;
-            padding: 2rem;
-        }
-
-        .clinic-logo {
-            margin-bottom: 2rem;
-        }
-
-        .clinic-logo i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: block;
-            color: white;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .clinic-logo h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        #welcomeSubtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 3rem;
-        }
-
-        .language-selector h3 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: white;
-        }
-
-        .language-options {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 1rem 1.5rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            min-width: 120px;
-        }
-
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .lang-flag {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .lang-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .welcome-animation {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 3rem;
-        }
-
-        .pulse-dot {
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-
-        .pulse-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .pulse-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
-        /* Language Introduction Screen */
-        .language-intro {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(34, 197, 94, 0.95));
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: slideInFromBottom 0.8s ease-out;
-        }
-
-        .language-intro.show {
-            display: flex;
-        }
-
-        .language-intro.hide {
-            animation: slideOutToTop 0.8s ease-in forwards;
-        }
-
-        .intro-content {
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .intro-animation {
-            margin-bottom: 2rem;
-        }
-
-        .medical-cross {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto;
-            position: relative;
-            animation: rotate 3s linear infinite;
-        }
-
-        .cross-horizontal,
-        .cross-vertical {
-            background: white;
+        .particle-system {
             position: absolute;
-            border-radius: 4px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            width: 100%;
+            height: 100%;
         }
 
-        .cross-horizontal {
-            width: 80px;
-            height: 20px;
-            top: 30px;
-            left: 0;
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #3b82f6, #06b6d4);
+            border-radius: 50%;
+            animation: floatParticle 8s infinite linear;
         }
 
-        .cross-vertical {
+        .particle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
+        .particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(4) { top: 60%; left: 90%; animation-delay: 3s; }
+        .particle:nth-child(5) { top: 30%; left: 60%; animation-delay: 4s; }
+        .particle:nth-child(6) { top: 90%; left: 40%; animation-delay: 5s; }
+        .particle:nth-child(7) { top: 50%; left: 10%; animation-delay: 6s; }
+        .particle:nth-child(8) { top: 70%; left: 70%; animation-delay: 7s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+
+        .medical-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .grid-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            opacity: 0.2;
+        }
+
+        .grid-line.horizontal {
+            width: 100%;
+            height: 1px;
+            animation: gridPulse 4s infinite ease-in-out;
+        }
+
+        .grid-line.vertical {
+            width: 1px;
+            height: 100%;
+            animation: gridPulse 4s infinite ease-in-out;
+        }
+
+        .grid-line.horizontal:nth-child(4) { top: 25%; animation-delay: 0s; }
+        .grid-line.horizontal:nth-child(5) { top: 50%; animation-delay: 1s; }
+        .grid-line.horizontal:nth-child(6) { top: 75%; animation-delay: 2s; }
+        .grid-line.vertical:nth-child(7) { left: 25%; animation-delay: 0.5s; }
+        .grid-line.vertical:nth-child(8) { left: 50%; animation-delay: 1.5s; }
+        .grid-line.vertical:nth-child(9) { left: 75%; animation-delay: 2.5s; }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Animated Orthopedic Logo */
+        .ortho-logo-container {
+            position: relative;
+            margin-bottom: 3rem;
+            z-index: 2;
+        }
+
+        .spine-animation {
+            position: relative;
+            width: 120px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .vertebra {
+            position: absolute;
+            width: 30px;
+            height: 25px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            animation: vertebraGlow 2s infinite ease-in-out;
+        }
+
+        .vertebra.v1 { top: 20px; animation-delay: 0s; }
+        .vertebra.v2 { top: 55px; animation-delay: 0.2s; }
+        .vertebra.v3 { top: 90px; animation-delay: 0.4s; }
+        .vertebra.v4 { top: 125px; animation-delay: 0.6s; }
+        .vertebra.v5 { top: 160px; animation-delay: 0.8s; }
+
+        .disc {
+            position: absolute;
             width: 20px;
-            height: 80px;
-            top: 0;
-            left: 30px;
+            height: 8px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: discPulse 1.5s infinite ease-in-out;
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
+        .disc.d1 { top: 42px; animation-delay: 0.1s; }
+        .disc.d2 { top: 77px; animation-delay: 0.3s; }
+        .disc.d3 { top: 112px; animation-delay: 0.5s; }
+        .disc.d4 { top: 147px; animation-delay: 0.7s; }
+
+        @keyframes vertebraGlow {
+            0%, 100% { 
+                box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); 
+                transform: translateX(-50%) scale(1);
             }
-            to {
-                transform: rotate(360deg);
+            50% { 
+                box-shadow: 0 6px 25px rgba(59, 130, 246, 0.8); 
+                transform: translateX(-50%) scale(1.05);
             }
         }
 
-        #introTitle {
+        @keyframes discPulse {
+            0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleY(1); }
+            50% { opacity: 1; transform: translateX(-50%) scaleY(1.2); }
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: logoGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* Dynamic Text Content */
+        .intro-text-container {
+            text-align: center;
+            margin-bottom: 3rem;
+            z-index: 2;
+        }
+
+        .text-line {
+            color: white;
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: textReveal 1s ease-out forwards;
         }
 
-        #introDescription {
+        #line1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation-delay: 1s;
+        }
+
+        #line2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #94a3b8;
+            animation-delay: 1.5s;
+        }
+
+        #line3 {
             font-size: 1.2rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
+            color: #cbd5e1;
+            animation-delay: 2s;
         }
 
-        .intro-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
+        @keyframes textReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Language Selection Morphing */
+        .language-morph-container {
             margin-bottom: 3rem;
+            opacity: 0;
+            animation: containerReveal 1s ease-out 2.5s forwards;
+            z-index: 2;
+        }
+
+        .language-title {
+            color: white;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .language-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .stat {
+        .lang-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            min-width: 120px;
             text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
         }
 
-        .stat-number {
+        .lang-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .lang-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             display: block;
-            font-size: 3rem;
-            font-weight: 800;
+        }
+
+        .lang-name {
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .enter-btn {
-            background: white;
-            color: var(--primary-color);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
+        }
+
+        .lang-ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+
+        .lang-card:hover .lang-ripple {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Expertise Preview */
+        .expertise-preview {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: containerReveal 1s ease-out 3s forwards;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .expertise-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            min-width: 100px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
         }
 
-        .enter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .expertise-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
         }
 
-        .enter-btn i {
-            transition: transform 0.3s ease;
+        .specialty-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .enter-btn:hover i {
-            transform: translateX(5px);
+        .specialty-name {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        @keyframes slideInFromBottom {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
+        /* Progress Indicator */
+        .intro-progress {
+            width: 300px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: containerReveal 1s ease-out 3.5s forwards;
+            z-index: 2;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            border-radius: 2px;
+            width: 0;
+            animation: progressAnimation 4s ease-out 4s forwards;
+        }
+
+        .progress-text {
+            color: #94a3b8;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @keyframes progressAnimation {
+            to { width: 100%; }
+        }
+
+        /* Enter Portal */
+        .enter-portal {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            opacity: 0;
+            animation: containerReveal 1s ease-out 4.5s forwards;
+            z-index: 2;
+        }
+
+        .portal-ring {
+            position: absolute;
+            border: 2px solid;
+            border-radius: 50%;
+            animation: portalSpin 4s linear infinite;
+        }
+
+        .ring1 {
+            width: 150px;
+            height: 150px;
+            border-color: #3b82f6;
+            animation-duration: 4s;
+        }
+
+        .ring2 {
+            width: 100px;
+            height: 100px;
+            top: 25px;
+            left: 25px;
+            border-color: #06b6d4;
+            animation-duration: 3s;
+            animation-direction: reverse;
+        }
+
+        .ring3 {
+            width: 50px;
+            height: 50px;
+            top: 50px;
+            left: 50px;
+            border-color: #0891b2;
+            animation-duration: 2s;
+        }
+
+        .portal-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .enter-portal:hover .portal-center {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .enter-text {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .enter-icon {
+            font-size: 2rem;
+        }
+
+        @keyframes portalSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes containerReveal {
             to {
-                transform: translateY(0);
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @keyframes slideOutToTop {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        @keyframes fadeOutFull {
             to {
-                transform: translateY(-100%);
                 opacity: 0;
+                visibility: hidden;
+                transform: scale(0.8);
             }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            #line1 { font-size: 2.5rem; }
+            #line2 { font-size: 1.4rem; }
+            #line3 { font-size: 1rem; }
+            
+            .language-cards { gap: 1rem; }
+            .lang-card { min-width: 100px; padding: 1rem; }
+            
+            .expertise-preview { gap: 1rem; }
+            .expertise-item { min-width: 80px; padding: 0.8rem; }
+            
+            .intro-progress { width: 250px; }
+            .enter-portal { width: 120px; height: 120px; }
         }
 
         /* Language Switcher (Top Right) */
@@ -1444,71 +1616,112 @@
     </style>
 </head>
 <body>
-    <!-- Rain Animation Canvas -->
-    <canvas id="rainCanvas"></canvas>
-
-    <!-- Language Welcome Screens -->
-    <div class="welcome-screen" id="welcomeScreen">
-        <div class="welcome-content">
-            <div class="clinic-logo">
-                <i class="fas fa-bone"></i>
-                <h1 id="welcomeTitle">Dr. Ashish Orthopedic Clinic</h1>
+    <!-- Dynamic Orthopedic Welcome Experience -->
+    <div class="orthopedic-intro" id="orthopedicIntro">
+        <!-- Animated Background -->
+        <div class="intro-background">
+            <div class="particle-system">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
             </div>
-            <p id="welcomeSubtitle">Expert Bone & Joint Care</p>
-            <div class="language-selector">
-                <h3 id="languagePrompt">Select Your Language</h3>
-                <div class="language-options">
-                    <button class="lang-btn" data-lang="en" data-name="English">
-                        <span class="lang-flag">🇺🇸</span>
-                        <span class="lang-text">English</span>
-                    </button>
-                    <button class="lang-btn" data-lang="te" data-name="తెలుగు">
-                        <span class="lang-flag">🇮🇳</span>
-                        <span class="lang-text">తెలుగు</span>
-                    </button>
-                    <button class="lang-btn" data-lang="hi" data-name="हिन्दी">
-                        <span class="lang-flag">🇮🇳</span>
-                        <span class="lang-text">हिन्दी</span>
-                    </button>
-                </div>
-            </div>
-            <div class="welcome-animation">
-                <div class="pulse-dot"></div>
-                <div class="pulse-dot"></div>
-                <div class="pulse-dot"></div>
+            <div class="medical-grid">
+                <div class="grid-line horizontal"></div>
+                <div class="grid-line horizontal"></div>
+                <div class="grid-line horizontal"></div>
+                <div class="grid-line vertical"></div>
+                <div class="grid-line vertical"></div>
+                <div class="grid-line vertical"></div>
             </div>
         </div>
-    </div>
 
-    <!-- Language Introduction Screen -->
-    <div class="language-intro" id="languageIntro">
-        <div class="intro-content">
-            <div class="intro-animation">
-                <div class="medical-cross">
-                    <div class="cross-horizontal"></div>
-                    <div class="cross-vertical"></div>
+        <!-- Animated Orthopedic Logo -->
+        <div class="ortho-logo-container">
+            <div class="spine-animation">
+                <div class="vertebra v1"></div>
+                <div class="vertebra v2"></div>
+                <div class="vertebra v3"></div>
+                <div class="vertebra v4"></div>
+                <div class="vertebra v5"></div>
+                <div class="disc d1"></div>
+                <div class="disc d2"></div>
+                <div class="disc d3"></div>
+                <div class="disc d4"></div>
+            </div>
+            <div class="logo-glow"></div>
+        </div>
+
+        <!-- Dynamic Text Content -->
+        <div class="intro-text-container">
+            <div class="text-line" id="line1">Dr. Ashish</div>
+            <div class="text-line" id="line2">Orthopedic Specialist</div>
+            <div class="text-line" id="line3">Excellence in Bone & Joint Care</div>
+        </div>
+
+        <!-- Language Selection Morphing -->
+        <div class="language-morph-container" id="languageMorphContainer">
+            <div class="language-title">Choose Your Language</div>
+            <div class="language-cards">
+                <div class="lang-card" data-lang="en">
+                    <div class="lang-icon">🇺🇸</div>
+                    <div class="lang-name">English</div>
+                    <div class="lang-ripple"></div>
+                </div>
+                <div class="lang-card" data-lang="te">
+                    <div class="lang-icon">🇮🇳</div>
+                    <div class="lang-name">తెలుగు</div>
+                    <div class="lang-ripple"></div>
+                </div>
+                <div class="lang-card" data-lang="hi">
+                    <div class="lang-icon">🇮🇳</div>
+                    <div class="lang-name">हिन्दी</div>
+                    <div class="lang-ripple"></div>
                 </div>
             </div>
-            <h2 id="introTitle">Welcome to Excellence in Orthopedic Care</h2>
-            <p id="introDescription">Dr. Ashish provides world-class treatment for all bone and joint conditions</p>
-            <div class="intro-stats">
-                <div class="stat">
-                    <span class="stat-number" id="statYears">15+</span>
-                    <span class="stat-label" id="statYearsLabel">Years Experience</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" id="statPatients">5000+</span>
-                    <span class="stat-label" id="statPatientsLabel">Happy Patients</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" id="statSuccess">98%</span>
-                    <span class="stat-label" id="statSuccessLabel">Success Rate</span>
-                </div>
+        </div>
+
+        <!-- Expertise Preview -->
+        <div class="expertise-preview" id="expertisePreview">
+            <div class="expertise-item" data-specialty="joint">
+                <div class="specialty-icon">🦴</div>
+                <div class="specialty-name">Joint Replacement</div>
             </div>
-            <button class="enter-btn" id="enterWebsite">
-                <span id="enterText">Enter Website</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
+            <div class="expertise-item" data-specialty="sports">
+                <div class="specialty-icon">🏃</div>
+                <div class="specialty-name">Sports Medicine</div>
+            </div>
+            <div class="expertise-item" data-specialty="spine">
+                <div class="specialty-icon">🔬</div>
+                <div class="specialty-name">Spine Surgery</div>
+            </div>
+            <div class="expertise-item" data-specialty="trauma">
+                <div class="specialty-icon">🚑</div>
+                <div class="specialty-name">Trauma Care</div>
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="intro-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Initializing...</div>
+        </div>
+
+        <!-- Enter Button -->
+        <div class="enter-portal" id="enterPortal">
+            <div class="portal-ring ring1"></div>
+            <div class="portal-ring ring2"></div>
+            <div class="portal-ring ring3"></div>
+            <div class="portal-center">
+                <div class="enter-text">Enter Clinic</div>
+                <div class="enter-icon">⚕️</div>
+            </div>
         </div>
     </div>
 
