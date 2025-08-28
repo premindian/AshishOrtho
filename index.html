@@ -1006,9 +1006,535 @@
         .notification {
             animation: slideInRight 0.3s ease-out;
         }
+
+        /* Rain Animation */
+        #rainCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            opacity: 0.3;
+        }
+
+        /* Welcome Screen Styles */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.95));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .welcome-screen.hide {
+            animation: fadeOut 0.5s ease-out forwards;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .clinic-logo {
+            margin-bottom: 2rem;
+        }
+
+        .clinic-logo i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .clinic-logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #welcomeSubtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .language-selector h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .language-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            min-width: 120px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .lang-flag {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .lang-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .welcome-animation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        .pulse-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .pulse-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Language Introduction Screen */
+        .language-intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(34, 197, 94, 0.95));
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: slideInFromBottom 0.8s ease-out;
+        }
+
+        .language-intro.show {
+            display: flex;
+        }
+
+        .language-intro.hide {
+            animation: slideOutToTop 0.8s ease-in forwards;
+        }
+
+        .intro-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .intro-animation {
+            margin-bottom: 2rem;
+        }
+
+        .medical-cross {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+            animation: rotate 3s linear infinite;
+        }
+
+        .cross-horizontal,
+        .cross-vertical {
+            background: white;
+            position: absolute;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .cross-horizontal {
+            width: 80px;
+            height: 20px;
+            top: 30px;
+            left: 0;
+        }
+
+        .cross-vertical {
+            width: 20px;
+            height: 80px;
+            top: 0;
+            left: 30px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #introTitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #introDescription {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .intro-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .enter-btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .enter-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .enter-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutToTop {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Language Switcher (Top Right) */
+        .language-switcher {
+            position: fixed;
+            top: 120px;
+            right: 2rem;
+            z-index: 1001;
+            display: none;
+        }
+
+        .language-switcher.show {
+            display: block;
+        }
+
+        .current-lang {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .current-lang:hover {
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            min-width: 150px;
+            margin-top: 0.5rem;
+        }
+
+        .lang-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-lang {
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .dropdown-lang:hover {
+            background: var(--light-color);
+        }
+
+        .dropdown-lang:first-child {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .dropdown-lang:last-child {
+            border-radius: 0 0 10px 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .clinic-logo h1 {
+                font-size: 2rem;
+            }
+
+            .language-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .lang-btn {
+                min-width: 200px;
+            }
+
+            #introTitle {
+                font-size: 2rem;
+            }
+
+            .intro-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .language-switcher {
+                top: 80px;
+                right: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Rain Animation Canvas -->
+    <canvas id="rainCanvas"></canvas>
+
+    <!-- Language Welcome Screens -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-content">
+            <div class="clinic-logo">
+                <i class="fas fa-bone"></i>
+                <h1 id="welcomeTitle">Dr. Ashish Orthopedic Clinic</h1>
+            </div>
+            <p id="welcomeSubtitle">Expert Bone & Joint Care</p>
+            <div class="language-selector">
+                <h3 id="languagePrompt">Select Your Language</h3>
+                <div class="language-options">
+                    <button class="lang-btn" data-lang="en" data-name="English">
+                        <span class="lang-flag">🇺🇸</span>
+                        <span class="lang-text">English</span>
+                    </button>
+                    <button class="lang-btn" data-lang="te" data-name="తెలుగు">
+                        <span class="lang-flag">🇮🇳</span>
+                        <span class="lang-text">తెలుగు</span>
+                    </button>
+                    <button class="lang-btn" data-lang="hi" data-name="हिन्दी">
+                        <span class="lang-flag">🇮🇳</span>
+                        <span class="lang-text">हिन्दी</span>
+                    </button>
+                </div>
+            </div>
+            <div class="welcome-animation">
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Introduction Screen -->
+    <div class="language-intro" id="languageIntro">
+        <div class="intro-content">
+            <div class="intro-animation">
+                <div class="medical-cross">
+                    <div class="cross-horizontal"></div>
+                    <div class="cross-vertical"></div>
+                </div>
+            </div>
+            <h2 id="introTitle">Welcome to Excellence in Orthopedic Care</h2>
+            <p id="introDescription">Dr. Ashish provides world-class treatment for all bone and joint conditions</p>
+            <div class="intro-stats">
+                <div class="stat">
+                    <span class="stat-number" id="statYears">15+</span>
+                    <span class="stat-label" id="statYearsLabel">Years Experience</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statPatients">5000+</span>
+                    <span class="stat-label" id="statPatientsLabel">Happy Patients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statSuccess">98%</span>
+                    <span class="stat-label" id="statSuccessLabel">Success Rate</span>
+                </div>
+            </div>
+            <button class="enter-btn" id="enterWebsite">
+                <span id="enterText">Enter Website</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Language Selector (Top Right) -->
+    <div class="language-switcher" id="languageSwitcher">
+        <button class="current-lang" id="currentLang">
+            <span class="lang-flag" id="currentFlag">🇺🇸</span>
+            <span class="lang-name" id="currentLangName">English</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+            <button class="dropdown-lang" data-lang="en">
+                <span class="lang-flag">🇺🇸</span>
+                <span class="lang-name">English</span>
+            </button>
+            <button class="dropdown-lang" data-lang="te">
+                <span class="lang-flag">🇮🇳</span>
+                <span class="lang-name">తెలుగు</span>
+            </button>
+            <button class="dropdown-lang" data-lang="hi">
+                <span class="lang-flag">🇮🇳</span>
+                <span class="lang-name">हिन्दी</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="loader"></div>
@@ -1480,13 +2006,294 @@
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', function() {
+        // Global Variables
+        let currentLanguage = 'en';
+        let welcomeScreens = {
+            shown: false,
+            currentStep: 'welcome'
+        };
+
+        // Language Translations
+        const translations = {
+            en: {
+                welcomeTitle: "Dr. Ashish Orthopedic Clinic",
+                welcomeSubtitle: "Expert Bone & Joint Care",
+                languagePrompt: "Select Your Language",
+                introTitle: "Welcome to Excellence in Orthopedic Care",
+                introDescription: "Dr. Ashish provides world-class treatment for all bone and joint conditions",
+                statYearsLabel: "Years Experience",
+                statPatientsLabel: "Happy Patients", 
+                statSuccessLabel: "Success Rate",
+                enterText: "Enter Website",
+                emergencyText: "24/7 Emergency Orthopedic Care Available - Call: +91-XXXX-XXXX-XX",
+                heroTitle: "Expert Orthopedic Care for a Better Tomorrow",
+                heroSubtitle: "Board-Certified Orthopedic Surgeon",
+                heroDescription: "With over 15 years of experience in advanced orthopedic surgery, Dr. Ashish provides comprehensive bone and joint care using the latest minimally invasive techniques and cutting-edge technology to get you back to living your best life.",
+                scheduleConsultation: "Schedule Consultation",
+                viewServices: "View Services",
+                sectionTitle: "Comprehensive Orthopedic Services",
+                sectionSubtitle: "Specialized treatments for all your bone, joint, and musculoskeletal needs using the most advanced techniques and personalized care plans."
+            },
+            te: {
+                welcomeTitle: "డా. ఆశిష్ ఆర్థోపెడిక్ క్లినిక్",
+                welcomeSubtitle: "ఎముక మరియు కీలుల నిపుణ చికిత్స",
+                languagePrompt: "మీ భాషను ఎంచుకోండి",
+                introTitle: "ఆర్థోపెడిక్ చికిత్సలో అత్యుత్తమతకు స్వాగతం",
+                introDescription: "డా. ఆశిష్ అన్ని ఎముక మరియు కీలుల వ్యాధులకు ప్రపంచ స్థాయి చికిత్స అందిస్తారు",
+                statYearsLabel: "సంవత్సరాల అనుభవం",
+                statPatientsLabel: "సంతుష్ట రోగులు",
+                statSuccessLabel: "విజయ రేటు",
+                enterText: "వెబ్‌సైట్‌లోకి ప్రవేశించండి",
+                emergencyText: "24/7 అత్యవసర ఆర్థోపెడిక్ చికిత్స అందుబాటులో - కాల్ చేయండి: +91-XXXX-XXXX-XX",
+                heroTitle: "మెరుగైన రేపటి కోసం నిపుణ ఆర్థోపెడిక్ చికిత్స",
+                heroSubtitle: "బోర్డ్ సర్టిఫైడ్ ఆర్థోపెడిక్ సర్జన్",
+                heroDescription: "అధునాతన ఆర్థోపెడిక్ శస్త్రచికిత్సలో 15 సంవత్సరాలకు మించిన అనుభవంతో, డా. ఆశిష్ అత్యధునిక సాంకేతికతను ఉపయోగించి సమగ్ర ఎముక మరియు కీలుల చికిత్సను అందిస్తారు.",
+                scheduleConsultation: "సంప్రదింపులు బుక్ చేయండి",
+                viewServices: "సేవలను చూడండి",
+                sectionTitle: "సమగ్ర ఆర్థోపెడిక్ సేవలు",
+                sectionSubtitle: "అత్యధునిక పద్ధతులు మరియు వ్యక్తిగత చికిత్స ప్రణాళికలను ఉపయోగించి మీ ఎముక, కీలు మరియు కండరాల అవసరాలకు ప్రత్యేక చికిత్సలు."
+            },
+            hi: {
+                welcomeTitle: "डॉ. आशिष आर्थोपेडिक क्लिनिक",
+                welcomeSubtitle: "हड्डी और जोड़ों की विशेषज्ञ देखभाल",
+                languagePrompt: "अपनी भाषा चुनें",
+                introTitle: "आर्थोपेडिक देखभाल में उत्कृष्टता में आपका स्वागत है",
+                introDescription: "डॉ. आशिष सभी हड्डी और जोड़ों की स्थितियों के लिए विश्व स्तरीय उपचार प्रदान करते हैं",
+                statYearsLabel: "वर्षों का अनुभव",
+                statPatientsLabel: "खुश मरीज़",
+                statSuccessLabel: "सफलता दर",
+                enterText: "वेबसाइट में प्रवेश करें",
+                emergencyText: "24/7 आपातकालीन आर्थोपेडिक देखभाल उपलब्ध - कॉल करें: +91-XXXX-XXXX-XX",
+                heroTitle: "बेहतर कल के लिए विशेषज्ञ आर्थोपेडिक देखभाल",
+                heroSubtitle: "बोर्ड प्रमाणित आर्थोपेडिक सर्जन",
+                heroDescription: "उन्नत आर्थोपेडिक सर्जरी में 15 से अधिक वर्षों के अनुभव के साथ, डॉ. आशिष नवीनतम तकनीक का उपयोग करके व्यापक हड्डी और जोड़ों की देखभाल प्रदान करते हैं।",
+                scheduleConsultation: "परामर्श बुक करें",
+                viewServices: "सेवाएं देखें",
+                sectionTitle: "व्यापक आर्थोपेडिक सेवाएं",
+                sectionSubtitle: "सबसे उन्नत तकनीकों और व्यक्तिगत देखभाल योजनाओं का उपयोग करके आपकी सभी हड्डी, जोड़ और मांसपेशियों की जरूरतों के लिए विशेष उपचार।"
+            }
+        };
+
+        // Rain Animation using Three.js
+        function initRainAnimation() {
+            const canvas = document.getElementById('rainCanvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Create rain drops
+            const rainGeometry = new THREE.BufferGeometry();
+            const rainCount = 1500;
+            const rainPositions = new Float32Array(rainCount * 3);
+            const rainVelocities = [];
+            
+            for (let i = 0; i < rainCount; i++) {
+                rainPositions[i * 3] = (Math.random() - 0.5) * 2000;
+                rainPositions[i * 3 + 1] = Math.random() * 2000;
+                rainPositions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+                
+                rainVelocities.push({
+                    x: 0,
+                    y: -Math.random() * 10 - 5,
+                    z: 0
+                });
+            }
+            
+            rainGeometry.setAttribute('position', new THREE.BufferAttribute(rainPositions, 3));
+            
+            const rainMaterial = new THREE.PointsMaterial({
+                color: 0x87CEEB,
+                size: 2,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            const rain = new THREE.Points(rainGeometry, rainMaterial);
+            scene.add(rain);
+            
+            camera.position.z = 100;
+            
+            function animateRain() {
+                const positions = rain.geometry.attributes.position.array;
+                
+                for (let i = 0; i < rainCount; i++) {
+                    const velocity = rainVelocities[i];
+                    
+                    positions[i * 3] += velocity.x;
+                    positions[i * 3 + 1] += velocity.y;
+                    positions[i * 3 + 2] += velocity.z;
+                    
+                    if (positions[i * 3 + 1] < -1000) {
+                        positions[i * 3 + 1] = 1000;
+                        positions[i * 3] = (Math.random() - 0.5) * 2000;
+                        positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+                    }
+                }
+                
+                rain.geometry.attributes.position.needsUpdate = true;
+                rain.rotation.y += 0.001;
+                
+                renderer.render(scene, camera);
+                requestAnimationFrame(animateRain);
+            }
+            
+            animateRain();
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Language Management
+        function updateContent(lang) {
+            const elements = {
+                welcomeTitle: 'welcomeTitle',
+                welcomeSubtitle: 'welcomeSubtitle', 
+                languagePrompt: 'languagePrompt',
+                introTitle: 'introTitle',
+                introDescription: 'introDescription',
+                statYearsLabel: 'statYearsLabel',
+                statPatientsLabel: 'statPatientsLabel',
+                statSuccessLabel: 'statSuccessLabel',
+                enterText: 'enterText'
+            };
+
+            Object.keys(elements).forEach(key => {
+                const element = document.getElementById(elements[key]);
+                if (element && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update main website content
+            const heroTitle = document.querySelector('.hero h1');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroDescription = document.querySelector('.hero-description');
+            const scheduleBtn = document.querySelector('.btn-primary');
+            const viewServicesBtn = document.querySelector('.btn-secondary');
+            const sectionTitle = document.querySelector('.section-title');
+            const sectionSubtitle = document.querySelector('.section-subtitle');
+            const emergencyText = document.querySelector('.emergency-text');
+
+            if (heroTitle) heroTitle.textContent = translations[lang].heroTitle;
+            if (heroSubtitle) heroSubtitle.textContent = translations[lang].heroSubtitle;
+            if (heroDescription) heroDescription.textContent = translations[lang].heroDescription;
+            if (scheduleBtn) scheduleBtn.innerHTML = `<i class="fas fa-calendar-plus"></i> ${translations[lang].scheduleConsultation}`;
+            if (viewServicesBtn) viewServicesBtn.innerHTML = `<i class="fas fa-play"></i> ${translations[lang].viewServices}`;
+            if (sectionTitle) sectionTitle.textContent = translations[lang].sectionTitle;
+            if (sectionSubtitle) sectionSubtitle.textContent = translations[lang].sectionSubtitle;
+            if (emergencyText) emergencyText.innerHTML = `<i class="fas fa-phone-alt"></i> ${translations[lang].emergencyText}`;
+        }
+
+        function updateLanguageSwitcher(lang) {
+            const flags = { en: '🇺🇸', te: '🇮🇳', hi: '🇮🇳' };
+            const names = { en: 'English', te: 'తెలుగు', hi: 'हिन्दी' };
+            
+            const currentFlag = document.getElementById('currentFlag');
+            const currentLangName = document.getElementById('currentLangName');
+            
+            if (currentFlag) currentFlag.textContent = flags[lang];
+            if (currentLangName) currentLangName.textContent = names[lang];
+        }
+
+        // Welcome Screen Management
+        function showWelcomeScreen() {
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            welcomeScreen.style.display = 'flex';
+            
+            // Language selection handlers
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const selectedLang = this.dataset.lang;
+                    currentLanguage = selectedLang;
+                    
+                    // Update content
+                    updateContent(selectedLang);
+                    updateLanguageSwitcher(selectedLang);
+                    
+                    // Transition to intro screen
+                    welcomeScreen.classList.add('hide');
+                    setTimeout(() => {
+                        welcomeScreen.style.display = 'none';
+                        showLanguageIntro();
+                    }, 500);
+                });
+            });
+        }
+
+        function showLanguageIntro() {
+            const languageIntro = document.getElementById('languageIntro');
+            languageIntro.classList.add('show');
+            
+            // Enter website handler
+            document.getElementById('enterWebsite').addEventListener('click', function() {
+                languageIntro.classList.add('hide');
+                setTimeout(() => {
+                    languageIntro.style.display = 'none';
+                    showMainWebsite();
+                }, 800);
+            });
+        }
+
+        function showMainWebsite() {
+            // Show language switcher
+            document.getElementById('languageSwitcher').classList.add('show');
+            
+            // Hide preloader
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.classList.add('hide');
-            }, 1000);
+            }, 500);
+            
+            welcomeScreens.shown = true;
+        }
+
+        // Language Switcher Functionality
+        function initLanguageSwitcher() {
+            const currentLang = document.getElementById('currentLang');
+            const langDropdown = document.getElementById('langDropdown');
+            
+            currentLang.addEventListener('click', function(e) {
+                e.stopPropagation();
+                langDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function() {
+                langDropdown.classList.remove('show');
+            });
+            
+            document.querySelectorAll('.dropdown-lang').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const newLang = this.dataset.lang;
+                    if (newLang !== currentLanguage) {
+                        currentLanguage = newLang;
+                        updateContent(newLang);
+                        updateLanguageSwitcher(newLang);
+                    }
+                    langDropdown.classList.remove('show');
+                });
+            });
+        }
+
+        // Initialize everything when page loads
+        window.addEventListener('load', function() {
+            // Initialize rain animation
+            initRainAnimation();
+            
+            // Initialize language switcher
+            initLanguageSwitcher();
+            
+            // Show welcome screen after a brief delay
+            setTimeout(() => {
+                showWelcomeScreen();
+            }, 500);
         });
 
         // Navigation
