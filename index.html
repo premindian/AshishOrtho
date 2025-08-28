@@ -1037,6 +1037,178 @@
             transition: all 1s ease;
         }
 
+        .welcome-logo {
+            margin-bottom: 3rem;
+        }
+
+        .bone-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .clinic-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, #e0f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .clinic-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .language-selection {
+            margin-bottom: 3rem;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .language-selection h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .lang-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+        }
+
+        .lang-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .lang-button .flag {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lang-button .name {
+            font-weight: 600;
+        }
+
+        .welcome-message {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-message p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .stats-preview {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .enter-website-btn {
+            background: linear-gradient(135deg, #fff, #e0f2fe);
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .enter-website-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .enter-website-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .enter-website-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .clinic-name {
+                font-size: 2.5rem;
+            }
+
+            .language-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-preview {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .welcome-message h2 {
+                font-size: 2rem;
+            }
+        }
+
         /* Animated Background */
         .intro-background {
             position: absolute;
@@ -2427,13 +2599,173 @@
             }
         }
 
+        // Falling Words Animation (Matrix Style)
+        function initFallingWords() {
+            const canvas = document.getElementById('rainCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Orthopedic medical terms in different languages
+            const orthopedicTerms = {
+                en: ['BONE', 'JOINT', 'SPINE', 'KNEE', 'HIP', 'SHOULDER', 'ANKLE', 'WRIST', 'ELBOW', 'SURGERY', 'HEALING', 'THERAPY', 'REHAB', 'DOCTOR', 'ASHISH', 'ORTHO', 'CARE', 'HEALTH', 'STRONG', 'MOBILE'],
+                te: ['ఎముక', 'కీలు', 'వెన్నెముక', 'మోకాలి', 'తుంటి', 'భుజం', 'చీలమండ', 'మణికట్టు', 'మోచేయి', 'శస్త్రచికిత్స', 'వైద్యం', 'చికిత్స', 'ఆరోగ్యం', 'బలం', 'కదలిక'],
+                hi: ['हड्डी', 'जोड़', 'रीढ़', 'घुटना', 'कूल्हा', 'कंधा', 'टखना', 'कलाई', 'कोहनी', 'सर्जरी', 'इलाज', 'चिकित्सा', 'स्वास्थ्य', 'मजबूत', 'गति']
+            };
+            
+            const allTerms = [...orthopedicTerms.en, ...orthopedicTerms.te, ...orthopedicTerms.hi];
+            
+            // Create falling columns
+            const columns = Math.floor(canvas.width / 20);
+            const drops = Array(columns).fill(1);
+            
+            function draw() {
+                // Create trailing effect
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Set text properties
+                ctx.fillStyle = '#00ff00'; // Matrix green
+                ctx.font = '15px monospace';
+                
+                // Draw falling words
+                for (let i = 0; i < drops.length; i++) {
+                    // Pick random medical term
+                    const text = allTerms[Math.floor(Math.random() * allTerms.length)];
+                    
+                    // Draw the text
+                    ctx.fillText(text, i * 20, drops[i] * 20);
+                    
+                    // Reset drop to top randomly or continue falling
+                    if (drops[i] * 20 > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            // Start animation
+            const interval = setInterval(draw, 100);
+            
+            // Store interval for cleanup
+            window.fallingWordsInterval = interval;
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Simple Welcome Experience
+        function initWelcomeExperience() {
+            const welcomeDiv = document.getElementById('welcomeExperience');
+            const languageSelection = document.getElementById('languageSelection');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            
+            // Initially hide welcome message
+            welcomeMessage.style.display = 'none';
+            
+            // Add language selection handlers
+            document.querySelectorAll('.lang-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const selectedLang = this.dataset.lang;
+                    currentLanguage = selectedLang;
+                    
+                    // Hide language selection
+                    languageSelection.style.opacity = '0';
+                    setTimeout(() => {
+                        languageSelection.style.display = 'none';
+                        
+                        // Update welcome message based on language
+                        updateWelcomeContent(selectedLang);
+                        
+                        // Show welcome message
+                        welcomeMessage.style.display = 'block';
+                        setTimeout(() => {
+                            welcomeMessage.style.opacity = '1';
+                        }, 100);
+                    }, 500);
+                });
+            });
+            
+            // Enter website button
+            document.getElementById('enterWebsiteBtn').addEventListener('click', function() {
+                // Stop falling words animation
+                if (window.fallingWordsInterval) {
+                    clearInterval(window.fallingWordsInterval);
+                }
+                
+                // Hide welcome experience
+                welcomeDiv.classList.add('hide');
+                
+                // Update main website content
+                updateMainWebsiteContent(currentLanguage);
+                updateLanguageSwitcher(currentLanguage);
+                
+                setTimeout(() => {
+                    welcomeDiv.style.display = 'none';
+                    
+                    // Show language switcher
+                    document.getElementById('languageSwitcher').classList.add('show');
+                    
+                    // Hide preloader
+                    setTimeout(() => {
+                        document.getElementById('preloader').classList.add('hide');
+                    }, 300);
+                }, 1000);
+            });
+        }
+
+        function updateWelcomeContent(lang) {
+            const content = {
+                en: {
+                    title: "Welcome to Expert Orthopedic Care",
+                    desc: "15+ Years of Excellence in Bone & Joint Treatment",
+                    patients: "Patients",
+                    success: "Success Rate", 
+                    care: "Care",
+                    enter: "Enter Website"
+                },
+                te: {
+                    title: "నిపుణ ఆర్థోపెడిక్ చికిత్సకు స్వాగతం",
+                    desc: "ఎముక మరియు కీలుల చికిత్సలో 15+ సంవత్సరాల అనుభవం",
+                    patients: "రోగులు",
+                    success: "విజయ రేటు",
+                    care: "సంరక్షణ", 
+                    enter: "వెబ్‌సైట్‌లోకి ప్రవేశించండి"
+                },
+                hi: {
+                    title: "विशेषज्ञ आर्थोपेडिक देखभाल में आपका स्वागत है",
+                    desc: "हड्डी और जोड़ों के इलाज में 15+ साल का अनुभव",
+                    patients: "मरीज़",
+                    success: "सफलता दर",
+                    care: "देखभाल",
+                    enter: "वेबसाइट में प्रवेश करें"
+                }
+            };
+            
+            const c = content[lang];
+            document.getElementById('welcomeTitle').textContent = c.title;
+            document.getElementById('welcomeDesc').textContent = c.desc;
+            document.getElementById('statPatients').textContent = c.patients;
+            document.getElementById('statSuccess').textContent = c.success;
+            document.getElementById('statCare').textContent = c.care;
+            document.getElementById('enterBtnText').textContent = c.enter;
+        }
+
         // Initialize everything when page loads
         window.addEventListener('load', function() {
+            // Initialize falling words animation
+            initFallingWords();
+            
             // Initialize language switcher
             initLanguageSwitcher();
             
-            // Start the orthopedic experience
-            initOrthopedicExperience();
+            // Initialize welcome experience
+            initWelcomeExperience();
         });
 
         // Navigation
