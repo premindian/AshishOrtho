@@ -38,12 +38,7 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
+        /* Original body CSS removed - using new black background */
 
         /* Preloader */
         .preloader {
@@ -182,12 +177,10 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section - Updated for Matrix theme */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(59, 130, 246, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            background-size: cover;
-            background-position: center;
+            background: #000000;
             display: flex;
             align-items: center;
             position: relative;
@@ -1007,73 +1000,60 @@
             animation: slideInRight 0.3s ease-out;
         }
 
-        /* Simple Matrix Canvas */
-        #matrixCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: -1;
+        /* Remove all problematic CSS - Start Fresh */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
         }
 
-        /* Simple Welcome Screen */
-        .simple-welcome {
-            position: fixed;
+        #matrixCanvas {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: #000000;
+        }
+
+        .simple-welcome {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
+            z-index: 100;
         }
 
         .welcome-content {
             text-align: center;
-            max-width: 600px;
             padding: 2rem;
+            border: 2px solid #00ff00;
+            background: rgba(0, 0, 0, 0.9);
         }
 
         .welcome-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
             color: #00ff00;
-            text-shadow: 0 0 10px #00ff00;
-        }
-
-        .welcome-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .lang-options {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .lang-options button, #skipBtn {
-            background: rgba(0, 255, 0, 0.2);
-            border: 2px solid #00ff00;
+            background: #000;
+            border: 1px solid #00ff00;
             color: #00ff00;
-            padding: 1rem 1.5rem;
-            font-size: 1rem;
+            padding: 10px 20px;
+            margin: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 5px;
         }
 
         .lang-options button:hover, #skipBtn:hover {
-            background: rgba(0, 255, 0, 0.4);
-            box-shadow: 0 0 20px #00ff00;
+            background: #00ff00;
+            color: #000;
         }
 
         .welcome-experience.hide {
