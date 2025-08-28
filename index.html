@@ -177,14 +177,7 @@
             box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            cursor: pointer;
-        }
+
 
         /* Hero Section */
         .hero {
@@ -1047,8 +1040,12 @@
                 visibility: visible;
             }
 
-            .mobile-menu-btn {
-                display: block;
+            .rain-title {
+                font-size: 32px;
+            }
+
+            .rain-subtitle {
+                font-size: 18px;
             }
 
             .hero-container {
@@ -1196,7 +1193,43 @@
             height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+        }
+
+        .rain-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: rainTitleGlow 2s ease-in-out infinite alternate;
+            text-align: center;
+            z-index: 1002;
+            position: relative;
+        }
+
+        .rain-subtitle {
+            font-size: 24px;
+            color: #FFD700;
+            margin-bottom: 50px;
+            text-align: center;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 1002;
+            position: relative;
+        }
+
+        @keyframes rainTitleGlow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            to {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.6), 0 0 40px rgba(37, 99, 235, 0.4);
+            }
         }
 
         .skip-rain-btn {
@@ -2276,6 +2309,8 @@
 
     <!-- Step 1: Rain Animation Screen -->
     <div id="rainScreen" class="rain-screen">
+        <div class="rain-title">🩺 AshishOrtho 🩺</div>
+        <div class="rain-subtitle">Expert Orthopedic Care & Joint Solutions</div>
         <div id="rainContainer" class="rain-container"></div>
         <button id="skipRainBtn" class="skip-rain-btn" style="display: none;" onclick="skipRain()">
             <i class="fas fa-forward"></i>
@@ -2386,9 +2421,7 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li><a href="#appointment" class="cta-button">Book Appointment</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+
         </div>
     </nav>
 
@@ -3430,8 +3463,7 @@
 
         // Navigation
         const navbar = document.getElementById('navbar');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
+
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
@@ -3442,28 +3474,7 @@
             }
         });
 
-        // Mobile menu toggle
-        mobileMenuBtn.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const icon = this.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
