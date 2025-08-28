@@ -293,91 +293,7 @@
             font-weight: 500;
         }
 
-        /* Top Language Switcher */
-        .top-language-switcher {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
 
-        .lang-switch-container {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 6px 8px;
-            border-radius: 50px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .lang-label {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 13px;
-            font-weight: 500;
-            margin-right: 6px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .lang-switch-btn {
-            background: transparent;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            min-width: 60px;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lang-switch-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .lang-switch-btn:hover {
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
-        }
-
-        .lang-switch-btn:hover::before {
-            opacity: 1;
-        }
-
-        .lang-switch-btn.active {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
-            color: var(--primary-color);
-            font-weight: 600;
-            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .lang-switch-btn.active::before {
-            opacity: 0;
-        }
-
-        .lang-switch-btn .flag {
-            font-size: 16px;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-        }
 
         /* Logo Header Section */
         .logo-header-section {
@@ -575,115 +491,98 @@
             }
         }
 
-        /* Language Change Bar Section */
+        /* Compact Language Bar Section - Like MysteryInAlphabets */
         .language-bar-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            padding: 10px 0;
+            text-align: center;
         }
 
         .language-bar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .language-bar-title {
-            margin-bottom: 15px;
-        }
-
-        .language-bar-title i {
-            color: var(--primary-color);
-            margin-right: 8px;
-            font-size: 18px;
-        }
-
-        .language-bar-title > span:first-of-type {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-right: 15px;
-        }
-
-        .title-subtitle {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-
-        .language-options-bar {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .lang-option {
-            background: white;
-            border: 2px solid rgba(37, 99, 235, 0.2);
-            border-radius: 25px;
-            padding: 12px 20px;
+        .lang-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 13px;
+            font-weight: 500;
+            margin-right: 6px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .compact-language-options {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .compact-lang-btn {
+            background: transparent;
+            border: none;
+            border-radius: 18px;
+            padding: 6px 12px;
             cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-width: 140px;
+            gap: 4px;
+            min-width: 50px;
             justify-content: center;
             position: relative;
             overflow: hidden;
         }
 
-        .lang-option::before {
+        .compact-lang-btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
-            transition: left 0.6s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .lang-option:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
-        }
-
-        .lang-option:hover::before {
-            left: 100%;
-        }
-
-        .lang-option.active {
-            background: linear-gradient(135deg, var(--primary-color), #1e40af);
-            border-color: var(--primary-color);
+        .compact-lang-btn:hover {
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
         }
 
-        .lang-option.active .lang-text,
-        .lang-option.active .lang-native {
-            color: white;
+        .compact-lang-btn:hover::before {
+            opacity: 1;
         }
 
-        .lang-flag {
-            font-size: 20px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-
-        .lang-text {
+        .compact-lang-btn.active {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            color: var(--primary-color);
             font-weight: 600;
-            font-size: 14px;
-            color: var(--text-primary);
+            box-shadow: 0 3px 12px rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
 
-        .lang-native {
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-style: italic;
+        .compact-lang-btn.active::before {
+            opacity: 0;
+        }
+
+        .compact-lang-btn .flag {
+            font-size: 14px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
         }
 
         /* Hero Container */
@@ -2891,28 +2790,7 @@
         </div>
     </div>
 
-    <!-- Language Selector (Top Right) -->
-    <div class="language-switcher" id="languageSwitcher">
-        <button class="current-lang" id="currentLang">
-            <span class="lang-flag" id="currentFlag">🇺🇸</span>
-            <span class="lang-name" id="currentLangName">English</span>
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="lang-dropdown" id="langDropdown">
-            <button class="dropdown-lang" data-lang="en">
-                <span class="lang-flag">🇺🇸</span>
-                <span class="lang-name">English</span>
-            </button>
-            <button class="dropdown-lang" data-lang="te">
-                <span class="lang-flag">🇮🇳</span>
-                <span class="lang-name">తెలుగు</span>
-            </button>
-            <button class="dropdown-lang" data-lang="hi">
-                <span class="lang-flag">🇮🇳</span>
-                <span class="lang-name">हिन्दी</span>
-            </button>
-        </div>
-    </div>
+
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
@@ -2967,26 +2845,16 @@
     <!-- Language Change Bar Section -->
     <section class="language-bar-section">
         <div class="language-bar-container">
-            <div class="language-bar-title">
-                <i class="fas fa-globe"></i>
-                <span>Choose Your Language</span>
-                <span class="title-subtitle">भाषा चुनें | భాష ఎంచుకోండి | Select Language</span>
-            </div>
-            <div class="language-options-bar">
-                <button class="lang-option active" data-lang="en" onclick="switchLanguage('en')">
-                    <span class="lang-flag">🇺🇸</span>
-                    <span class="lang-text">English</span>
-                    <span class="lang-native">English</span>
+            <span class="lang-label">Language:</span>
+            <div class="compact-language-options">
+                <button class="compact-lang-btn active" data-lang="en" onclick="switchLanguage('en')">
+                    <span class="flag">🇺🇸</span> EN
                 </button>
-                <button class="lang-option" data-lang="hi" onclick="switchLanguage('hi')">
-                    <span class="lang-flag">🇮🇳</span>
-                    <span class="lang-text">Hindi</span>
-                    <span class="lang-native">हिन्दी</span>
+                <button class="compact-lang-btn" data-lang="hi" onclick="switchLanguage('hi')">
+                    <span class="flag">🇮🇳</span> हि
                 </button>
-                <button class="lang-option" data-lang="te" onclick="switchLanguage('te')">
-                    <span class="lang-flag">🇮🇳</span>
-                    <span class="lang-text">Telugu</span>
-                    <span class="lang-native">తెలుగు</span>
+                <button class="compact-lang-btn" data-lang="te" onclick="switchLanguage('te')">
+                    <span class="flag">🇮🇳</span> తె
                 </button>
             </div>
         </div>
@@ -3010,21 +2878,7 @@
                 </div>
             </div>
             
-            <!-- Language Switcher in Top Row -->
-            <div class="top-language-switcher">
-                <div class="lang-switch-container">
-                    <span class="lang-label">Language:</span>
-                    <button class="lang-switch-btn" data-lang="en" onclick="switchLanguage('en')">
-                        <span class="flag">🇺🇸</span> EN
-                    </button>
-                    <button class="lang-switch-btn" data-lang="te" onclick="switchLanguage('te')">
-                        <span class="flag">🇮🇳</span> తె
-                    </button>
-                    <button class="lang-switch-btn" data-lang="hi" onclick="switchLanguage('hi')">
-                        <span class="flag">🇮🇳</span> हि
-                    </button>
-                </div>
-            </div>
+
         </div>
 
         <div class="hero-container">
