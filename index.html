@@ -1007,24 +1007,34 @@
             animation: slideInRight 0.3s ease-out;
         }
 
-        /* Dynamic Orthopedic Intro Experience */
-        .orthopedic-intro {
+        /* Rain Animation */
+        #rainCanvas {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+        }
+
+        /* Welcome Experience */
+        .welcome-experience {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            background: rgba(30, 64, 175, 0.95);
             z-index: 10000;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
         }
 
-        .orthopedic-intro.hide {
-            animation: fadeOutFull 1s ease-in-out forwards;
+        .welcome-experience.hide {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s ease;
         }
 
         /* Animated Background */
@@ -1616,112 +1626,59 @@
     </style>
 </head>
 <body>
-    <!-- Dynamic Orthopedic Welcome Experience -->
-    <div class="orthopedic-intro" id="orthopedicIntro">
-        <!-- Animated Background -->
-        <div class="intro-background">
-            <div class="particle-system">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-            <div class="medical-grid">
-                <div class="grid-line horizontal"></div>
-                <div class="grid-line horizontal"></div>
-                <div class="grid-line horizontal"></div>
-                <div class="grid-line vertical"></div>
-                <div class="grid-line vertical"></div>
-                <div class="grid-line vertical"></div>
+    <!-- Rain Animation Canvas -->
+    <canvas id="rainCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
+
+    <!-- Dynamic Welcome Experience -->
+    <div class="welcome-experience" id="welcomeExperience">
+        <!-- Logo Section -->
+        <div class="welcome-logo">
+            <div class="bone-icon">🦴</div>
+            <h1 class="clinic-name">Dr. Ashish</h1>
+            <p class="clinic-subtitle">Orthopedic Excellence</p>
+        </div>
+
+        <!-- Language Selection -->
+        <div class="language-selection" id="languageSelection">
+            <h2>Choose Your Language / भाषा चुनें / భాషను ఎంచుకోండి</h2>
+            <div class="language-buttons">
+                <button class="lang-button" data-lang="en" data-flag="🇺🇸">
+                    <span class="flag">🇺🇸</span>
+                    <span class="name">English</span>
+                </button>
+                <button class="lang-button" data-lang="hi" data-flag="🇮🇳">
+                    <span class="flag">🇮🇳</span>
+                    <span class="name">हिन्दी</span>
+                </button>
+                <button class="lang-button" data-lang="te" data-flag="🇮🇳">
+                    <span class="flag">🇮🇳</span>
+                    <span class="name">తెలుగు</span>
+                </button>
             </div>
         </div>
 
-        <!-- Animated Orthopedic Logo -->
-        <div class="ortho-logo-container">
-            <div class="spine-animation">
-                <div class="vertebra v1"></div>
-                <div class="vertebra v2"></div>
-                <div class="vertebra v3"></div>
-                <div class="vertebra v4"></div>
-                <div class="vertebra v5"></div>
-                <div class="disc d1"></div>
-                <div class="disc d2"></div>
-                <div class="disc d3"></div>
-                <div class="disc d4"></div>
-            </div>
-            <div class="logo-glow"></div>
-        </div>
-
-        <!-- Dynamic Text Content -->
-        <div class="intro-text-container">
-            <div class="text-line" id="line1">Dr. Ashish</div>
-            <div class="text-line" id="line2">Orthopedic Specialist</div>
-            <div class="text-line" id="line3">Excellence in Bone & Joint Care</div>
-        </div>
-
-        <!-- Language Selection Morphing -->
-        <div class="language-morph-container" id="languageMorphContainer">
-            <div class="language-title">Choose Your Language</div>
-            <div class="language-cards">
-                <div class="lang-card" data-lang="en">
-                    <div class="lang-icon">🇺🇸</div>
-                    <div class="lang-name">English</div>
-                    <div class="lang-ripple"></div>
+        <!-- Welcome Message -->
+        <div class="welcome-message" id="welcomeMessage">
+            <h2 id="welcomeTitle">Welcome to Expert Orthopedic Care</h2>
+            <p id="welcomeDesc">15+ Years of Excellence in Bone & Joint Treatment</p>
+            <div class="stats-preview">
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label" id="statPatients">Patients</span>
                 </div>
-                <div class="lang-card" data-lang="te">
-                    <div class="lang-icon">🇮🇳</div>
-                    <div class="lang-name">తెలుగు</div>
-                    <div class="lang-ripple"></div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label" id="statSuccess">Success Rate</span>
                 </div>
-                <div class="lang-card" data-lang="hi">
-                    <div class="lang-icon">🇮🇳</div>
-                    <div class="lang-name">हिन्दी</div>
-                    <div class="lang-ripple"></div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label" id="statCare">Care</span>
                 </div>
             </div>
-        </div>
-
-        <!-- Expertise Preview -->
-        <div class="expertise-preview" id="expertisePreview">
-            <div class="expertise-item" data-specialty="joint">
-                <div class="specialty-icon">🦴</div>
-                <div class="specialty-name">Joint Replacement</div>
-            </div>
-            <div class="expertise-item" data-specialty="sports">
-                <div class="specialty-icon">🏃</div>
-                <div class="specialty-name">Sports Medicine</div>
-            </div>
-            <div class="expertise-item" data-specialty="spine">
-                <div class="specialty-icon">🔬</div>
-                <div class="specialty-name">Spine Surgery</div>
-            </div>
-            <div class="expertise-item" data-specialty="trauma">
-                <div class="specialty-icon">🚑</div>
-                <div class="specialty-name">Trauma Care</div>
-            </div>
-        </div>
-
-        <!-- Progress Indicator -->
-        <div class="intro-progress">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="progress-text" id="progressText">Initializing...</div>
-        </div>
-
-        <!-- Enter Button -->
-        <div class="enter-portal" id="enterPortal">
-            <div class="portal-ring ring1"></div>
-            <div class="portal-ring ring2"></div>
-            <div class="portal-ring ring3"></div>
-            <div class="portal-center">
-                <div class="enter-text">Enter Clinic</div>
-                <div class="enter-icon">⚕️</div>
-            </div>
+            <button class="enter-website-btn" id="enterWebsiteBtn">
+                <span id="enterBtnText">Enter Website</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 
