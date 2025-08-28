@@ -335,93 +335,162 @@
             justify-content: center;
         }
 
-        .ashish-logo-icon {
+        .magical-logo-icon {
             position: relative;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .bone-center {
-            font-size: 28px;
-            z-index: 10;
+        .magical-center {
             position: relative;
-            animation: boneGlow 3s ease-in-out infinite alternate;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            z-index: 10;
         }
 
-        @keyframes boneGlow {
-            from {
-                transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
-            }
-            to {
-                transform: scale(1.05) rotate(3deg);
-                filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
-            }
+        .magical-crystal {
+            font-size: 32px;
+            animation: magicalPulse 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) 
+                    drop-shadow(0 0 20px rgba(135, 206, 235, 0.6))
+                    drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
         }
 
-        .orthopedic-chars {
+        .healing-aura {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90px;
-            height: 90px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, 
+                rgba(255, 105, 180, 0.3) 0%, 
+                rgba(135, 206, 235, 0.2) 30%, 
+                rgba(255, 215, 0, 0.1) 60%, 
+                transparent 100%);
+            border-radius: 50%;
+            animation: auraExpand 3s ease-in-out infinite;
         }
 
-        .ortho-char {
+        @keyframes magicalPulse {
+            from {
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) 
+                        drop-shadow(0 0 20px rgba(135, 206, 235, 0.6))
+                        drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+            }
+            to {
+                transform: scale(1.1) rotate(10deg);
+                filter: drop-shadow(0 0 15px rgba(255, 105, 180, 1)) 
+                        drop-shadow(0 0 25px rgba(135, 206, 235, 0.8))
+                        drop-shadow(0 0 35px rgba(255, 215, 0, 0.6))
+                        drop-shadow(0 0 45px rgba(148, 0, 211, 0.4));
+            }
+        }
+
+        @keyframes auraExpand {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.3;
+            }
+        }
+
+        .magical-sparkles {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 16px;
-            height: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            transform-origin: 50% 50%;
-            animation: orthoOrbit 12s linear infinite;
-            animation-delay: var(--delay);
-            font-family: 'Inter', Arial, sans-serif;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
         }
 
-        /* Vibrant colors for rotating letters like MysteryInAlphabets */
-        .ortho-char:nth-child(1) { color: #ff6b6b; } /* O - Red */
-        .ortho-char:nth-child(2) { color: #4ecdc4; } /* R - Teal */
-        .ortho-char:nth-child(3) { color: #45b7d1; } /* T - Blue */
-        .ortho-char:nth-child(4) { color: #96ceb4; } /* H - Green */
-        .ortho-char:nth-child(5) { color: #feca57; } /* O - Yellow */
-        .ortho-char:nth-child(6) { color: #ff9ff3; } /* P - Pink */
-        .ortho-char:nth-child(7) { color: #54a0ff; } /* E - Light Blue */
-        .ortho-char:nth-child(8) { color: #5f27cd; } /* D - Purple */
-        .ortho-char:nth-child(9) { color: #00d2d3; } /* I - Cyan */
-        .ortho-char:nth-child(10) { color: #ff9f43; } /* C - Orange */
-        .ortho-char:nth-child(11) { color: #7bed9f; } /* 🏥 - Light Green */
-        .ortho-char:nth-child(12) { color: #dda0dd; } /* ⚕️ - Plum */
+        .sparkle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 14px;
+            animation: sparkleOrbit 8s linear infinite;
+            animation-delay: var(--delay);
+            filter: drop-shadow(0 0 6px currentColor);
+        }
 
-        @keyframes orthoOrbit {
+        .sparkle:nth-child(1) { color: #ff69b4; } /* Hot Pink */
+        .sparkle:nth-child(2) { color: #ffd700; } /* Gold */
+        .sparkle:nth-child(3) { color: #87ceeb; } /* Sky Blue */
+        .sparkle:nth-child(4) { color: #dda0dd; } /* Plum */
+        .sparkle:nth-child(5) { color: #98fb98; } /* Pale Green */
+        .sparkle:nth-child(6) { color: #ff6347; } /* Tomato */
+        .sparkle:nth-child(7) { color: #40e0d0; } /* Turquoise */
+        .sparkle:nth-child(8) { color: #da70d6; } /* Orchid */
+
+        @keyframes sparkleOrbit {
             0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(45px) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg) translateX(60px) rotate(0deg) scale(0.8);
                 opacity: 0.7;
             }
             25% {
                 opacity: 1;
+                transform: translate(-50%, -50%) rotate(90deg) translateX(60px) rotate(-90deg) scale(1);
             }
             50% {
-                transform: translate(-50%, -50%) rotate(180deg) translateX(45px) rotate(-180deg);
-                opacity: 1;
+                transform: translate(-50%, -50%) rotate(180deg) translateX(60px) rotate(-180deg) scale(1.2);
+                opacity: 0.9;
             }
             75% {
                 opacity: 0.8;
+                transform: translate(-50%, -50%) rotate(270deg) translateX(60px) rotate(-270deg) scale(1);
             }
             100% {
-                transform: translate(-50%, -50%) rotate(360deg) translateX(45px) rotate(-360deg);
+                transform: translate(-50%, -50%) rotate(360deg) translateX(60px) rotate(-360deg) scale(0.8);
                 opacity: 0.7;
+            }
+        }
+
+        .magical-runes {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+        }
+
+        .rune {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 16px;
+            animation: runeFloat 10s linear infinite reverse;
+            animation-delay: var(--delay);
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        .rune:nth-child(1) { color: #ff4757; } /* Red */
+        .rune:nth-child(2) { color: #2ed573; } /* Green */
+        .rune:nth-child(3) { color: #3742fa; } /* Blue */
+        .rune:nth-child(4) { color: #ffa502; } /* Orange */
+        .rune:nth-child(5) { color: #9c88ff; } /* Purple */
+        .rune:nth-child(6) { color: #ff6b9d; } /* Pink */
+
+        @keyframes runeFloat {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translateX(50px) rotate(0deg);
+                opacity: 0.6;
+            }
+            33% {
+                opacity: 1;
+            }
+            66% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translateX(50px) rotate(-360deg);
+                opacity: 0.6;
             }
         }
 
@@ -433,17 +502,51 @@
         .clinic-name {
             font-size: 28px;
             font-weight: bold;
-            color: white;
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, 
+                #ff69b4, #ffd700, #87ceeb, #ff6347, 
+                #98fb98, #dda0dd, #40e0d0, #ff69b4);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: magicalTextFlow 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+        }
+
+        @keyframes magicalTextFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .clinic-tagline {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #ffd700;
             font-style: italic;
             margin-bottom: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+                         0 0 20px rgba(255, 215, 0, 0.4),
+                         0 0 30px rgba(255, 215, 0, 0.2);
+            animation: taglineGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes taglineGlow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+                             0 0 20px rgba(255, 215, 0, 0.4),
+                             0 0 30px rgba(255, 215, 0, 0.2);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(255, 215, 0, 1),
+                             0 0 25px rgba(255, 215, 0, 0.6),
+                             0 0 35px rgba(255, 215, 0, 0.4),
+                             0 0 45px rgba(255, 105, 180, 0.3);
+            }
         }
 
 
@@ -2680,44 +2783,75 @@
                 text-align: center;
             }
 
-            .ashish-logo-icon {
-                width: 50px;
-                height: 50px;
+            .magical-logo-icon {
+                width: 60px;
+                height: 60px;
             }
 
-            .bone-center {
-                font-size: 20px;
+            .magical-crystal {
+                font-size: 24px;
             }
 
-            .orthopedic-chars {
-                width: 65px;
-                height: 65px;
+            .healing-aura {
+                width: 45px;
+                height: 45px;
             }
 
-            .ortho-char {
-                font-size: 9px;
-                width: 12px;
-                height: 12px;
+            .magical-sparkles {
+                width: 80px;
+                height: 80px;
             }
 
-            @keyframes orthoOrbit {
+            .sparkle {
+                font-size: 10px;
+            }
+
+            @keyframes sparkleOrbit {
                 0% {
-                    transform: translate(-50%, -50%) rotate(0deg) translateX(32px) rotate(0deg);
+                    transform: translate(-50%, -50%) rotate(0deg) translateX(40px) rotate(0deg) scale(0.8);
                     opacity: 0.7;
                 }
                 25% {
                     opacity: 1;
+                    transform: translate(-50%, -50%) rotate(90deg) translateX(40px) rotate(-90deg) scale(1);
                 }
                 50% {
-                    transform: translate(-50%, -50%) rotate(180deg) translateX(32px) rotate(-180deg);
-                    opacity: 1;
+                    transform: translate(-50%, -50%) rotate(180deg) translateX(40px) rotate(-180deg) scale(1.2);
+                    opacity: 0.9;
                 }
                 75% {
                     opacity: 0.8;
+                    transform: translate(-50%, -50%) rotate(270deg) translateX(40px) rotate(-270deg) scale(1);
                 }
                 100% {
-                    transform: translate(-50%, -50%) rotate(360deg) translateX(32px) rotate(-360deg);
+                    transform: translate(-50%, -50%) rotate(360deg) translateX(40px) rotate(-360deg) scale(0.8);
                     opacity: 0.7;
+                }
+            }
+
+            .magical-runes {
+                width: 70px;
+                height: 70px;
+            }
+
+            .rune {
+                font-size: 12px;
+            }
+
+            @keyframes runeFloat {
+                0% {
+                    transform: translate(-50%, -50%) rotate(0deg) translateX(35px) rotate(0deg);
+                    opacity: 0.6;
+                }
+                33% {
+                    opacity: 1;
+                }
+                66% {
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(360deg) translateX(35px) rotate(-360deg);
+                    opacity: 0.6;
                 }
             }
 
@@ -2842,21 +2976,28 @@
     <section class="logo-header-section">
         <div class="ashish-logo-container">
             <div class="ashish-logo-main">
-                <div class="ashish-logo-icon">
-                    <div class="bone-center">🦴</div>
-                    <div class="orthopedic-chars">
-                        <span class="ortho-char" style="--delay: 0s;">O</span>
-                        <span class="ortho-char" style="--delay: 0.5s;">R</span>
-                        <span class="ortho-char" style="--delay: 1s;">T</span>
-                        <span class="ortho-char" style="--delay: 1.5s;">H</span>
-                        <span class="ortho-char" style="--delay: 2s;">O</span>
-                        <span class="ortho-char" style="--delay: 2.5s;">P</span>
-                        <span class="ortho-char" style="--delay: 3s;">E</span>
-                        <span class="ortho-char" style="--delay: 3.5s;">D</span>
-                        <span class="ortho-char" style="--delay: 4s;">I</span>
-                        <span class="ortho-char" style="--delay: 4.5s;">C</span>
-                        <span class="ortho-char" style="--delay: 5s;">🏥</span>
-                        <span class="ortho-char" style="--delay: 5.5s;">⚕️</span>
+                <div class="magical-logo-icon">
+                    <div class="magical-center">
+                        <div class="magical-crystal">💎</div>
+                        <div class="healing-aura"></div>
+                    </div>
+                    <div class="magical-sparkles">
+                        <span class="sparkle" style="--delay: 0s;">✨</span>
+                        <span class="sparkle" style="--delay: 0.3s;">🌟</span>
+                        <span class="sparkle" style="--delay: 0.6s;">⭐</span>
+                        <span class="sparkle" style="--delay: 0.9s;">💫</span>
+                        <span class="sparkle" style="--delay: 1.2s;">🔮</span>
+                        <span class="sparkle" style="--delay: 1.5s;">✨</span>
+                        <span class="sparkle" style="--delay: 1.8s;">🌟</span>
+                        <span class="sparkle" style="--delay: 2.1s;">⭐</span>
+                    </div>
+                    <div class="magical-runes">
+                        <span class="rune" style="--delay: 0s;">🔬</span>
+                        <span class="rune" style="--delay: 0.4s;">🧬</span>
+                        <span class="rune" style="--delay: 0.8s;">⚕️</span>
+                        <span class="rune" style="--delay: 1.2s;">🏥</span>
+                        <span class="rune" style="--delay: 1.6s;">🦴</span>
+                        <span class="rune" style="--delay: 2.0s;">💊</span>
                     </div>
                 </div>
                 <div class="ashish-logo-text">
