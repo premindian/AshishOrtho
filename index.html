@@ -886,51 +886,7 @@
             animation: slideInRight 1s ease 1.3s forwards;
         }
 
-        .floating-card {
-            position: absolute;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            opacity: 0;
-            animation: fadeInFloat 1s ease 1.5s forwards;
-        }
 
-        .card-1 {
-            top: 10%;
-            left: -10%;
-            animation-delay: 1.7s;
-        }
-
-        .card-2 {
-            bottom: 10%;
-            right: -10%;
-            animation-delay: 1.9s;
-        }
-
-        .floating-card .icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .floating-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .floating-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
 
         @keyframes slideInUp {
             from {
@@ -968,7 +924,7 @@
         /* Stats Section */
         .stats {
             background: var(--light-color);
-            padding: 5rem 0;
+            padding: 2rem 0;
         }
 
         .stats-container {
@@ -1493,9 +1449,7 @@
                 justify-content: center;
             }
 
-            .floating-card {
-                display: none;
-            }
+
 
             /* Ensure all containers fit mobile width perfectly */
             .stats-container,
@@ -3208,22 +3162,6 @@
             </div>
             <div class="hero-visual">
                 <img src="img/ashish.jpeg" alt="Dr. Ashish - Orthopedic Surgeon" class="hero-image">
-                
-                <div class="floating-card card-1">
-                    <div class="icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h4>15+ Years Experience</h4>
-                    <p>Board-certified expertise</p>
-                </div>
-                
-                <div class="floating-card card-2">
-                    <div class="icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h4>5000+ Patients</h4>
-                    <p>Successfully treated</p>
-                </div>
             </div>
         </div>
     </section>
@@ -4439,13 +4377,7 @@
             card.style.animationDelay = `${index * 0.2}s`;
         });
 
-        // Add floating animation to hero cards
-        const floatingCards = document.querySelectorAll('.floating-card');
-        floatingCards.forEach((card, index) => {
-            setInterval(() => {
-                card.style.transform = `translateY(${Math.sin(Date.now() * 0.001 + index) * 10}px)`;
-            }, 50);
-        });
+
 
         // Emergency banner animation
         const emergencyBanner = document.querySelector('.emergency-banner');
