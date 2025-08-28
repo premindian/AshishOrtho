@@ -295,68 +295,70 @@
 
 
 
-        /* Logo Header Section - 50% Smaller */
+        /* Logo Header Section - Broader and Larger */
         .logo-header-section {
             text-align: center;
-            padding: 10px 5px 15px 5px;
-            margin-bottom: 10px;
+            padding: 15px 5px 20px 5px;
+            margin-bottom: 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
             position: relative;
             overflow: hidden;
         }
 
-        /* Ashish Orthocare Animated Logo - 50% Reduced Size */
+        /* Ashish Orthocare Animated Logo - Broader Design */
         .ashish-logo-container {
             position: relative;
             display: inline-block;
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 50%, rgba(102, 126, 234, 0.95) 100%);
-            border-radius: 12px;
-            padding: 12px 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px 40px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             cursor: pointer;
+            min-width: 300px;
         }
 
         .ashish-logo-container:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
         .ashish-logo-main {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 25px;
             position: relative;
             z-index: 2;
+            justify-content: center;
         }
 
         .ashish-logo-icon {
             position: relative;
-            width: 40px;
-            height: 40px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .bone-center {
-            font-size: 16px;
+            font-size: 28px;
             z-index: 10;
             position: relative;
             animation: boneGlow 3s ease-in-out infinite alternate;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
         @keyframes boneGlow {
             from {
                 transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
             }
             to {
                 transform: scale(1.05) rotate(3deg);
-                filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+                filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
             }
         }
 
@@ -365,20 +367,20 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
+            width: 90px;
+            height: 90px;
         }
 
         .ortho-char {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 8px;
-            height: 8px;
+            width: 16px;
+            height: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 7px;
+            font-size: 12px;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             transform-origin: 50% 50%;
@@ -403,71 +405,47 @@
 
         @keyframes orthoOrbit {
             0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(25px) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg) translateX(45px) rotate(0deg);
                 opacity: 0.7;
             }
             25% {
                 opacity: 1;
             }
             50% {
-                transform: translate(-50%, -50%) rotate(180deg) translateX(25px) rotate(-180deg);
+                transform: translate(-50%, -50%) rotate(180deg) translateX(45px) rotate(-180deg);
                 opacity: 1;
             }
             75% {
                 opacity: 0.8;
             }
             100% {
-                transform: translate(-50%, -50%) rotate(360deg) translateX(25px) rotate(-360deg);
+                transform: translate(-50%, -50%) rotate(360deg) translateX(45px) rotate(-360deg);
                 opacity: 0.7;
             }
         }
 
         .ashish-logo-text {
-            text-align: left;
+            text-align: center;
             color: white;
         }
 
         .clinic-name {
-            font-size: 16px;
+            font-size: 28px;
             font-weight: bold;
             color: white;
-            margin-bottom: 2px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .clinic-tagline {
-            font-size: 7px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.9);
             font-style: italic;
-            margin-bottom: 6px;
+            margin-bottom: 0;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .clinic-specialties {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
 
-        .specialty {
-            font-size: 5px;
-            color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1px 4px;
-            border-radius: 5px;
-            border-left: 2px solid;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .specialty:nth-child(1) { border-left-color: #ff6b6b; }
-        .specialty:nth-child(2) { border-left-color: #4ecdc4; }
-        .specialty:nth-child(3) { border-left-color: #96ceb4; }
-
-        .specialty:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(3px);
-        }
 
         .logo-glow-effect {
             position: absolute;
@@ -2624,60 +2602,61 @@
                 padding: 10px 12px;
             }
 
-            /* Mobile responsive for logo - 50% smaller */
+            /* Mobile responsive for logo - Broader and larger */
             .logo-header-section {
-                padding: 8px 3px 10px 3px;
-                margin-bottom: 8px;
+                padding: 12px 3px 15px 3px;
+                margin-bottom: 12px;
             }
 
             .ashish-logo-container {
-                padding: 10px 12px;
-                border-radius: 10px;
+                padding: 15px 25px;
+                border-radius: 15px;
+                min-width: 250px;
             }
 
             .ashish-logo-main {
                 flex-direction: column;
-                gap: 8px;
+                gap: 15px;
                 text-align: center;
             }
 
             .ashish-logo-icon {
-                width: 30px;
-                height: 30px;
+                width: 50px;
+                height: 50px;
             }
 
             .bone-center {
-                font-size: 12px;
+                font-size: 20px;
             }
 
             .orthopedic-chars {
-                width: 40px;
-                height: 40px;
+                width: 65px;
+                height: 65px;
             }
 
             .ortho-char {
-                font-size: 6px;
-                width: 6px;
-                height: 6px;
+                font-size: 9px;
+                width: 12px;
+                height: 12px;
             }
 
             @keyframes orthoOrbit {
                 0% {
-                    transform: translate(-50%, -50%) rotate(0deg) translateX(20px) rotate(0deg);
+                    transform: translate(-50%, -50%) rotate(0deg) translateX(32px) rotate(0deg);
                     opacity: 0.7;
                 }
                 25% {
                     opacity: 1;
                 }
                 50% {
-                    transform: translate(-50%, -50%) rotate(180deg) translateX(20px) rotate(-180deg);
+                    transform: translate(-50%, -50%) rotate(180deg) translateX(32px) rotate(-180deg);
                     opacity: 1;
                 }
                 75% {
                     opacity: 0.8;
                 }
                 100% {
-                    transform: translate(-50%, -50%) rotate(360deg) translateX(20px) rotate(-360deg);
+                    transform: translate(-50%, -50%) rotate(360deg) translateX(32px) rotate(-360deg);
                     opacity: 0.7;
                 }
             }
@@ -2687,17 +2666,12 @@
             }
 
             .clinic-name {
-                font-size: 12px;
+                font-size: 20px;
             }
 
             .clinic-tagline {
-                font-size: 6px;
-                margin-bottom: 5px;
-            }
-
-            .specialty {
-                font-size: 4px;
-                padding: 1px 3px;
+                font-size: 10px;
+                margin-bottom: 0;
             }
 
             /* Mobile responsive for language bar */
@@ -2828,11 +2802,6 @@
                 <div class="ashish-logo-text">
                     <div class="clinic-name">Ashish Orthocare</div>
                     <div class="clinic-tagline">Advanced Bone & Joint Solutions</div>
-                    <div class="clinic-specialties">
-                        <span class="specialty">Joint Replacement</span>
-                        <span class="specialty">Sports Medicine</span>
-                        <span class="specialty">Spine Care</span>
-                    </div>
                 </div>
             </div>
             <div class="logo-glow-effect"></div>
