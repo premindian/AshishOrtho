@@ -576,6 +576,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            flex-wrap: nowrap;
         }
 
         .compact-lang-btn {
@@ -2829,13 +2830,28 @@
             }
 
             .language-bar-container {
-                padding: 6px 12px;
+                padding: 6px 8px;
+                gap: 4px;
+            }
+
+            .compact-language-options {
+                gap: 2px;
+                flex-wrap: nowrap;
             }
 
             .compact-lang-btn {
-                padding: 5px 10px;
-                font-size: 10px;
-                min-width: 60px;
+                padding: 4px 8px;
+                font-size: 9px;
+                min-width: 50px;
+                max-width: 70px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex-shrink: 1;
+            }
+
+            .compact-lang-btn .flag {
+                font-size: 12px;
             }
 
             .lang-label {
