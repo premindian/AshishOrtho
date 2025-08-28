@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dr. Ashish - Expert Orthopedic Surgeon | Advanced Bone & Joint Care</title>
     <meta name="description" content="Dr. Ashish is a leading orthopedic surgeon specializing in advanced bone and joint treatments. Book your consultation today for expert orthopedic care.">
     
@@ -317,7 +317,8 @@
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             cursor: pointer;
-            min-width: 300px;
+            min-width: 280px;
+            max-width: 90vw;
         }
 
         .ashish-logo-container:hover {
@@ -1269,17 +1270,20 @@
             }
 
             .rain-title {
-                font-size: 32px;
+                font-size: 28px;
+                padding: 0 1rem;
             }
 
             .rain-subtitle {
-                font-size: 18px;
+                font-size: 16px;
+                padding: 0 1rem;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
+                gap: 1rem;
+                padding: 0 0.5rem;
             }
 
             .hero h1 {
@@ -1289,7 +1293,8 @@
             .about-container,
             .contact-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1rem;
+                padding: 0 0.5rem;
             }
 
             .services-grid,
@@ -1303,6 +1308,37 @@
 
             .floating-card {
                 display: none;
+            }
+
+            /* Ensure all containers fit mobile width perfectly */
+            .stats-container,
+            .services-container,
+            .testimonials-container,
+            .footer-container {
+                padding: 0 0.5rem;
+            }
+
+            /* Reduce mobile sections padding */
+            .stats,
+            .services,
+            .about,
+            .testimonials,
+            .contact {
+                padding: 3rem 0;
+            }
+
+            /* Fix service and testimonial grids for mobile */
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Ensure hero buttons fit on mobile */
+            .hero-buttons {
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
             }
         }
 
@@ -1492,7 +1528,7 @@
         .skip-rain-btn:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
+            transform: translateX(-50%) translateY(-2px);
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         }
 
@@ -2632,9 +2668,10 @@
             }
 
             .ashish-logo-container {
-                padding: 15px 25px;
+                padding: 15px 20px;
                 border-radius: 15px;
-                min-width: 250px;
+                min-width: 200px;
+                max-width: 95vw;
             }
 
             .ashish-logo-main {
