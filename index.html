@@ -177,10 +177,10 @@
             cursor: pointer;
         }
 
-        /* Hero Section - Updated for Matrix theme */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: #000000;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             position: relative;
@@ -1000,30 +1000,26 @@
             animation: slideInRight 0.3s ease-out;
         }
 
-        /* Remove all problematic CSS - Start Fresh */
+        /* Proper body styling for medical website */
         body {
             margin: 0;
             padding: 0;
-            background: #000000;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            overflow: hidden;
+            background: var(--light-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        #matrixCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: #000000;
-        }
+
 
         .simple-welcome {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1032,28 +1028,35 @@
 
         .welcome-content {
             text-align: center;
-            padding: 2rem;
-            border: 2px solid #00ff00;
-            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem;
+            border: 2px solid var(--primary-color);
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
         }
 
         .welcome-content h1 {
-            color: #00ff00;
+            color: var(--primary-color);
             margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .lang-options button, #skipBtn {
-            background: #000;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 10px 20px;
-            margin: 5px;
+            background: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            margin: 8px;
             cursor: pointer;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .lang-options button:hover, #skipBtn:hover {
-            background: #00ff00;
-            color: #000;
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
 
         .welcome-experience.hide {
@@ -1081,8 +1084,8 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             margin-bottom: 0.5rem;
-            color: #00ff00;
-            text-shadow: 0 0 10px #00ff00;
+            color: var(--primary-color);
+            text-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
         }
 
         .clinic-subtitle {
@@ -1111,9 +1114,9 @@
         }
 
         .lang-button {
-            background: rgba(0, 255, 0, 0.1);
-            border: 2px solid #00ff00;
-            color: #00ff00;
+            background: rgba(37, 99, 235, 0.1);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
             padding: 1rem 1.5rem;
             border-radius: 15px;
             cursor: pointer;
@@ -1123,10 +1126,10 @@
         }
 
         .lang-button:hover {
-            background: rgba(0, 255, 0, 0.2);
-            border-color: #00ff00;
+            background: rgba(37, 99, 235, 0.2);
+            border-color: var(--primary-color);
             transform: translateY(-5px);
-            box-shadow: 0 0 20px #00ff00;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
         }
 
         .lang-button .flag {
@@ -1186,9 +1189,9 @@
         }
 
         .enter-website-btn {
-            background: rgba(0, 255, 0, 0.2);
-            color: #00ff00;
-            border: 2px solid #00ff00;
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
             padding: 1rem 2rem;
             border-radius: 50px;
             font-size: 1.1rem;
@@ -1202,8 +1205,8 @@
 
         .enter-website-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 30px #00ff00;
-            background: rgba(0, 255, 0, 0.3);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.4);
+            background: var(--secondary-color);
         }
 
         .enter-website-btn i {
@@ -1823,8 +1826,7 @@
     </style>
 </head>
 <body>
-    <!-- Simple Matrix Rain Canvas -->
-    <canvas id="matrixCanvas"></canvas>
+
 
     <!-- Simple Welcome Screen -->
     <div id="welcomeScreen" class="simple-welcome">
@@ -2585,45 +2587,7 @@
             }
         }
 
-        // Simple Matrix Rain Effect
-        function initMatrix() {
-            const canvas = document.getElementById('matrixCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-            const matrixArray = matrix.split("");
-            
-            const fontSize = 10;
-            const columns = canvas.width / fontSize;
-            
-            const drops = [];
-            for(let x = 0; x < columns; x++) {
-                drops[x] = 1;
-            }
-            
-            function draw() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = '#0F0';
-                ctx.font = fontSize + 'px arial';
-                
-                for(let i = 0; i < drops.length; i++) {
-                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    
-                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-            
-            setInterval(draw, 35);
-        }
+
 
         // Simple language selection
         let currentLanguage = 'en';
@@ -2644,9 +2608,6 @@
 
         // Initialize everything when page loads
         window.addEventListener('load', function() {
-            // Initialize matrix animation
-            initMatrix();
-            
             // Initialize language switcher
             initLanguageSwitcher();
         });
