@@ -182,10 +182,9 @@
         /* Hero Section */
         .hero {
             min-height: auto;
-            padding: 0.5rem 0 0.25rem 0;
+            padding: 0;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            flex-direction: column;
+            display: block;
             position: relative;
             overflow: hidden;
         }
@@ -309,17 +308,28 @@
         /* Ashish Orthocare Animated Logo - Broader Design */
         .ashish-logo-container {
             position: relative;
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 50%, rgba(102, 126, 234, 0.95) 100%);
+            display: block;
+            width: calc(100% - 20px);
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ff0080 0%, #00ffff 25%, #ff8000 50%, #8000ff 75%, #ff0080 100%);
+            background-size: 400% 400%;
+            animation: cosmicBackground 4s ease-in-out infinite;
             border-radius: 20px;
-            padding: 20px 40px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            padding: 15px 20px;
+            box-shadow: 0 12px 30px rgba(255, 0, 128, 0.4), 0 0 40px rgba(0, 255, 255, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             cursor: pointer;
-            min-width: 280px;
-            max-width: 90vw;
+        }
+
+        @keyframes cosmicBackground {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .ashish-logo-container:hover {
@@ -352,11 +362,24 @@
 
         .ashoka-chakra {
             font-size: 28px;
-            color: #000080;
-            animation: chakraRotate 8s linear infinite;
-            filter: drop-shadow(0 0 8px rgba(0, 0, 128, 0.6));
+            background: linear-gradient(45deg, #ff0080, #00ffff, #ff8000, #8000ff);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: chakraRotate 8s linear infinite, cosmicFlow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(255, 0, 128, 0.8)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.6));
             z-index: 15;
             position: relative;
+        }
+
+        @keyframes cosmicFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         @keyframes chakraRotate {
@@ -438,10 +461,10 @@
             filter: drop-shadow(0 0 4px currentColor);
         }
 
-        .medical-icon:nth-child(1) { color: #FF9933; } /* Saffron - Medical symbol */
-        .medical-icon:nth-child(2) { color: #FFFFFF; text-shadow: 0 0 2px #000; } /* White - Hospital */
-        .medical-icon:nth-child(3) { color: #138808; } /* Green - Bone */
-        .medical-icon:nth-child(4) { color: #000080; } /* Navy Blue - Medicine */
+        .medical-icon:nth-child(1) { color: #ff0080; filter: drop-shadow(0 0 8px #ff0080); } /* Cosmic Pink - Medical symbol */
+        .medical-icon:nth-child(2) { color: #00ffff; filter: drop-shadow(0 0 8px #00ffff); } /* Cyan - Hospital */
+        .medical-icon:nth-child(3) { color: #ff8000; filter: drop-shadow(0 0 8px #ff8000); } /* Orange - Bone */
+        .medical-icon:nth-child(4) { color: #8000ff; filter: drop-shadow(0 0 8px #8000ff); } /* Purple - Medicine */
 
         @keyframes tricolorOrbit {
             0% {
@@ -663,7 +686,7 @@
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0.5rem 1rem;
             display: block;
             width: 100%;
         }
@@ -902,7 +925,7 @@
         /* Stats Section */
         .stats {
             background: var(--light-color);
-            padding: 0.5rem 0 2rem 0;
+            padding: 0;
         }
 
         .stats-container {
