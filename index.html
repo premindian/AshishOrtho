@@ -2616,11 +2616,33 @@
         }
         
         function enterWebsite() {
-            document.getElementById('welcomeScreen').style.display = 'none';
-            document.getElementById('languageSwitcher').classList.add('show');
-            document.getElementById('preloader').classList.add('hide');
+            console.log('Entering website with language: ' + currentLanguage);
+            
+            // Hide welcome screen
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            if (welcomeScreen) {
+                welcomeScreen.style.display = 'none';
+                console.log('Welcome screen hidden');
+            }
+            
+            // Show language switcher
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (languageSwitcher) {
+                languageSwitcher.classList.add('show');
+                console.log('Language switcher shown');
+            }
+            
+            // Hide preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('hide');
+                console.log('Preloader hidden');
+            }
+            
+            // Update content with selected language
             updateMainWebsiteContent(currentLanguage);
             updateLanguageSwitcher(currentLanguage);
+            console.log('Website content updated for language: ' + currentLanguage);
         }
 
         // Global timer variable so it can be cleared from anywhere
@@ -2640,14 +2662,19 @@
             // Auto-hide welcome screen with countdown
             let countdown = 5;
             const countdownElement = document.getElementById('countdown');
+            console.log('Starting countdown timer...');
+            
             welcomeTimer = setInterval(function() {
                 countdown--;
+                console.log('Countdown: ' + countdown);
                 if (countdownElement) {
                     countdownElement.textContent = countdown;
                 }
                 
                 if (countdown <= 0) {
                     clearInterval(welcomeTimer);
+                    welcomeTimer = null;
+                    console.log('Auto-entering website...');
                     const welcomeScreen = document.getElementById('welcomeScreen');
                     if (welcomeScreen && welcomeScreen.style.display !== 'none') {
                         enterWebsite();
