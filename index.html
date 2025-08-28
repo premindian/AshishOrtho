@@ -335,7 +335,7 @@
             justify-content: center;
         }
 
-        .magical-logo-icon {
+        .tricolor-logo-icon {
             position: relative;
             width: 80px;
             height: 80px;
@@ -344,114 +344,81 @@
             justify-content: center;
         }
 
-        .magical-center {
+        .tricolor-center {
             position: relative;
             z-index: 10;
         }
 
-        .magical-crystal {
-            font-size: 32px;
-            animation: magicalPulse 2s ease-in-out infinite alternate;
-            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) 
-                    drop-shadow(0 0 20px rgba(135, 206, 235, 0.6))
-                    drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+        .ashoka-chakra {
+            font-size: 28px;
+            color: #000080;
+            animation: chakraRotate 8s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(0, 0, 128, 0.6));
+            z-index: 15;
+            position: relative;
         }
 
-        .healing-aura {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, 
-                rgba(255, 105, 180, 0.3) 0%, 
-                rgba(135, 206, 235, 0.2) 30%, 
-                rgba(255, 215, 0, 0.1) 60%, 
-                transparent 100%);
-            border-radius: 50%;
-            animation: auraExpand 3s ease-in-out infinite;
-        }
-
-        @keyframes magicalPulse {
+        @keyframes chakraRotate {
             from {
-                transform: scale(1) rotate(0deg);
-                filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)) 
-                        drop-shadow(0 0 20px rgba(135, 206, 235, 0.6))
-                        drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+                transform: rotate(0deg);
             }
             to {
-                transform: scale(1.1) rotate(10deg);
-                filter: drop-shadow(0 0 15px rgba(255, 105, 180, 1)) 
-                        drop-shadow(0 0 25px rgba(135, 206, 235, 0.8))
-                        drop-shadow(0 0 35px rgba(255, 215, 0, 0.6))
-                        drop-shadow(0 0 45px rgba(148, 0, 211, 0.4));
+                transform: rotate(360deg);
             }
         }
 
-        @keyframes auraExpand {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.3);
-                opacity: 0.3;
-            }
-        }
-
-        .magical-sparkles {
+        .tricolor-rings {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120px;
-            height: 120px;
+            width: 70px;
+            height: 70px;
         }
 
-        .sparkle {
+        .ring {
             position: absolute;
             top: 50%;
             left: 50%;
-            font-size: 14px;
-            animation: sparkleOrbit 8s linear infinite;
-            animation-delay: var(--delay);
-            filter: drop-shadow(0 0 6px currentColor);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: ringPulse 3s ease-in-out infinite;
         }
 
-        .sparkle:nth-child(1) { color: #ff69b4; } /* Hot Pink */
-        .sparkle:nth-child(2) { color: #ffd700; } /* Gold */
-        .sparkle:nth-child(3) { color: #87ceeb; } /* Sky Blue */
-        .sparkle:nth-child(4) { color: #dda0dd; } /* Plum */
-        .sparkle:nth-child(5) { color: #98fb98; } /* Pale Green */
-        .sparkle:nth-child(6) { color: #ff6347; } /* Tomato */
-        .sparkle:nth-child(7) { color: #40e0d0; } /* Turquoise */
-        .sparkle:nth-child(8) { color: #da70d6; } /* Orchid */
+        .saffron-ring {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, transparent 60%, #FF9933 70%, transparent 80%);
+            animation-delay: 0s;
+        }
 
-        @keyframes sparkleOrbit {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg) translateX(60px) rotate(0deg) scale(0.8);
+        .white-ring {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, transparent 60%, #FFFFFF 70%, transparent 80%);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
+            animation-delay: 1s;
+        }
+
+        .green-ring {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, transparent 60%, #138808 70%, transparent 80%);
+            animation-delay: 2s;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% {
                 opacity: 0.7;
-            }
-            25% {
-                opacity: 1;
-                transform: translate(-50%, -50%) rotate(90deg) translateX(60px) rotate(-90deg) scale(1);
+                transform: translate(-50%, -50%) scale(1);
             }
             50% {
-                transform: translate(-50%, -50%) rotate(180deg) translateX(60px) rotate(-180deg) scale(1.2);
-                opacity: 0.9;
-            }
-            75% {
-                opacity: 0.8;
-                transform: translate(-50%, -50%) rotate(270deg) translateX(60px) rotate(-270deg) scale(1);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg) translateX(60px) rotate(-360deg) scale(0.8);
-                opacity: 0.7;
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05);
             }
         }
 
-        .magical-runes {
+        .medical-symbols {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -460,37 +427,39 @@
             height: 100px;
         }
 
-        .rune {
+        .medical-icon {
             position: absolute;
             top: 50%;
             left: 50%;
-            font-size: 16px;
-            animation: runeFloat 10s linear infinite reverse;
+            font-size: 14px;
+            animation: tricolorOrbit 12s linear infinite;
             animation-delay: var(--delay);
-            filter: drop-shadow(0 0 8px currentColor);
+            filter: drop-shadow(0 0 4px currentColor);
         }
 
-        .rune:nth-child(1) { color: #ff4757; } /* Red */
-        .rune:nth-child(2) { color: #2ed573; } /* Green */
-        .rune:nth-child(3) { color: #3742fa; } /* Blue */
-        .rune:nth-child(4) { color: #ffa502; } /* Orange */
-        .rune:nth-child(5) { color: #9c88ff; } /* Purple */
-        .rune:nth-child(6) { color: #ff6b9d; } /* Pink */
+        .medical-icon:nth-child(1) { color: #FF9933; } /* Saffron - Medical symbol */
+        .medical-icon:nth-child(2) { color: #FFFFFF; text-shadow: 0 0 2px #000; } /* White - Hospital */
+        .medical-icon:nth-child(3) { color: #138808; } /* Green - Bone */
+        .medical-icon:nth-child(4) { color: #000080; } /* Navy Blue - Medicine */
 
-        @keyframes runeFloat {
+        @keyframes tricolorOrbit {
             0% {
                 transform: translate(-50%, -50%) rotate(0deg) translateX(50px) rotate(0deg);
-                opacity: 0.6;
+                opacity: 0.8;
             }
-            33% {
+            25% {
                 opacity: 1;
             }
-            66% {
-                opacity: 0.8;
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg) translateX(50px) rotate(-180deg);
+                opacity: 1;
+            }
+            75% {
+                opacity: 0.9;
             }
             100% {
                 transform: translate(-50%, -50%) rotate(360deg) translateX(50px) rotate(-360deg);
-                opacity: 0.6;
+                opacity: 0.8;
             }
         }
 
@@ -503,49 +472,48 @@
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 5px;
-            background: linear-gradient(45deg, 
-                #ff69b4, #ffd700, #87ceeb, #ff6347, 
-                #98fb98, #dda0dd, #40e0d0, #ff69b4);
-            background-size: 400% 400%;
+            background: linear-gradient(90deg, 
+                #FF9933 0%, #FF9933 33%, 
+                #FFFFFF 33%, #FFFFFF 66%, 
+                #138808 66%, #138808 100%);
+            background-size: 300% 100%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: magicalTextFlow 3s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+            animation: tricolorFlow 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
         }
 
-        @keyframes magicalTextFlow {
+        @keyframes tricolorFlow {
             0%, 100% {
-                background-position: 0% 50%;
+                background-position: 0% 0%;
             }
             50% {
-                background-position: 100% 50%;
+                background-position: 100% 0%;
             }
         }
 
         .clinic-tagline {
             font-size: 14px;
-            color: #ffd700;
+            color: #000080;
             font-style: italic;
             margin-bottom: 0;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
-                         0 0 20px rgba(255, 215, 0, 0.4),
-                         0 0 30px rgba(255, 215, 0, 0.2);
-            animation: taglineGlow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 8px rgba(0, 0, 128, 0.6),
+                         0 0 16px rgba(0, 0, 128, 0.3);
+            animation: navyGlow 3s ease-in-out infinite alternate;
         }
 
-        @keyframes taglineGlow {
+        @keyframes navyGlow {
             from {
-                text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
-                             0 0 20px rgba(255, 215, 0, 0.4),
-                             0 0 30px rgba(255, 215, 0, 0.2);
+                text-shadow: 0 0 8px rgba(0, 0, 128, 0.6),
+                             0 0 16px rgba(0, 0, 128, 0.3);
+                color: #000080;
             }
             to {
-                text-shadow: 0 0 15px rgba(255, 215, 0, 1),
-                             0 0 25px rgba(255, 215, 0, 0.6),
-                             0 0 35px rgba(255, 215, 0, 0.4),
-                             0 0 45px rgba(255, 105, 180, 0.3);
+                text-shadow: 0 0 12px rgba(0, 0, 128, 0.8),
+                             0 0 20px rgba(0, 0, 128, 0.5),
+                             0 0 28px rgba(255, 153, 51, 0.3);
+                color: #002080;
             }
         }
 
@@ -2783,75 +2751,62 @@
                 text-align: center;
             }
 
-            .magical-logo-icon {
+            .tricolor-logo-icon {
                 width: 60px;
                 height: 60px;
             }
 
-            .magical-crystal {
-                font-size: 24px;
+            .ashoka-chakra {
+                font-size: 20px;
             }
 
-            .healing-aura {
+            .tricolor-rings {
+                width: 55px;
+                height: 55px;
+            }
+
+            .saffron-ring {
+                width: 55px;
+                height: 55px;
+            }
+
+            .white-ring {
                 width: 45px;
                 height: 45px;
             }
 
-            .magical-sparkles {
-                width: 80px;
-                height: 80px;
+            .green-ring {
+                width: 35px;
+                height: 35px;
             }
 
-            .sparkle {
-                font-size: 10px;
+            .medical-symbols {
+                width: 75px;
+                height: 75px;
             }
 
-            @keyframes sparkleOrbit {
-                0% {
-                    transform: translate(-50%, -50%) rotate(0deg) translateX(40px) rotate(0deg) scale(0.8);
-                    opacity: 0.7;
-                }
-                25% {
-                    opacity: 1;
-                    transform: translate(-50%, -50%) rotate(90deg) translateX(40px) rotate(-90deg) scale(1);
-                }
-                50% {
-                    transform: translate(-50%, -50%) rotate(180deg) translateX(40px) rotate(-180deg) scale(1.2);
-                    opacity: 0.9;
-                }
-                75% {
-                    opacity: 0.8;
-                    transform: translate(-50%, -50%) rotate(270deg) translateX(40px) rotate(-270deg) scale(1);
-                }
-                100% {
-                    transform: translate(-50%, -50%) rotate(360deg) translateX(40px) rotate(-360deg) scale(0.8);
-                    opacity: 0.7;
-                }
-            }
-
-            .magical-runes {
-                width: 70px;
-                height: 70px;
-            }
-
-            .rune {
+            .medical-icon {
                 font-size: 12px;
             }
 
-            @keyframes runeFloat {
+            @keyframes tricolorOrbit {
                 0% {
-                    transform: translate(-50%, -50%) rotate(0deg) translateX(35px) rotate(0deg);
-                    opacity: 0.6;
-                }
-                33% {
-                    opacity: 1;
-                }
-                66% {
+                    transform: translate(-50%, -50%) rotate(0deg) translateX(37px) rotate(0deg);
                     opacity: 0.8;
                 }
+                25% {
+                    opacity: 1;
+                }
+                50% {
+                    transform: translate(-50%, -50%) rotate(180deg) translateX(37px) rotate(-180deg);
+                    opacity: 1;
+                }
+                75% {
+                    opacity: 0.9;
+                }
                 100% {
-                    transform: translate(-50%, -50%) rotate(360deg) translateX(35px) rotate(-360deg);
-                    opacity: 0.6;
+                    transform: translate(-50%, -50%) rotate(360deg) translateX(37px) rotate(-360deg);
+                    opacity: 0.8;
                 }
             }
 
@@ -2976,28 +2931,20 @@
     <section class="logo-header-section">
         <div class="ashish-logo-container">
             <div class="ashish-logo-main">
-                <div class="magical-logo-icon">
-                    <div class="magical-center">
-                        <div class="magical-crystal">💎</div>
-                        <div class="healing-aura"></div>
+                <div class="tricolor-logo-icon">
+                    <div class="tricolor-center">
+                        <div class="ashoka-chakra">☸️</div>
+                        <div class="tricolor-rings">
+                            <div class="ring saffron-ring"></div>
+                            <div class="ring white-ring"></div>
+                            <div class="ring green-ring"></div>
+                        </div>
                     </div>
-                    <div class="magical-sparkles">
-                        <span class="sparkle" style="--delay: 0s;">✨</span>
-                        <span class="sparkle" style="--delay: 0.3s;">🌟</span>
-                        <span class="sparkle" style="--delay: 0.6s;">⭐</span>
-                        <span class="sparkle" style="--delay: 0.9s;">💫</span>
-                        <span class="sparkle" style="--delay: 1.2s;">🔮</span>
-                        <span class="sparkle" style="--delay: 1.5s;">✨</span>
-                        <span class="sparkle" style="--delay: 1.8s;">🌟</span>
-                        <span class="sparkle" style="--delay: 2.1s;">⭐</span>
-                    </div>
-                    <div class="magical-runes">
-                        <span class="rune" style="--delay: 0s;">🔬</span>
-                        <span class="rune" style="--delay: 0.4s;">🧬</span>
-                        <span class="rune" style="--delay: 0.8s;">⚕️</span>
-                        <span class="rune" style="--delay: 1.2s;">🏥</span>
-                        <span class="rune" style="--delay: 1.6s;">🦴</span>
-                        <span class="rune" style="--delay: 2.0s;">💊</span>
+                    <div class="medical-symbols">
+                        <span class="medical-icon" style="--delay: 0s;">⚕️</span>
+                        <span class="medical-icon" style="--delay: 1s;">🏥</span>
+                        <span class="medical-icon" style="--delay: 2s;">🦴</span>
+                        <span class="medical-icon" style="--delay: 3s;">💊</span>
                     </div>
                 </div>
                 <div class="ashish-logo-text">
