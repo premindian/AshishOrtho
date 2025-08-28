@@ -1007,31 +1007,73 @@
             animation: slideInRight 0.3s ease-out;
         }
 
-        /* Rain Canvas - Matrix Effect */
-        #rainCanvas {
-            background: #000000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        /* Welcome Experience */
-        .welcome-experience {
+        /* Simple Matrix Canvas */
+        #matrixCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            background: #000;
+            z-index: -1;
+        }
+
+        /* Simple Welcome Screen */
+        .simple-welcome {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 1000;
             color: #00ff00;
+            font-family: 'Courier New', monospace;
+        }
+
+        .welcome-content {
             text-align: center;
+            max-width: 600px;
             padding: 2rem;
+        }
+
+        .welcome-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .welcome-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .lang-options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .lang-options button, #skipBtn {
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .lang-options button:hover, #skipBtn:hover {
+            background: rgba(0, 255, 0, 0.4);
+            box-shadow: 0 0 20px #00ff00;
         }
 
         .welcome-experience.hide {
@@ -1801,59 +1843,20 @@
     </style>
 </head>
 <body>
-    <!-- Rain Animation Canvas -->
-    <canvas id="rainCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></canvas>
+    <!-- Simple Matrix Rain Canvas -->
+    <canvas id="matrixCanvas"></canvas>
 
-    <!-- Dynamic Welcome Experience -->
-    <div class="welcome-experience" id="welcomeExperience">
-        <!-- Logo Section -->
-        <div class="welcome-logo">
-            <div class="bone-icon">🦴</div>
-            <h1 class="clinic-name">Dr. Ashish</h1>
-            <p class="clinic-subtitle">Orthopedic Excellence</p>
-        </div>
-
-        <!-- Language Selection -->
-        <div class="language-selection" id="languageSelection">
-            <h2>Choose Your Language / भाषा चुनें / భాషను ఎంచుకోండి</h2>
-            <div class="language-buttons">
-                <button class="lang-button" data-lang="en" data-flag="🇺🇸">
-                    <span class="flag">🇺🇸</span>
-                    <span class="name">English</span>
-                </button>
-                <button class="lang-button" data-lang="hi" data-flag="🇮🇳">
-                    <span class="flag">🇮🇳</span>
-                    <span class="name">हिन्दी</span>
-                </button>
-                <button class="lang-button" data-lang="te" data-flag="🇮🇳">
-                    <span class="flag">🇮🇳</span>
-                    <span class="name">తెలుగు</span>
-                </button>
+    <!-- Simple Welcome Screen -->
+    <div id="welcomeScreen" class="simple-welcome">
+        <div class="welcome-content">
+            <h1>🦴 Dr. Ashish Orthopedic Clinic</h1>
+            <p>Choose Your Language:</p>
+            <div class="lang-options">
+                <button onclick="selectLanguage('en')">🇺🇸 English</button>
+                <button onclick="selectLanguage('te')">🇮🇳 తెలుగు</button>
+                <button onclick="selectLanguage('hi')">🇮🇳 हिन्दी</button>
             </div>
-        </div>
-
-        <!-- Welcome Message -->
-        <div class="welcome-message" id="welcomeMessage">
-            <h2 id="welcomeTitle">Welcome to Expert Orthopedic Care</h2>
-            <p id="welcomeDesc">15+ Years of Excellence in Bone & Joint Treatment</p>
-            <div class="stats-preview">
-                <div class="stat-item">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-label" id="statPatients">Patients</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label" id="statSuccess">Success Rate</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label" id="statCare">Care</span>
-                </div>
-            </div>
-            <button class="enter-website-btn" id="enterWebsiteBtn">
-                <span id="enterBtnText">Enter Website</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
+            <button id="skipBtn" onclick="enterWebsite()" style="margin-top: 2rem;">Skip to Website</button>
         </div>
     </div>
 
@@ -2602,175 +2605,70 @@
             }
         }
 
-        // Falling Words Animation (Matrix Style)
-        function initFallingWords() {
-            const canvas = document.getElementById('rainCanvas');
+        // Simple Matrix Rain Effect
+        function initMatrix() {
+            const canvas = document.getElementById('matrixCanvas');
             const ctx = canvas.getContext('2d');
             
-            // Set canvas size
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
-            // Orthopedic medical terms in different languages
-            const orthopedicTerms = {
-                en: ['BONE', 'JOINT', 'SPINE', 'KNEE', 'HIP', 'SHOULDER', 'ANKLE', 'WRIST', 'ELBOW', 'SURGERY', 'HEALING', 'THERAPY', 'REHAB', 'DOCTOR', 'ASHISH', 'ORTHO', 'CARE', 'HEALTH', 'STRONG', 'MOBILE'],
-                te: ['ఎముక', 'కీలు', 'వెన్నెముక', 'మోకాలి', 'తుంటి', 'భుజం', 'చీలమండ', 'మణికట్టు', 'మోచేయి', 'శస్త్రచికిత్స', 'వైద్యం', 'చికిత్స', 'ఆరోగ్యం', 'బలం', 'కదలిక'],
-                hi: ['हड्डी', 'जोड़', 'रीढ़', 'घुटना', 'कूल्हा', 'कंधा', 'टखना', 'कलाई', 'कोहनी', 'सर्जरी', 'इलाज', 'चिकित्सा', 'स्वास्थ्य', 'मजबूत', 'गति']
-            };
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+            const matrixArray = matrix.split("");
             
-            const allTerms = [...orthopedicTerms.en, ...orthopedicTerms.te, ...orthopedicTerms.hi];
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
             
-            // Create falling columns
-            const columns = Math.floor(canvas.width / 25);
-            const drops = Array(columns).fill(1);
+            const drops = [];
+            for(let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
             
             function draw() {
-                // Create trailing effect
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 
-                // Set text properties
-                ctx.fillStyle = '#00ff00'; // Matrix green
-                ctx.font = 'bold 16px monospace';
-                ctx.shadowColor = '#00ff00';
-                ctx.shadowBlur = 5;
+                ctx.fillStyle = '#0F0';
+                ctx.font = fontSize + 'px arial';
                 
-                // Draw falling words
-                for (let i = 0; i < drops.length; i++) {
-                    // Pick random medical term
-                    const text = allTerms[Math.floor(Math.random() * allTerms.length)];
+                for(let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                     
-                    // Draw the text
-                    ctx.fillText(text, i * 25, drops[i] * 25);
-                    
-                    // Reset drop to top randomly or continue falling
-                    if (drops[i] * 25 > canvas.height && Math.random() > 0.98) {
+                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                         drops[i] = 0;
                     }
                     drops[i]++;
                 }
             }
             
-            // Start animation
-            const interval = setInterval(draw, 100);
-            
-            // Store interval for cleanup
-            window.fallingWordsInterval = interval;
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
+            setInterval(draw, 35);
         }
 
-        // Simple Welcome Experience
-        function initWelcomeExperience() {
-            const welcomeDiv = document.getElementById('welcomeExperience');
-            const languageSelection = document.getElementById('languageSelection');
-            const welcomeMessage = document.getElementById('welcomeMessage');
-            
-            // Initially hide welcome message
-            welcomeMessage.style.display = 'none';
-            
-            // Add language selection handlers
-            document.querySelectorAll('.lang-button').forEach(button => {
-                button.addEventListener('click', function() {
-                    const selectedLang = this.dataset.lang;
-                    currentLanguage = selectedLang;
-                    
-                    // Hide language selection
-                    languageSelection.style.opacity = '0';
-                    setTimeout(() => {
-                        languageSelection.style.display = 'none';
-                        
-                        // Update welcome message based on language
-                        updateWelcomeContent(selectedLang);
-                        
-                        // Show welcome message
-                        welcomeMessage.style.display = 'block';
-                        setTimeout(() => {
-                            welcomeMessage.style.opacity = '1';
-                        }, 100);
-                    }, 500);
-                });
-            });
-            
-            // Enter website button
-            document.getElementById('enterWebsiteBtn').addEventListener('click', function() {
-                // Stop falling words animation
-                if (window.fallingWordsInterval) {
-                    clearInterval(window.fallingWordsInterval);
-                }
-                
-                // Hide welcome experience
-                welcomeDiv.classList.add('hide');
-                
-                // Update main website content
-                updateMainWebsiteContent(currentLanguage);
-                updateLanguageSwitcher(currentLanguage);
-                
-                setTimeout(() => {
-                    welcomeDiv.style.display = 'none';
-                    
-                    // Show language switcher
-                    document.getElementById('languageSwitcher').classList.add('show');
-                    
-                    // Hide preloader
-                    setTimeout(() => {
-                        document.getElementById('preloader').classList.add('hide');
-                    }, 300);
-                }, 1000);
-            });
+        // Simple language selection
+        let currentLanguage = 'en';
+        
+        function selectLanguage(lang) {
+            currentLanguage = lang;
+            alert('Language selected: ' + lang);
+            enterWebsite();
         }
-
-        function updateWelcomeContent(lang) {
-            const content = {
-                en: {
-                    title: "Welcome to Expert Orthopedic Care",
-                    desc: "15+ Years of Excellence in Bone & Joint Treatment",
-                    patients: "Patients",
-                    success: "Success Rate", 
-                    care: "Care",
-                    enter: "Enter Website"
-                },
-                te: {
-                    title: "నిపుణ ఆర్థోపెడిక్ చికిత్సకు స్వాగతం",
-                    desc: "ఎముక మరియు కీలుల చికిత్సలో 15+ సంవత్సరాల అనుభవం",
-                    patients: "రోగులు",
-                    success: "విజయ రేటు",
-                    care: "సంరక్షణ", 
-                    enter: "వెబ్‌సైట్‌లోకి ప్రవేశించండి"
-                },
-                hi: {
-                    title: "विशेषज्ञ आर्थोपेडिक देखभाल में आपका स्वागत है",
-                    desc: "हड्डी और जोड़ों के इलाज में 15+ साल का अनुभव",
-                    patients: "मरीज़",
-                    success: "सफलता दर",
-                    care: "देखभाल",
-                    enter: "वेबसाइट में प्रवेश करें"
-                }
-            };
-            
-            const c = content[lang];
-            document.getElementById('welcomeTitle').textContent = c.title;
-            document.getElementById('welcomeDesc').textContent = c.desc;
-            document.getElementById('statPatients').textContent = c.patients;
-            document.getElementById('statSuccess').textContent = c.success;
-            document.getElementById('statCare').textContent = c.care;
-            document.getElementById('enterBtnText').textContent = c.enter;
+        
+        function enterWebsite() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('languageSwitcher').classList.add('show');
+            document.getElementById('preloader').classList.add('hide');
+            updateMainWebsiteContent(currentLanguage);
+            updateLanguageSwitcher(currentLanguage);
         }
 
         // Initialize everything when page loads
         window.addEventListener('load', function() {
-            // Initialize falling words animation
-            initFallingWords();
+            // Initialize matrix animation
+            initMatrix();
             
             // Initialize language switcher
             initLanguageSwitcher();
-            
-            // Initialize welcome experience
-            initWelcomeExperience();
         });
 
         // Navigation
