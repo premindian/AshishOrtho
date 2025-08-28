@@ -1069,85 +1069,7 @@
             gap: 1rem;
         }
 
-        /* About Section */
-        .about {
-            padding: 6rem 0;
-            background: var(--light-color);
-        }
 
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .about-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .about-content p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .qualifications {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .qualifications li {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .qualifications li i {
-            color: var(--success-color);
-            font-size: 1.2rem;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .experience-badge {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .experience-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-color);
-        }
-
-        .experience-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
 
         /* Testimonials */
         .testimonials {
@@ -1433,7 +1355,6 @@
                 font-size: 2.5rem;
             }
 
-            .about-container,
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -1462,7 +1383,6 @@
             /* Reduce mobile sections padding */
             .stats,
             .services,
-            .about,
             .testimonials,
             .contact {
                 padding: 3rem 0;
@@ -3269,61 +3189,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-content animate-on-scroll">
-                <h2>Meet Dr. Ashish</h2>
-                <p>
-                    Dr. Ashish is a board-certified orthopedic surgeon with over 15 years of experience 
-                    in treating complex bone and joint conditions. He completed his medical degree from 
-                    a prestigious institution and specialized training in orthopedic surgery.
-                </p>
-                <p>
-                    Known for his compassionate approach and commitment to excellence, Dr. Ashish stays 
-                    at the forefront of orthopedic innovation, utilizing the latest minimally invasive 
-                    techniques to ensure optimal patient outcomes and faster recovery times.
-                </p>
-                
-                <ul class="qualifications">
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        MBBS, MS Orthopedics - Premier Medical College
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        Fellowship in Joint Replacement Surgery
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        Member, Indian Orthopedic Association
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        Certified in Arthroscopic Surgery
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        Published researcher in orthopedic journals
-                    </li>
-                </ul>
-                
-                <a href="#appointment" class="btn-primary">
-                    <i class="fas fa-calendar-plus"></i>
-                    Schedule Consultation
-                </a>
-            </div>
-            
-            <div class="about-image animate-on-scroll">
-                <img src="img/ashish.jpeg" alt="Dr. Ashish in his clinic">
-                
-                <div class="experience-badge">
-                    <div class="experience-number">15+</div>
-                    <div class="experience-text">Years of Excellence</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
