@@ -53,6 +53,15 @@
             align-items: center;
             z-index: 10000;
             transition: opacity 0.5s ease;
+            /* Auto-hide after 2 seconds using CSS animation */
+            animation: autoHidePreloader 2s ease-in-out 2s forwards;
+        }
+        
+        @keyframes autoHidePreloader {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
 
         .preloader.hide {
@@ -2611,6 +2620,12 @@
 
         // Initialize everything when page loads
         window.addEventListener('load', function() {
+            // Hide preloader immediately when page loads
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('hide');
+            }
+            
             // Initialize language switcher
             initLanguageSwitcher();
             
