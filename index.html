@@ -4050,16 +4050,34 @@
     <script>
         // Simple service page function that works on mobile
         function showServicePage(serviceId) {
+            alert('Function called for: ' + serviceId);
+            
             const overlay = document.getElementById('servicePageOverlay');
             const content = document.getElementById('servicePageContent');
             
-            if (!overlay || !content) {
-                alert('Service page system not ready. Please refresh the page.');
+            if (!overlay) {
+                alert('ERROR: Overlay element not found!');
                 return;
             }
             
-            // Simple service data
-            const services = {
+            if (!content) {
+                alert('ERROR: Content element not found!');
+                return;
+            }
+            
+            alert('Elements found successfully! Opening page...');
+            
+            // Just show the overlay with simple content
+            content.innerHTML = '<div style="padding: 20px; text-align: center;"><h2>Service Page</h2><p>Service: ' + serviceId + '</p><button onclick="hideServicePage()" style="padding: 10px 20px; margin-top: 20px;">Close</button></div>';
+            
+            overlay.style.display = 'flex';
+            overlay.classList.add('active');
+            
+            alert('Overlay should now be visible!');
+            return;
+            
+            // Simple service data (disabled for testing)
+            const services_disabled = {
                 'joint-replacement': {
                     title: 'Joint Replacement Surgery',
                     icon: 'fas fa-bone',
