@@ -5736,22 +5736,22 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             sparkle.style.animation = 'sparkle 4s infinite';
             
             if (type === 'image') {
-                // Create small medical image card
+                // Create smaller medical image card
                 card.innerHTML = '';
                 const img = document.createElement('img');
                 img.src = content;
-                img.style.width = '50px';
-                img.style.height = '50px';
-                img.style.borderRadius = '8px';
+                img.style.width = '35px';
+                img.style.height = '35px';
+                img.style.borderRadius = '6px';
                 img.style.objectFit = 'cover';
                 img.style.position = 'relative';
                 img.style.zIndex = '2';
                 
-                card.style.padding = '6px';
+                card.style.padding = '4px';
                 card.style.background = randomGradient;
-                card.style.border = '3px solid rgba(255, 255, 255, 0.5)';
-                card.style.borderRadius = '16px';
-                card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2)';
+                card.style.border = '2px solid rgba(255, 255, 255, 0.5)';
+                card.style.borderRadius = '12px';
+                card.style.boxShadow = '0 6px 15px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2)';
                 card.style.animationDuration = '5s'; // Faster for small images
                 
                 sparkleContainer.appendChild(sparkle);
