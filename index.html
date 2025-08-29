@@ -4813,7 +4813,7 @@
                     </div>
                     <h3>Joint Replacement Surgery</h3>
                     <p>Advanced knee, hip, and shoulder replacement procedures using minimally invasive techniques for faster recovery and better outcomes.</p>
-                    <button type="button" onclick="showServicePage('joint-replacement')" class="service-link">
+                    <button type="button" onclick="openServicePage('joint-replacement')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -4824,7 +4824,7 @@
                     </div>
                     <h3>Sports Medicine</h3>
                     <p>Comprehensive care for athletes and active individuals, from injury prevention to rehabilitation and performance optimization.</p>
-                    <button type="button" onclick="showServicePage('sports-medicine')" class="service-link">
+                    <button type="button" onclick="openServicePage('sports-medicine')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -4835,7 +4835,7 @@
                     </div>
                     <h3>Spine Surgery</h3>
                     <p>Expert treatment for spinal conditions including herniated discs, stenosis, and scoliosis using cutting-edge techniques.</p>
-                    <button type="button" onclick="showServicePage('spine-surgery')" class="service-link">
+                    <button type="button" onclick="openServicePage('spine-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -5120,10 +5120,16 @@
     <script>
         // Simple service page function that works on mobile
         function showServicePage(serviceId) {
+            console.log('🏥 showServicePage called with serviceId:', serviceId);
             const overlay = document.getElementById('servicePageOverlay');
             const content = document.getElementById('servicePageContent');
             
+            console.log('📋 overlay element:', overlay);
+            console.log('📋 content element:', content);
+            
             if (!overlay || !content) {
+                console.error('❌ Missing overlay or content elements');
+                alert('Service page elements not found. Please refresh the page.');
                 return;
             }
             
