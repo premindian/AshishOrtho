@@ -3593,7 +3593,7 @@
     <!-- Service Page Overlay -->
     <div class="service-page-overlay" id="servicePageOverlay">
         <div class="service-page-container">
-            <div class="service-page-close" onclick="closeServicePage()">
+            <div class="service-page-close" onclick="hideServicePage()">
                 <i class="fas fa-times"></i>
             </div>
             
@@ -3747,7 +3747,7 @@
                     </div>
                     <h3>Joint Replacement Surgery</h3>
                     <p>Advanced knee, hip, and shoulder replacement procedures using minimally invasive techniques for faster recovery and better outcomes.</p>
-                    <button type="button" onclick="alert('Joint Replacement clicked!')" class="service-link">
+                    <button type="button" onclick="showServicePage('joint-replacement')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3758,7 +3758,7 @@
                     </div>
                     <h3>Sports Medicine</h3>
                     <p>Comprehensive care for athletes and active individuals, from injury prevention to rehabilitation and performance optimization.</p>
-                    <button type="button" onclick="console.log('Sports Medicine clicked!'); window.openServicePage('sports-medicine'); return false;" class="service-link">
+                    <button type="button" onclick="showServicePage('sports-medicine')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3769,7 +3769,7 @@
                     </div>
                     <h3>Spine Surgery</h3>
                     <p>Expert treatment for spinal conditions including herniated discs, stenosis, and scoliosis using cutting-edge techniques.</p>
-                    <button type="button" onclick="console.log('Spine Surgery clicked!'); window.openServicePage('spine-surgery'); return false;" class="service-link">
+                    <button type="button" onclick="showServicePage('spine-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3780,7 +3780,7 @@
                     </div>
                     <h3>Hand & Wrist Surgery</h3>
                     <p>Specialized microsurgical procedures for carpal tunnel, trigger finger, and complex hand trauma reconstruction.</p>
-                    <button type="button" onclick="console.log('Hand & Wrist clicked!'); window.openServicePage('hand-wrist-surgery'); return false;" class="service-link">
+                    <button type="button" onclick="showServicePage('hand-wrist-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3791,7 +3791,7 @@
                     </div>
                     <h3>Trauma Surgery</h3>
                     <p>Emergency orthopedic trauma care and complex fracture repair with 24/7 availability for urgent cases.</p>
-                    <button type="button" onclick="console.log('Trauma Surgery clicked!'); window.openServicePage('trauma-surgery'); return false;" class="service-link">
+                    <button type="button" onclick="showServicePage('trauma-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3802,7 +3802,7 @@
                     </div>
                     <h3>Pediatric Orthopedics</h3>
                     <p>Specialized care for children's bone and joint conditions, growth disorders, and developmental issues.</p>
-                    <button type="button" onclick="console.log('Pediatric clicked!'); window.openServicePage('pediatric-orthopedics'); return false;" class="service-link">
+                    <button type="button" onclick="showServicePage('pediatric-orthopedics')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -4048,6 +4048,188 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // Simple service page function that works on mobile
+        function showServicePage(serviceId) {
+            const overlay = document.getElementById('servicePageOverlay');
+            const content = document.getElementById('servicePageContent');
+            
+            if (!overlay || !content) {
+                alert('Service page system not ready. Please refresh the page.');
+                return;
+            }
+            
+            // Simple service data
+            const services = {
+                'joint-replacement': {
+                    title: 'Joint Replacement Surgery',
+                    icon: 'fas fa-bone',
+                    subtitle: 'Advanced joint replacement procedures for better mobility and pain relief',
+                    content: `
+                        <h4>🏥 What We Offer:</h4>
+                        <ul>
+                            <li>✅ Knee Replacement Surgery</li>
+                            <li>✅ Hip Replacement Surgery</li>
+                            <li>✅ Shoulder Replacement Surgery</li>
+                            <li>✅ Minimally Invasive Techniques</li>
+                            <li>✅ Fast Recovery Programs</li>
+                        </ul>
+                        
+                        <h4>📋 Why Choose Us:</h4>
+                        <p>Dr. Ashish uses the latest minimally invasive techniques for joint replacement, ensuring faster recovery, less pain, and better long-term outcomes.</p>
+                        
+                        <h4>📞 Book Your Consultation</h4>
+                        <p><strong>Call: +91 9876543210</strong></p>
+                    `
+                },
+                'sports-medicine': {
+                    title: 'Sports Medicine',
+                    icon: 'fas fa-running',
+                    subtitle: 'Comprehensive care for athletes and active individuals',
+                    content: `
+                        <h4>🏃‍♂️ Our Services:</h4>
+                        <ul>
+                            <li>✅ Sports Injury Treatment</li>
+                            <li>✅ Performance Optimization</li>
+                            <li>✅ Injury Prevention Programs</li>
+                            <li>✅ Rehabilitation Therapy</li>
+                            <li>✅ Return-to-Sport Programs</li>
+                        </ul>
+                        
+                        <h4>📋 Common Treatments:</h4>
+                        <p>ACL reconstruction, meniscus repair, rotator cuff surgery, and comprehensive sports injury management.</p>
+                        
+                        <h4>📞 Get Back in the Game</h4>
+                        <p><strong>Call: +91 9876543210</strong></p>
+                    `
+                },
+                'spine-surgery': {
+                    title: 'Spine Surgery',
+                    icon: 'fas fa-spine',
+                    subtitle: 'Expert treatment for spinal conditions and disorders',
+                    content: `
+                        <h4>🦴 Spine Treatments:</h4>
+                        <ul>
+                            <li>✅ Herniated Disc Surgery</li>
+                            <li>✅ Spinal Stenosis Treatment</li>
+                            <li>✅ Scoliosis Correction</li>
+                            <li>✅ Minimally Invasive Procedures</li>
+                            <li>✅ Spinal Fusion Surgery</li>
+                        </ul>
+                        
+                        <h4>📋 Advanced Techniques:</h4>
+                        <p>Using cutting-edge technology for precise spinal surgeries with minimal tissue damage and faster recovery.</p>
+                        
+                        <h4>📞 Spine Care Consultation</h4>
+                        <p><strong>Call: +91 9876543210</strong></p>
+                    `
+                },
+                'hand-wrist-surgery': {
+                    title: 'Hand & Wrist Surgery',
+                    icon: 'fas fa-hand-paper',
+                    subtitle: 'Specialized microsurgical procedures for hand and wrist conditions',
+                    content: `
+                        <h4>✋ Hand & Wrist Services:</h4>
+                        <ul>
+                            <li>✅ Carpal Tunnel Surgery</li>
+                            <li>✅ Trigger Finger Treatment</li>
+                            <li>✅ Hand Trauma Reconstruction</li>
+                            <li>✅ Wrist Arthroscopy</li>
+                            <li>✅ Microsurgical Procedures</li>
+                        </ul>
+                        
+                        <h4>📋 Expert Care:</h4>
+                        <p>Specialized microsurgical techniques for complex hand and wrist conditions, ensuring optimal function and minimal scarring.</p>
+                        
+                        <h4>📞 Hand Surgery Consultation</h4>
+                        <p><strong>Call: +91 9876543210</strong></p>
+                    `
+                },
+                'trauma-surgery': {
+                    title: 'Trauma Surgery',
+                    icon: 'fas fa-band-aid',
+                    subtitle: 'Emergency orthopedic trauma care and complex fracture repair',
+                    content: `
+                        <h4>🚨 Emergency Services:</h4>
+                        <ul>
+                            <li>✅ 24/7 Trauma Care</li>
+                            <li>✅ Complex Fracture Repair</li>
+                            <li>✅ Emergency Surgery</li>
+                            <li>✅ Multi-trauma Management</li>
+                            <li>✅ Reconstruction Surgery</li>
+                        </ul>
+                        
+                        <h4>📋 Immediate Care:</h4>
+                        <p>Round-the-clock emergency orthopedic care for accidents, sports injuries, and complex trauma cases.</p>
+                        
+                        <h4>📞 Emergency Contact</h4>
+                        <p><strong>24/7 Emergency: +91 9876543210</strong></p>
+                    `
+                },
+                'pediatric-orthopedics': {
+                    title: 'Pediatric Orthopedics',
+                    icon: 'fas fa-child',
+                    subtitle: 'Specialized care for children\'s bone and joint conditions',
+                    content: `
+                        <h4>👶 Children's Orthopedic Care:</h4>
+                        <ul>
+                            <li>✅ Growth Disorder Treatment</li>
+                            <li>✅ Congenital Conditions</li>
+                            <li>✅ Pediatric Fracture Care</li>
+                            <li>✅ Scoliosis in Children</li>
+                            <li>✅ Developmental Issues</li>
+                        </ul>
+                        
+                        <h4>📋 Child-Friendly Care:</h4>
+                        <p>Gentle, specialized treatment for children's unique orthopedic needs with family-centered care approach.</p>
+                        
+                        <h4>📞 Pediatric Consultation</h4>
+                        <p><strong>Call: +91 9876543210</strong></p>
+                    `
+                }
+            };
+            
+            const service = services[serviceId];
+            if (!service) {
+                alert('Service information not found: ' + serviceId);
+                return;
+            }
+            
+            // Generate simple HTML
+            content.innerHTML = `
+                <div style="padding: 20px; max-height: 80vh; overflow-y: auto;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <i class="${service.icon}" style="font-size: 3rem; color: #2c5aa0; margin-bottom: 10px;"></i>
+                        <h2 style="color: #2c5aa0; margin-bottom: 10px;">${service.title}</h2>
+                        <p style="color: #666; font-size: 1.1rem;">${service.subtitle}</p>
+                    </div>
+                    
+                    <div style="text-align: left;">
+                        ${service.content}
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
+                        <button onclick="hideServicePage()" style="background: #2c5aa0; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; cursor: pointer;">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Show the overlay
+            overlay.style.display = 'flex';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideServicePage() {
+            const overlay = document.getElementById('servicePageOverlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
         // Global Variables
         let currentLanguage = 'en';
         let animationStep = 0;
