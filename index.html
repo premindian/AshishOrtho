@@ -1590,6 +1590,34 @@
 
         .service-link {
             color: var(--primary-color);
+            background: none;
+            border: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
+            padding: 0;
+        }
+
+        .service-link:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .service-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .service-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .service-link {
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
@@ -3719,9 +3747,9 @@
                     </div>
                     <h3>Joint Replacement Surgery</h3>
                     <p>Advanced knee, hip, and shoulder replacement procedures using minimally invasive techniques for faster recovery and better outcomes.</p>
-                    <a href="javascript:void(0)" onclick="openServicePage('joint-replacement')" class="service-link">
+                    <button type="button" onclick="openServicePage('joint-replacement')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -3730,9 +3758,9 @@
                     </div>
                     <h3>Sports Medicine</h3>
                     <p>Comprehensive care for athletes and active individuals, from injury prevention to rehabilitation and performance optimization.</p>
-                    <a href="javascript:void(0)" onclick="openServicePage('sports-medicine')" class="service-link">
+                    <button type="button" onclick="openServicePage('sports-medicine')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -3741,9 +3769,9 @@
                     </div>
                     <h3>Spine Surgery</h3>
                     <p>Expert treatment for spinal conditions including herniated discs, stenosis, and scoliosis using cutting-edge techniques.</p>
-                    <a href="javascript:void(0)" onclick="openServicePage('spine-surgery')" class="service-link">
+                    <button type="button" onclick="openServicePage('spine-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -3752,9 +3780,9 @@
                     </div>
                     <h3>Hand & Wrist Surgery</h3>
                     <p>Specialized microsurgical procedures for carpal tunnel, trigger finger, and complex hand trauma reconstruction.</p>
-                    <a href="javascript:void(0)" onclick="openServicePage('hand-wrist-surgery')" class="service-link">
+                    <button type="button" onclick="openServicePage('hand-wrist-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -3763,9 +3791,9 @@
                     </div>
                     <h3>Trauma Surgery</h3>
                     <p>Emergency orthopedic trauma care and complex fracture repair with 24/7 availability for urgent cases.</p>
-                    <a href="javascript:void(0)" onclick="openServicePage('trauma-surgery')" class="service-link">
+                    <button type="button" onclick="openServicePage('trauma-surgery')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="service-card animate-on-scroll">
@@ -3774,9 +3802,9 @@
                     </div>
                     <h3>Pediatric Orthopedics</h3>
                     <p>Specialized care for children's bone and joint conditions, growth disorders, and developmental issues.</p>
-                    <a href="javascript:void(0)" onclick="openServicePage('pediatric-orthopedics')" class="service-link">
+                    <button type="button" onclick="openServicePage('pediatric-orthopedics')" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -5271,24 +5299,49 @@
         };
 
         function openServicePage(serviceId) {
+            console.log('🔧 openServicePage called with:', serviceId);
+            
             const overlay = document.getElementById('servicePageOverlay');
             const content = document.getElementById('servicePageContent');
             const service = serviceData[serviceId];
             
+            console.log('Elements found:', {
+                overlay: !!overlay,
+                content: !!content,
+                service: !!service
+            });
+            
+            if (!overlay) {
+                console.error('❌ Overlay element not found!');
+                return;
+            }
+            
+            if (!content) {
+                console.error('❌ Content element not found!');
+                return;
+            }
+            
             if (!service) {
-                console.error('Service not found:', serviceId);
+                console.error('❌ Service not found:', serviceId);
+                console.log('Available services:', Object.keys(serviceData));
                 return;
             }
 
-            // Generate service page HTML
-            const serviceHTML = generateServicePageHTML(service);
-            content.innerHTML = serviceHTML;
-            
-            // Show overlay with animation
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            
-            console.log('Opened service page:', serviceId);
+            try {
+                // Generate service page HTML
+                console.log('📄 Generating HTML for service:', service.title);
+                const serviceHTML = generateServicePageHTML(service);
+                content.innerHTML = serviceHTML;
+                
+                // Show overlay with animation
+                console.log('🎬 Showing overlay...');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                console.log('✅ Service page opened successfully:', serviceId);
+            } catch (error) {
+                console.error('❌ Error opening service page:', error);
+            }
         }
 
         function closeServicePage() {
@@ -5360,6 +5413,25 @@
                 !e.target.closest('.service-page-close')) {
                 closeServicePage();
             }
+        });
+
+        // Test function to verify service pages work
+        function testServicePages() {
+            console.log('🧪 Testing service pages...');
+            console.log('Available services:', Object.keys(serviceData));
+            
+            // Test opening the first service
+            setTimeout(() => {
+                console.log('🔧 Testing joint-replacement page...');
+                openServicePage('joint-replacement');
+            }, 1000);
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM loaded, service pages ready!');
+            console.log('Service data available:', !!serviceData);
+            console.log('Number of services:', Object.keys(serviceData).length);
         });
 
         // No complex initialization needed - buttons work directly with onclick!
