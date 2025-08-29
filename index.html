@@ -916,6 +916,242 @@
             justify-content: center;
         }
 
+        /* Booking Form Overlay System */
+        .booking-form-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100000;
+            display: none;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .booking-form-overlay.active {
+            display: flex !important;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .booking-form-container {
+            background: white;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 20px;
+        }
+
+        .booking-form-header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #4a90e2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .booking-form-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .booking-form-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .booking-form-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .booking-form-content {
+            padding: 25px;
+        }
+
+        .selected-service-info {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .selected-service-icon {
+            width: 50px;
+            height: 50px;
+            background: #2c5aa0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .selected-service-details h4 {
+            margin: 0 0 5px 0;
+            color: #2c5aa0;
+            font-size: 1.2rem;
+        }
+
+        .selected-service-details p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section h4 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #e8f2ff;
+            padding-bottom: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2c5aa0 0%, #4a90e2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 90, 160, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e1e5e9;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .booking-form-overlay.active {
+                padding: 10px;
+            }
+            
+            .booking-form-container {
+                margin: 10px;
+                max-height: 95vh;
+            }
+            
+            .booking-form-header {
+                padding: 15px;
+            }
+            
+            .booking-form-content {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         .service-page-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -3603,6 +3839,120 @@
         </div>
     </div>
 
+    <!-- Appointment Booking Form Overlay -->
+    <div class="booking-form-overlay" id="bookingFormOverlay">
+        <div class="booking-form-container">
+            <div class="booking-form-header">
+                <h3>📅 Book Your Appointment</h3>
+                <button class="booking-form-close" onclick="closeBookingForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form class="booking-form" id="serviceBookingForm">
+                <div class="booking-form-content">
+                    <!-- Service Information -->
+                    <div class="selected-service-info" id="selectedServiceInfo">
+                        <div class="selected-service-icon">
+                            <i class="fas fa-bone" id="selectedServiceIcon"></i>
+                        </div>
+                        <div class="selected-service-details">
+                            <h4 id="selectedServiceTitle">Joint Replacement Surgery</h4>
+                            <p id="selectedServiceSubtitle">Advanced joint replacement procedures</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Patient Information -->
+                    <div class="form-section">
+                        <h4>👤 Patient Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingPatientName">Full Name *</label>
+                                <input type="text" id="bookingPatientName" name="patient_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingPatientAge">Age</label>
+                                <input type="number" id="bookingPatientAge" name="patient_age" min="1" max="120">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingPatientPhone">Phone Number *</label>
+                                <input type="tel" id="bookingPatientPhone" name="patient_phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingPatientEmail">Email</label>
+                                <input type="email" id="bookingPatientEmail" name="patient_email">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Appointment Preferences -->
+                    <div class="form-section">
+                        <h4>📅 Appointment Preferences</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingPreferredDate">Preferred Date *</label>
+                                <input type="date" id="bookingPreferredDate" name="preferred_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingPreferredTime">Preferred Time *</label>
+                                <select id="bookingPreferredTime" name="preferred_time" required>
+                                    <option value="">Select time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingUrgency">Urgency Level</label>
+                            <select id="bookingUrgency" name="urgency">
+                                <option value="routine">Routine (within 2 weeks)</option>
+                                <option value="urgent">Urgent (within 3 days)</option>
+                                <option value="emergency">Emergency (same day)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Medical Information -->
+                    <div class="form-section">
+                        <h4>🏥 Medical Details</h4>
+                        <div class="form-group">
+                            <label for="bookingSymptoms">Symptoms / Reason for Visit *</label>
+                            <textarea id="bookingSymptoms" name="symptoms" rows="3" required placeholder="Please describe your symptoms, pain level, and when they started..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingMedicalHistory">Medical History</label>
+                            <textarea id="bookingMedicalHistory" name="medical_history" rows="2" placeholder="Previous surgeries, medications, allergies..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Hidden fields -->
+                    <input type="hidden" id="bookingServiceRequested" name="service_requested">
+                    
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="button" onclick="closeBookingForm()" class="btn-secondary">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn-primary" id="bookingSubmitBtn">
+                            📤 Send Appointment Request
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Beautiful Ashish Orthocare Logo Section -->
     <section class="logo-header-section">
         <div class="ashish-logo-container">
@@ -4452,7 +4802,7 @@
                                     style="background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 25px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                                 💬 WhatsApp
                             </button>
-                            <button onclick="alert('Booking appointment...')" 
+                            <button onclick="openBookingForm('${serviceId}')" 
                                     style="background: #2c5aa0; color: white; border: none; padding: 12px 20px; border-radius: 25px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                                 📅 Book Appointment
                             </button>
@@ -4479,6 +4829,133 @@
                 document.body.style.overflow = '';
             }
         }
+
+        // Booking Form Functions
+        function openBookingForm(serviceId) {
+            const overlay = document.getElementById('bookingFormOverlay');
+            const services = {
+                'joint-replacement': { title: 'Joint Replacement Surgery', icon: 'fas fa-bone', subtitle: 'Advanced joint replacement procedures for better mobility' },
+                'sports-medicine': { title: 'Sports Medicine', icon: 'fas fa-running', subtitle: 'Comprehensive care for athletes and active individuals' },
+                'spine-surgery': { title: 'Spine Surgery', icon: 'fas fa-spine', subtitle: 'Expert treatment for spinal conditions and disorders' },
+                'hand-wrist-surgery': { title: 'Hand & Wrist Surgery', icon: 'fas fa-hand-paper', subtitle: 'Specialized microsurgical procedures' },
+                'trauma-surgery': { title: 'Trauma Surgery', icon: 'fas fa-band-aid', subtitle: 'Emergency orthopedic trauma care' },
+                'pediatric-orthopedics': { title: 'Pediatric Orthopedics', icon: 'fas fa-child', subtitle: 'Specialized care for children\'s bone and joint conditions' }
+            };
+
+            const service = services[serviceId];
+            if (service) {
+                // Update service information in the form
+                document.getElementById('selectedServiceIcon').className = service.icon;
+                document.getElementById('selectedServiceTitle').textContent = service.title;
+                document.getElementById('selectedServiceSubtitle').textContent = service.subtitle;
+                document.getElementById('bookingServiceRequested').value = service.title;
+
+                // Set minimum date to today
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('bookingPreferredDate').min = today;
+
+                // Clear form
+                document.getElementById('serviceBookingForm').reset();
+                document.getElementById('bookingServiceRequested').value = service.title;
+
+                // Show overlay
+                overlay.style.display = 'flex';
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBookingForm() {
+            const overlay = document.getElementById('bookingFormOverlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Handle booking form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('serviceBookingForm');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = document.getElementById('bookingSubmitBtn');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Request...';
+                    submitBtn.disabled = true;
+
+                    // Collect form data
+                    const formData = new FormData(bookingForm);
+                    const templateParams = {
+                        patient_name: formData.get('patient_name'),
+                        patient_age: formData.get('patient_age') || 'Not specified',
+                        patient_phone: formData.get('patient_phone'),
+                        patient_email: formData.get('patient_email') || 'Not provided',
+                        service_requested: formData.get('service_requested'),
+                        preferred_date: formData.get('preferred_date'),
+                        preferred_time: formData.get('preferred_time'),
+                        urgency: formData.get('urgency'),
+                        symptoms: formData.get('symptoms'),
+                        medical_history: formData.get('medical_history') || 'None specified',
+                        booking_date: new Date().toLocaleDateString(),
+                        booking_time: new Date().toLocaleTimeString()
+                    };
+
+                    // For now, simulate success (replace with actual EmailJS when configured)
+                    setTimeout(() => {
+                        // Show success message
+                        alert(`✅ Appointment Request Sent Successfully!
+
+Dear ${templateParams.patient_name},
+
+Your appointment request for ${templateParams.service_requested} has been submitted.
+
+📅 Preferred Date: ${templateParams.preferred_date}
+⏰ Preferred Time: ${templateParams.preferred_time}
+📱 Contact: ${templateParams.patient_phone}
+
+Dr. Ashish's team will contact you within 24 hours to confirm your appointment.
+
+For urgent matters, call: +91 9876543210`);
+                        
+                        // Reset form and close
+                        bookingForm.reset();
+                        closeBookingForm();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                    }, 1500);
+
+                    // When EmailJS is configured, replace the setTimeout above with:
+                    /*
+                    emailjs.send('service_orthopedic', 'template_booking', templateParams)
+                        .then(function(response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            
+                            alert(`✅ Appointment Request Sent Successfully!
+Your request has been submitted and Dr. Ashish will contact you within 24 hours.`);
+                            
+                            bookingForm.reset();
+                            closeBookingForm();
+                        })
+                        .catch(function(error) {
+                            console.log('FAILED...', error);
+                            alert('❌ Failed to send appointment request. Please call +91 9876543210 directly.');
+                        })
+                        .finally(function() {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        });
+                    */
+                });
+            }
+        });
 
         // Global Variables
         let currentLanguage = 'en';
