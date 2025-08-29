@@ -1274,6 +1274,19 @@
             50% { transform: scale(1.05); }
         }
 
+        /* Service Page CTA Button Hover Effects */
+        .service-page-content button[onclick*="openBookingForm"]:hover,
+        .service-page-content button[onclick*="alert"]:hover {
+            background: rgba(255,255,255,0.3) !important;
+            transform: translateY(-2px) scale(1.05) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
+        }
+
+        .service-page-content button[onclick*="hideServicePage"]:hover {
+            transform: translateY(-2px) scale(1.05) !important;
+            box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4) !important;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .booking-form-overlay.active {
@@ -4902,6 +4915,27 @@
             content.innerHTML = `
                 <div style="padding: 15px; max-height: 90vh; overflow-y: auto; background: white; border-radius: 15px; margin: 10px; max-width: 800px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                     
+                    <!-- Spectacular Booking CTA Section -->
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #ff6b6b 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
+                        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); animation: shimmer 3s infinite;"></div>
+                        <div style="position: relative; z-index: 1; text-align: center; color: white;">
+                            <div style="font-size: 2.5rem; margin-bottom: 10px;">📅</div>
+                            <h3 style="margin: 0 0 10px 0; font-size: 1.4rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Ready to Schedule Your ${service.title}?</h3>
+                            <p style="margin: 0 0 20px 0; font-size: 1rem; opacity: 0.95;">Expert care is just one click away. Book your consultation with Dr. Ashish today!</p>
+                            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <button onclick="openBookingForm('${serviceId}')" style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 8px;">
+                                    📅 Book Appointment
+                                </button>
+                                <button onclick="alert('Calling +91 9876543210...')" style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 8px;">
+                                    📞 Call Now
+                                </button>
+                                <button onclick="alert('Opening WhatsApp...')" style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); color: white; padding: 12px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); display: flex; align-items: center; gap: 8px;">
+                                    💬 WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Hero Section with Video -->
                     <div style="text-align: center; margin-bottom: 25px; position: relative;">
                         <div style="background: linear-gradient(135deg, #2c5aa0 0%, #4a90e2 100%); padding: 25px; border-radius: 10px; color: white; margin-bottom: 20px;">
@@ -4966,24 +5000,10 @@
                         </div>
                     ` : ''}
                     
-                    <!-- Action Buttons -->
+                    <!-- Close Button -->
                     <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
-                        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px;">
-                            <button onclick="alert('Calling +91 9876543210...')" 
-                                    style="background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 25px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                                📞 Call Now
-                            </button>
-                            <button onclick="alert('Opening WhatsApp...')" 
-                                    style="background: #25d366; color: white; border: none; padding: 12px 20px; border-radius: 25px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                                💬 WhatsApp
-                            </button>
-                            <button onclick="openBookingForm('${serviceId}')" 
-                                    style="background: #2c5aa0; color: white; border: none; padding: 12px 20px; border-radius: 25px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-                                📅 Book Appointment
-                            </button>
-                        </div>
                         <button onclick="hideServicePage()" 
-                                style="background: #666; color: white; border: none; padding: 12px 30px; border-radius: 25px; font-size: 1rem; cursor: pointer;">
+                                style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%); color: white; border: none; padding: 15px 35px; border-radius: 25px; font-size: 1rem; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);">
                             ✕ Close
                         </button>
                     </div>
@@ -5790,17 +5810,119 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             });
         });
 
-        // Initialize EmailJS
-        // SETUP INSTRUCTIONS:
-        // 1. Go to https://www.emailjs.com/ and create a free account
-        // 2. Create a new service (Gmail/Outlook/etc.) and connect premindian2025@gmail.com
-        // 3. Create an email template with these variables:
-        //    - {{patient_name}}, {{patient_email}}, {{patient_phone}}
-        //    - {{service_requested}}, {{message}}, {{appointment_date}}, {{appointment_time}}
-        // 4. Replace 'YOUR_PUBLIC_KEY' below with your actual EmailJS public key
-        // 5. Replace 'service_orthopedic' and 'template_appointment' with your service/template IDs
+        // 🚀 COMPLETE EMAILJS SETUP GUIDE
+        // =====================================
         
-        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+        /* 📧 EmailJS Setup Instructions:
+        
+        STEP 1: Create EmailJS Account
+        ------------------------------
+        1. Go to https://www.emailjs.com/
+        2. Click "Sign Up" and create a free account
+        3. Verify your email address
+        
+        STEP 2: Add Email Service
+        -------------------------
+        1. In EmailJS dashboard, click "Add New Service"
+        2. Choose your email provider (Gmail, Outlook, etc.)
+        3. Connect your email: premindian2025@gmail.com
+        4. Note down the SERVICE ID (e.g., "service_gmail123")
+        
+        STEP 3: Create Email Templates
+        ------------------------------
+        
+        Template 1 - Main Appointment Form:
+        Template ID: template_appointment
+        Subject: 🏥 New Appointment Request - {{patient_name}}
+        
+        Body:
+        Dear Dr. Ashish,
+        
+        You have received a new appointment request:
+        
+        👤 Patient Details:
+        Name: {{patient_name}}
+        Email: {{patient_email}}
+        Phone: {{patient_phone}}
+        
+        📅 Appointment Details:
+        Service: {{service_requested}}
+        Preferred Date: {{appointment_date}}
+        Preferred Time: {{appointment_time}}
+        
+        💬 Message:
+        {{message}}
+        
+        📧 This request was submitted on {{submission_date}} at {{submission_time}}
+        
+        Please contact the patient within 24 hours to confirm the appointment.
+        
+        Best regards,
+        Ashish Ortho Website
+        
+        
+        Template 2 - Service Booking Form:
+        Template ID: template_booking
+        Subject: 📋 Service Booking Request - {{service_requested}}
+        
+        Body:
+        Dear Dr. Ashish,
+        
+        New service booking request received:
+        
+        👤 Patient Information:
+        Name: {{patient_name}}
+        Age: {{patient_age}}
+        Phone: {{patient_phone}}
+        Email: {{patient_email}}
+        
+        🏥 Service Details:
+        Service: {{service_requested}}
+        Urgency: {{urgency}}
+        
+        📅 Preferences:
+        Date: {{preferred_date}}
+        Time: {{preferred_time}}
+        
+        🩺 Medical Information:
+        Symptoms: {{symptoms}}
+        Medical History: {{medical_history}}
+        
+        📧 Submitted: {{booking_date}} at {{booking_time}}
+        
+        Please contact the patient to schedule their {{service_requested}} consultation.
+        
+        Best regards,
+        Ashish Ortho Website
+        
+        STEP 4: Get Public Key
+        ----------------------
+        1. Go to "Account" in EmailJS dashboard
+        2. Copy your "Public Key" (starts with "user_")
+        3. Replace 'YOUR_PUBLIC_KEY' below with your actual key
+        
+        STEP 5: Update Code
+        -------------------
+        1. Replace YOUR_PUBLIC_KEY with your actual public key
+        2. Replace service_orthopedic with your actual service ID
+        3. Replace template_appointment and template_booking with your template IDs
+        4. Test the forms!
+        
+        STEP 6: Testing
+        ---------------
+        1. Fill out the appointment form
+        2. Check if email arrives at premindian2025@gmail.com
+        3. Test both main form and service booking forms
+        4. Verify all variables are populated correctly
+        
+        💡 Pro Tips:
+        - EmailJS free plan allows 200 emails/month
+        - Test with a different email first
+        - Check spam folder if emails don't arrive
+        - Use email filters to organize appointment requests
+        */
+        
+        emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your actual EmailJS public key
 
         // Form submission with EmailJS
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
