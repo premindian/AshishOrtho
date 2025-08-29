@@ -665,278 +665,95 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
 
-        /* Social Sharing Buttons - Fixed Sidebar */
-        .social-share-sidebar {
+        /* Simple Social Sharing Panel - Always Visible */
+        .simple-share-panel {
             position: fixed;
-            left: 10px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 9999;
-            font-family: inherit;
-        }
-
-        .share-toggle {
-            position: relative;
-            width: 60px;
-            height: 60px;
-            background: #ff4444;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: white;
-            font-size: 20px;
-            box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
-            transition: all 0.3s ease;
-            animation: shareTogglePulse 2s ease-in-out infinite;
-            border: 3px solid white;
-        }
-
-        .share-toggle:hover {
-            transform: translateX(10px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        .share-toggle::after {
-            content: '';
-            position: absolute;
-            right: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 8px solid rgba(255, 255, 255, 0.8);
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            animation: arrowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes arrowPulse {
-            0%, 100% {
-                opacity: 0.6;
-                transform: translateY(-50%) translateX(0);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-50%) translateX(3px);
-            }
-        }
-
-        @keyframes shareTogglePulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 6px 30px rgba(255, 68, 68, 0.6);
-            }
-        }
-
-        .share-buttons {
-            position: absolute;
-            left: -220px;
-            top: -180px;
             background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-            transition: all 0.5s ease;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             border: 3px solid #ff4444;
+            z-index: 9999;
             width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 10000;
         }
 
-        .social-share-sidebar.active .share-buttons {
-            left: 80px;
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0) scale(1);
-        }
-
-        .social-share-sidebar:hover .share-buttons {
-            left: 80px;
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0) scale(1);
-        }
-
-        .social-share-sidebar.active .share-toggle {
-            background: #00cc44;
-            transform: rotate(45deg);
-        }
-
-        .share-label {
+        .simple-share-title {
             font-size: 16px;
-            font-weight: 700;
+            font-weight: bold;
             color: #ff4444;
-            margin-bottom: 15px;
             text-align: center;
-            letter-spacing: 0.5px;
+            margin-bottom: 15px;
         }
 
-        .share-grid {
+        .simple-share-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
 
-        .share-btn {
+        .simple-share-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 80px;
-            height: 70px;
-            border-radius: 15px;
+            padding: 15px 8px;
+            border-radius: 10px;
             text-decoration: none;
             color: white;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid white;
-            padding: 8px;
-        }
-
-        .share-btn span {
-            font-size: 10px;
+            font-size: 14px;
             font-weight: 600;
-            margin-top: 4px;
-            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            min-height: 70px;
         }
 
-        .share-btn i {
-            font-size: 24px;
-            margin-bottom: 2px;
-        }
-
-        .share-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            transform: scale(0);
-            transition: transform 0.3s ease;
-            z-index: -1;
-        }
-
-        .share-btn:hover::before {
-            transform: scale(1.1);
-        }
-
-        .share-btn:hover {
+        .simple-share-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Platform-specific colors */
-        .share-btn.facebook {
-            background: #1877f2;
-        }
-        .share-btn.facebook::before {
-            background: #166fe5;
+        .simple-share-btn i {
+            font-size: 20px;
+            margin-bottom: 5px;
         }
 
-        .share-btn.twitter {
-            background: #1da1f2;
-        }
-        .share-btn.twitter::before {
-            background: #0d8bd9;
+        .simple-share-btn span {
+            font-size: 11px;
+            text-align: center;
         }
 
-        .share-btn.linkedin {
-            background: #0077b5;
-        }
-        .share-btn.linkedin::before {
-            background: #005582;
-        }
+        /* Platform colors */
+        .simple-share-btn.facebook { background: #1877f2; }
+        .simple-share-btn.twitter { background: #1da1f2; }
+        .simple-share-btn.linkedin { background: #0077b5; }
+        .simple-share-btn.whatsapp { background: #25d366; }
+        .simple-share-btn.telegram { background: #0088cc; }
+        .simple-share-btn.email { background: #ea4335; }
+        .simple-share-btn.copy { background: #6366f1; }
 
-        .share-btn.whatsapp {
-            background: #25d366;
-        }
-        .share-btn.whatsapp::before {
-            background: #128c7e;
-        }
-
-        .share-btn.telegram {
-            background: #0088cc;
-        }
-        .share-btn.telegram::before {
-            background: #006699;
-        }
-
-        .share-btn.email {
-            background: #ea4335;
-        }
-        .share-btn.email::before {
-            background: #d33b2c;
-        }
-
-        .share-btn.copy-link {
-            background: #6366f1;
-            cursor: pointer;
-        }
-        .share-btn.copy-link::before {
-            background: #4f46e5;
-        }
-
-        /* Mobile responsiveness for sharing buttons */
+        /* Mobile positioning */
         @media (max-width: 768px) {
-            .social-share-sidebar {
-                position: fixed;
-                left: auto;
-                right: 20px;
-                top: auto;
-                bottom: 100px;
-                transform: none;
+            .simple-share-panel {
+                left: 10px;
+                width: 180px;
+                padding: 15px;
             }
-
-            .share-toggle {
-                width: 55px;
-                height: 55px;
+            
+            .simple-share-btn {
+                padding: 12px 6px;
+                min-height: 60px;
+            }
+            
+            .simple-share-btn i {
                 font-size: 18px;
             }
-
-            .share-buttons {
-                position: absolute;
-                left: auto;
-                right: 0;
-                bottom: 65px;
-                top: auto;
-                border-radius: 15px;
-                padding: 15px;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-                width: 220px;
-                transform: translateY(100%);
-            }
-
-            .social-share-sidebar:hover .share-buttons,
-            .social-share-sidebar.active .share-buttons {
-                transform: translateY(0);
-            }
-
-            .share-label {
-                grid-column: 1 / -1;
-                margin-bottom: 8px;
-                font-size: 13px;
-                text-align: center;
-            }
-
-            .share-btn {
-                width: 40px;
-                height: 40px;
-                margin: 0;
-                font-size: 16px;
+            
+            .simple-share-btn span {
+                font-size: 10px;
             }
         }
 
@@ -3295,43 +3112,38 @@
         </div>
     </div>
 
-    <!-- Social Sharing Buttons - Fixed Sidebar -->
-    <div class="social-share-sidebar">
-        <div class="share-toggle" id="shareToggle">
-            <i class="fas fa-share-alt"></i>
-        </div>
-        <div class="share-buttons" id="shareButtons">
-            <div class="share-label">📤 Share This Clinic</div>
-            <div class="share-grid">
-                <a href="#" class="share-btn facebook" data-platform="facebook" title="Share on Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                    <span>Facebook</span>
-                </a>
-                <a href="#" class="share-btn twitter" data-platform="twitter" title="Share on Twitter">
-                    <i class="fab fa-twitter"></i>
-                    <span>Twitter</span>
-                </a>
-                <a href="#" class="share-btn linkedin" data-platform="linkedin" title="Share on LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="#" class="share-btn whatsapp" data-platform="whatsapp" title="Share on WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="#" class="share-btn telegram" data-platform="telegram" title="Share on Telegram">
-                    <i class="fab fa-telegram-plane"></i>
-                    <span>Telegram</span>
-                </a>
-                <a href="#" class="share-btn email" data-platform="email" title="Share via Email">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
-                </a>
-                <div class="share-btn copy-link" data-platform="copy" title="Copy Link">
-                    <i class="fas fa-link"></i>
-                    <span>Copy Link</span>
-                </div>
-            </div>
+    <!-- Simple Social Sharing Panel - Always Visible -->
+    <div class="simple-share-panel">
+        <div class="simple-share-title">📤 Share Clinic</div>
+        <div class="simple-share-grid">
+            <button class="simple-share-btn facebook" onclick="simpleShare('facebook')">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </button>
+            <button class="simple-share-btn twitter" onclick="simpleShare('twitter')">
+                <i class="fab fa-twitter"></i>
+                <span>Twitter</span>
+            </button>
+            <button class="simple-share-btn linkedin" onclick="simpleShare('linkedin')">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+            </button>
+            <button class="simple-share-btn whatsapp" onclick="simpleShare('whatsapp')">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </button>
+            <button class="simple-share-btn telegram" onclick="simpleShare('telegram')">
+                <i class="fab fa-telegram-plane"></i>
+                <span>Telegram</span>
+            </button>
+            <button class="simple-share-btn email" onclick="simpleShare('email')">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </button>
+            <button class="simple-share-btn copy" onclick="simpleShare('copy')">
+                <i class="fas fa-link"></i>
+                <span>Copy Link</span>
+            </button>
         </div>
     </div>
 
@@ -4603,83 +4415,14 @@
             }, 1000);
         }
 
-        // Social Sharing Functionality
-        function initSocialSharing() {
-            console.log('🔧 Initializing social sharing...');
+        // Simple Social Sharing Function
+        function simpleShare(platform) {
+            console.log(`📤 Sharing to ${platform}`);
             
-            const shareToggle = document.getElementById('shareToggle');
-            const shareButtons = document.getElementById('shareButtons');
-            const sidebar = document.querySelector('.social-share-sidebar');
-            
-            console.log('Share elements found:', {
-                shareToggle: !!shareToggle,
-                shareButtons: !!shareButtons,
-                sidebar: !!sidebar
-            });
-            
-            // Toggle share buttons on click
-            if (shareToggle) {
-                shareToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('🖱️ Share toggle clicked!');
-                    const isActive = sidebar.classList.contains('active');
-                    if (isActive) {
-                        sidebar.classList.remove('active');
-                        console.log('❌ Share panel closed');
-                    } else {
-                        sidebar.classList.add('active');
-                        console.log('✅ Share panel opened');
-                    }
-                });
-                console.log('✅ Click handler added to share toggle');
-            } else {
-                console.error('❌ Share toggle element not found!');
-            }
-
-            // Close share buttons when clicking outside (with delay to allow clicks)
-            document.addEventListener('click', function(e) {
-                if (!sidebar.contains(e.target)) {
-                    setTimeout(() => {
-                        sidebar.classList.remove('active');
-                    }, 100); // Small delay to allow button clicks
-                }
-            });
-
-            // Add click handlers for each share button
-            const shareLinks = document.querySelectorAll('.share-btn[data-platform]');
-            console.log('Found share buttons:', shareLinks.length);
-            shareLinks.forEach((btn, index) => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const platform = this.dataset.platform;
-                    console.log(`📤 Share button clicked: ${platform}`);
-                    shareToSocial(platform);
-                });
-                console.log(`✅ Added click handler to ${btn.dataset.platform} button`);
-            });
-
-            // Copy link functionality
-            const copyLinkBtn = document.querySelector('.share-btn.copy-link');
-            if (copyLinkBtn) {
-                copyLinkBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('📋 Copy link button clicked');
-                    copyToClipboard();
-                });
-                console.log('✅ Added click handler to copy link button');
-            }
-        }
-
-        function shareToSocial(platform) {
-            console.log(`🚀 shareToSocial called for platform: ${platform}`);
             const url = encodeURIComponent(window.location.href);
             const title = encodeURIComponent('Dr. Ashish Orthopedic Clinic - Expert Bone & Joint Care');
-            const description = encodeURIComponent('Professional orthopedic care with 15+ years of experience. Advanced bone and joint treatments using minimally invasive techniques.');
+            const description = encodeURIComponent('Professional orthopedic care with 15+ years of experience in advanced orthopedic surgery.');
             
-            console.log('Share data:', { url: window.location.href, title, platform });
             let shareUrl = '';
             
             switch (platform) {
@@ -4701,109 +4444,36 @@
                 case 'email':
                     shareUrl = `mailto:?subject=${title}&body=${description}%0D%0A%0D%0A${url}`;
                     break;
+                case 'copy':
+                    simpleCopyToClipboard();
+                    return;
             }
             
             if (shareUrl) {
-                console.log(`🌐 Opening share URL: ${shareUrl}`);
-                window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
-            } else {
-                console.error(`❌ No share URL generated for platform: ${platform}`);
+                console.log(`🌐 Opening: ${shareUrl}`);
+                window.open(shareUrl, '_blank', 'width=600,height=400');
             }
         }
 
-        function copyToClipboard() {
+        function simpleCopyToClipboard() {
             const url = window.location.href;
-            
-            if (navigator.clipboard && window.isSecureContext) {
-                // Modern clipboard API
-                navigator.clipboard.writeText(url).then(() => {
-                    showCopySuccess();
-                }).catch(() => {
-                    fallbackCopyToClipboard(url);
-                });
-            } else {
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard!');
+                console.log('✅ Link copied successfully');
+            }).catch(() => {
                 // Fallback for older browsers
-                fallbackCopyToClipboard(url);
-            }
-        }
-
-        function fallbackCopyToClipboard(text) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            textArea.style.top = '-999999px';
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
                 document.execCommand('copy');
-                showCopySuccess();
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-                showCopyError();
-            }
-            
-            document.body.removeChild(textArea);
+                document.body.removeChild(textArea);
+                alert('Link copied to clipboard!');
+                console.log('✅ Link copied (fallback method)');
+            });
         }
 
-        function showCopySuccess() {
-            const copyBtn = document.querySelector('.share-btn.copy-link');
-            const originalIcon = copyBtn.querySelector('i');
-            
-            // Change icon to checkmark
-            originalIcon.className = 'fas fa-check';
-            copyBtn.style.background = '#10b981';
-            
-            // Show success message
-            const message = document.createElement('div');
-            message.textContent = 'Link copied!';
-            message.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #10b981;
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                font-weight: 500;
-                z-index: 10000;
-                animation: slideInRight 0.3s ease;
-            `;
-            document.body.appendChild(message);
-            
-            // Reset after 2 seconds
-            setTimeout(() => {
-                originalIcon.className = 'fas fa-link';
-                copyBtn.style.background = '#6366f1';
-                document.body.removeChild(message);
-            }, 2000);
-        }
-
-        function showCopyError() {
-            const message = document.createElement('div');
-            message.textContent = 'Failed to copy link';
-            message.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #ef4444;
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                font-weight: 500;
-                z-index: 10000;
-            `;
-            document.body.appendChild(message);
-            
-            setTimeout(() => {
-                document.body.removeChild(message);
-            }, 3000);
-        }
-
-        // Initialize social sharing when page loads
-        document.addEventListener('DOMContentLoaded', initSocialSharing);
+        // No complex initialization needed - buttons work directly with onclick!
     </script>
 </body>
 </html>
