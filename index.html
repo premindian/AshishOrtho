@@ -5736,23 +5736,23 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             sparkle.style.animation = 'sparkle 4s infinite';
             
             if (type === 'image') {
-                // Create medical image card
+                // Create small medical image card
                 card.innerHTML = '';
                 const img = document.createElement('img');
                 img.src = content;
-                img.style.width = '80px';
-                img.style.height = '80px';
-                img.style.borderRadius = '12px';
+                img.style.width = '50px';
+                img.style.height = '50px';
+                img.style.borderRadius = '8px';
                 img.style.objectFit = 'cover';
                 img.style.position = 'relative';
                 img.style.zIndex = '2';
                 
-                card.style.padding = '8px';
+                card.style.padding = '6px';
                 card.style.background = randomGradient;
-                card.style.border = '4px solid rgba(255, 255, 255, 0.5)';
-                card.style.borderRadius = '20px';
-                card.style.boxShadow = '0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px rgba(255,255,255,0.3)';
-                card.style.animationDuration = '6s'; // Faster: 6 seconds
+                card.style.border = '3px solid rgba(255, 255, 255, 0.5)';
+                card.style.borderRadius = '16px';
+                card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2)';
+                card.style.animationDuration = '5s'; // Faster for small images
                 
                 sparkleContainer.appendChild(sparkle);
                 sparkleContainer.appendChild(img);
@@ -5818,19 +5818,23 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             
             console.log('🏥 Starting elegant medical rain animation...');
             
-            // Curated multilingual orthopedic drops (just 5 items total)
+            // Curated multilingual orthopedic drops with more images
             const rainItems = [
                 { content: 'Joint Replacement', type: 'text', language: 'English' },
                 { content: 'కీళ్ళ చికిత్స', type: 'text', language: 'Telugu' },
                 { content: 'हड्डी चिकित्सा', type: 'text', language: 'Hindi' },
-                { content: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=120&h=120&fit=crop&auto=format', type: 'image', alt: 'X-Ray' },
-                { content: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=120&h=120&fit=crop&auto=format', type: 'image', alt: 'Knee Surgery' }
+                { content: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'X-Ray Scan' },
+                { content: 'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Knee Joint' },
+                { content: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Sports Medicine' },
+                { content: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Medical Equipment' },
+                { content: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Surgery Room' },
+                { content: 'https://images.unsplash.com/photo-1594737626072-90dc274bc2bd?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Physical Therapy' }
             ];
             
             // Create each item with specific timing
             rainItems.forEach((item, index) => {
                 setTimeout(() => {
-                    const card = createMedicalRainCard(item.content, item.type, index * 0.5);
+                    const card = createMedicalRainCard(item.content, item.type, index * 0.3);
                     if (item.alt) card.setAttribute('data-alt', item.alt);
                     if (item.language) card.setAttribute('data-language', item.language);
                     rainContainer.appendChild(card);
@@ -5840,14 +5844,14 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
                         if (card.parentElement) {
                             card.remove();
                         }
-                    }, 8000); // Faster cleanup for shorter animation
-                }, index * 600); // Stagger each item by 600ms
+                    }, 6000); // Cleanup for shorter animation
+                }, index * 400); // Faster staggering for more items
             });
             
             // Complete after all items have appeared
             setTimeout(() => {
-                console.log('🏥 Elegant multilingual medical rain completed');
-            }, 4000); // Much faster completion
+                console.log('🏥 Beautiful orthopedic rain with images completed');
+            }, 5000); // Slightly longer for more items
         }
 
         // New flow functions
