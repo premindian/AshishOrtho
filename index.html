@@ -5818,17 +5818,17 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             
             console.log('🏥 Starting elegant medical rain animation...');
             
-            // Curated multilingual orthopedic drops with more images
+            // Curated multilingual orthopedic drops with local images and medical icons
             const rainItems = [
-                { content: 'Joint Replacement', type: 'text', language: 'English' },
-                { content: 'కీళ్ళ చికిత్స', type: 'text', language: 'Telugu' },
-                { content: 'हड्डी चिकित्सा', type: 'text', language: 'Hindi' },
-                { content: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'X-Ray Scan' },
-                { content: 'https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Knee Joint' },
-                { content: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Sports Medicine' },
-                { content: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Medical Equipment' },
-                { content: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Surgery Room' },
-                { content: 'https://images.unsplash.com/photo-1594737626072-90dc274bc2bd?w=80&h=80&fit=crop&auto=format', type: 'image', alt: 'Physical Therapy' }
+                { content: 'Joint Replacement', type: 'text', language: 'English', lane: 1 },
+                { content: 'కీళ్ళ చికిత్స', type: 'text', language: 'Telugu', lane: 3 },
+                { content: 'हड्डी चिकित्सा', type: 'text', language: 'Hindi', lane: 5 },
+                { content: 'img/ashish.jpeg', type: 'image', alt: 'Dr. Ashish', lane: 2 },
+                { content: '🦴', type: 'emoji', alt: 'Bone', lane: 4 },
+                { content: '⚕️', type: 'emoji', alt: 'Medical', lane: 6 },
+                { content: '🏥', type: 'emoji', alt: 'Hospital', lane: 1 },
+                { content: '🩻', type: 'emoji', alt: 'X-Ray', lane: 3 },
+                { content: '💊', type: 'emoji', alt: 'Medicine', lane: 5 }
             ];
             
             // Create each item with specific timing
