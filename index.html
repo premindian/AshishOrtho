@@ -4050,61 +4050,42 @@
     <script>
         // Simple service page function that works on mobile
         function showServicePage(serviceId) {
-            alert('Function called for: ' + serviceId);
-            
             const overlay = document.getElementById('servicePageOverlay');
             const content = document.getElementById('servicePageContent');
             
-            if (!overlay) {
-                alert('ERROR: Overlay element not found!');
+            if (!overlay || !content) {
                 return;
             }
             
-            if (!content) {
-                alert('ERROR: Content element not found!');
-                return;
-            }
-            
-            alert('Elements found successfully! Opening page...');
-            
-            // Just show the overlay with simple content
-            content.innerHTML = '<div style="padding: 30px; text-align: center; background: white; border-radius: 10px; margin: 20px; max-width: 500px;"><h2 style="color: #2c5aa0;">Service Page</h2><p style="font-size: 1.2rem; margin: 20px 0;">Service: ' + serviceId + '</p><button onclick="hideServicePage()" style="padding: 15px 30px; margin-top: 20px; background: #2c5aa0; color: white; border: none; border-radius: 25px; font-size: 1rem;">Close</button></div>';
-            
-            // Force the overlay to show
-            overlay.style.display = 'flex';
-            overlay.style.position = 'fixed';
-            overlay.style.top = '0';
-            overlay.style.left = '0';
-            overlay.style.width = '100%';
-            overlay.style.height = '100%';
-            overlay.style.zIndex = '99999';
-            overlay.style.background = 'rgba(0, 0, 0, 0.9)';
-            overlay.classList.add('active');
-            
-            alert('Overlay should now be visible!');
-            return;
-            
-            // Simple service data (disabled for testing)
-            const services_disabled = {
+            // Complete service data with rich content
+            const services = {
                 'joint-replacement': {
                     title: 'Joint Replacement Surgery',
                     icon: 'fas fa-bone',
                     subtitle: 'Advanced joint replacement procedures for better mobility and pain relief',
                     content: `
-                        <h4>🏥 What We Offer:</h4>
-                        <ul>
-                            <li>✅ Knee Replacement Surgery</li>
-                            <li>✅ Hip Replacement Surgery</li>
-                            <li>✅ Shoulder Replacement Surgery</li>
-                            <li>✅ Minimally Invasive Techniques</li>
-                            <li>✅ Fast Recovery Programs</li>
-                        </ul>
+                        <div style="margin-bottom: 25px;">
+                            <h4 style="color: #2c5aa0; margin-bottom: 15px; font-size: 1.3rem;">🏥 What We Offer:</h4>
+                            <ul style="line-height: 1.8; margin-left: 20px;">
+                                <li>✅ <strong>Knee Replacement Surgery</strong> - Total & partial knee replacement</li>
+                                <li>✅ <strong>Hip Replacement Surgery</strong> - Advanced hip prosthetics</li>
+                                <li>✅ <strong>Shoulder Replacement</strong> - Complex shoulder reconstruction</li>
+                                <li>✅ <strong>Minimally Invasive Techniques</strong> - Smaller incisions, faster healing</li>
+                                <li>✅ <strong>Fast Recovery Programs</strong> - Get back to life sooner</li>
+                            </ul>
+                        </div>
                         
-                        <h4>📋 Why Choose Us:</h4>
-                        <p>Dr. Ashish uses the latest minimally invasive techniques for joint replacement, ensuring faster recovery, less pain, and better long-term outcomes.</p>
+                        <div style="margin-bottom: 25px;">
+                            <h4 style="color: #2c5aa0; margin-bottom: 15px; font-size: 1.3rem;">📋 Why Choose Dr. Ashish:</h4>
+                            <p style="line-height: 1.7; margin-bottom: 15px;">Dr. Ashish uses the latest minimally invasive techniques for joint replacement, ensuring faster recovery, less pain, and better long-term outcomes. With over 15 years of experience, he has successfully performed thousands of joint replacement surgeries.</p>
+                            <p style="line-height: 1.7;"><strong>Specialties:</strong> Computer-assisted surgery, robotic joint replacement, and custom prosthetics for optimal fit and function.</p>
+                        </div>
                         
-                        <h4>📞 Book Your Consultation</h4>
-                        <p><strong>Call: +91 9876543210</strong></p>
+                        <div style="background: #f8f9ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h4 style="color: #2c5aa0; margin-bottom: 15px; text-align: center;">📞 Book Your Consultation</h4>
+                            <p style="text-align: center; font-size: 1.2rem; margin: 0;"><strong>Call: +91 9876543210</strong></p>
+                            <p style="text-align: center; margin: 10px 0 0 0; color: #666;">Available 24/7 for emergencies</p>
+                        </div>
                     `
                 },
                 'sports-medicine': {
@@ -4254,7 +4235,6 @@
                 overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-            alert('Service page closed!');
         }
 
         // Global Variables
