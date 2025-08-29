@@ -2888,39 +2888,25 @@
             100% { left: 100%; }
         }
 
-        /* Gentle, graceful falling animation with smooth movements */
+        /* Faster, elegant falling animation */
         @keyframes gentleRainFall {
             0% {
-                transform: translateY(-150px) rotate(0deg) scale(0.7);
+                transform: translateY(-120px) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
-            5% {
-                opacity: 0.8;
-                transform: translateY(-50px) rotate(1deg) scale(0.9);
-            }
-            15% {
+            10% {
                 opacity: 1;
-                transform: translateY(10vh) rotate(-1deg) scale(1);
-            }
-            30% {
-                transform: translateY(30vh) rotate(2deg) scale(1.05);
+                transform: translateY(0) rotate(1deg) scale(1);
             }
             50% {
-                transform: translateY(50vh) rotate(-1deg) scale(1.02);
+                transform: translateY(50vh) rotate(-1deg) scale(1.05);
             }
-            70% {
-                transform: translateY(70vh) rotate(1deg) scale(1);
-            }
-            85% {
+            90% {
                 opacity: 1;
-                transform: translateY(85vh) rotate(-0.5deg) scale(0.98);
-            }
-            95% {
-                opacity: 0.6;
-                transform: translateY(98vh) rotate(0deg) scale(0.85);
+                transform: translateY(90vh) rotate(0.5deg) scale(0.95);
             }
             100% {
-                transform: translateY(110vh) rotate(0deg) scale(0.7);
+                transform: translateY(105vh) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
         }
@@ -5749,7 +5735,29 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             sparkle.style.background = 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)';
             sparkle.style.animation = 'sparkle 4s infinite';
             
-            if (type === 'emoji') {
+            if (type === 'image') {
+                // Create medical image card
+                card.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = content;
+                img.style.width = '80px';
+                img.style.height = '80px';
+                img.style.borderRadius = '12px';
+                img.style.objectFit = 'cover';
+                img.style.position = 'relative';
+                img.style.zIndex = '2';
+                
+                card.style.padding = '8px';
+                card.style.background = randomGradient;
+                card.style.border = '4px solid rgba(255, 255, 255, 0.5)';
+                card.style.borderRadius = '20px';
+                card.style.boxShadow = '0 12px 35px rgba(0,0,0,0.4), 0 0 0 2px rgba(255,255,255,0.3)';
+                card.style.animationDuration = '6s'; // Faster: 6 seconds
+                
+                sparkleContainer.appendChild(sparkle);
+                sparkleContainer.appendChild(img);
+                card.appendChild(sparkleContainer);
+            } else if (type === 'emoji') {
                 card.innerHTML = '';
                 const textSpan = document.createElement('span');
                 textSpan.innerHTML = content;
@@ -5762,12 +5770,13 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
                 card.style.border = '4px solid rgba(255, 255, 255, 0.4)';
                 card.style.borderRadius = '20px';
                 card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2)';
-                card.style.animationDuration = (10 + Math.random() * 8) + 's'; // Much slower: 10-18 seconds
+                card.style.animationDuration = '7s'; // Faster: 7 seconds
                 
                 sparkleContainer.appendChild(sparkle);
                 sparkleContainer.appendChild(textSpan);
                 card.appendChild(sparkleContainer);
             } else {
+                // Text card
                 card.innerHTML = '';
                 const textSpan = document.createElement('span');
                 textSpan.textContent = content;
@@ -5782,7 +5791,7 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
                 card.style.border = '3px solid rgba(255, 255, 255, 0.3)';
                 card.style.borderRadius = '18px';
                 card.style.boxShadow = '0 8px 25px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.15)';
-                card.style.animationDuration = (8 + Math.random() * 6) + 's'; // Slower: 8-14 seconds
+                card.style.animationDuration = '5s'; // Faster: 5 seconds
                 
                 sparkleContainer.appendChild(sparkle);
                 sparkleContainer.appendChild(textSpan);
@@ -5807,75 +5816,38 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             const rainContainer = document.getElementById('rainContainer');
             if (!rainContainer) return;
             
-            console.log('🏥 Starting medical rain animation...');
+            console.log('🏥 Starting elegant medical rain animation...');
             
-            // Orthopedic and medical terms in multiple languages
-            const medicalTerms = [
-                // English medical terms
-                'Orthopedic', 'Bone Care', 'Joint Health', 'Spine Surgery', 'Fracture', 'X-Ray',
-                'Physical Therapy', 'Sports Medicine', 'Arthritis', 'Knee Surgery', 'Hip Replacement',
-                'Back Pain', 'Shoulder', 'Ankle', 'Wrist', 'Elbow', 'Rehabilitation', 'Recovery',
-                
-                // Telugu medical terms
-                'ఎముకలు', 'కీళ్ళు', 'వైద్యం', 'చికిత్స', 'ఆరోగ్యం', 'శస్త్రచికిత్స',
-                'వెన్నెముక', 'భుజం', 'మోకాలి', 'చీలమండ', 'పునరావాసం',
-                
-                // Hindi medical terms  
-                'हड्डी', 'जोड़', 'चिकित्सा', 'स्वास्थ्य', 'शल्य चिकित्सा', 'पीठ दर्द',
-                'घुटना', 'कंधा', 'कलाई', 'रीढ़', 'फ्रैक्चर', 'इलाज'
+            // Curated multilingual orthopedic drops (just 5 items total)
+            const rainItems = [
+                { content: 'Joint Replacement', type: 'text', language: 'English' },
+                { content: 'కీళ్ళ చికిత్స', type: 'text', language: 'Telugu' },
+                { content: 'हड्डी चिकित्सा', type: 'text', language: 'Hindi' },
+                { content: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=120&h=120&fit=crop&auto=format', type: 'image', alt: 'X-Ray' },
+                { content: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=120&h=120&fit=crop&auto=format', type: 'image', alt: 'Knee Surgery' }
             ];
             
-            // Medical emojis and symbols
-            const medicalEmojis = [
-                '🦴', '🏥', '⚕️', '🩻', '🩺', '💊', '🧬', '🔬', 
-                '🏃‍♂️', '🤸‍♀️', '🧘‍♂️', '💪', '🦵', '🦾', '🫀', '🧠'
-            ];
-            
-            let cardCount = 0;
-            const maxCards = 40; // Limit for performance
-            
-            const rainInterval = setInterval(() => {
-                if (cardCount >= maxCards) {
-                    clearInterval(rainInterval);
-                    return;
-                }
-                
-                // Create medical term card (70% probability)
-                if (Math.random() > 0.3) {
-                    const term = medicalTerms[Math.floor(Math.random() * medicalTerms.length)];
-                    const card = createMedicalRainCard(term, 'text', Math.random() * 2);
+            // Create each item with specific timing
+            rainItems.forEach((item, index) => {
+                setTimeout(() => {
+                    const card = createMedicalRainCard(item.content, item.type, index * 0.5);
+                    if (item.alt) card.setAttribute('data-alt', item.alt);
+                    if (item.language) card.setAttribute('data-language', item.language);
                     rainContainer.appendChild(card);
-                    cardCount++;
                     
-                    // Remove card after much longer animation completes
+                    // Remove card after animation completes
                     setTimeout(() => {
                         if (card.parentElement) {
                             card.remove();
                         }
-                    }, 18000); // Longer cleanup time for slower animation
-                }
-                
-                // Create emoji card (30% probability)
-                if (Math.random() > 0.7) {
-                    const emoji = medicalEmojis[Math.floor(Math.random() * medicalEmojis.length)];
-                    const card = createMedicalRainCard(emoji, 'emoji', Math.random() * 3);
-                    rainContainer.appendChild(card);
-                    cardCount++;
-                    
-                    // Remove card after much longer animation completes
-                    setTimeout(() => {
-                        if (card.parentElement) {
-                            card.remove();
-                        }
-                    }, 20000); // Even longer for emoji cards
-                }
-            }, 800); // Create new card every 800ms (much slower generation)
+                    }, 8000); // Faster cleanup for shorter animation
+                }, index * 600); // Stagger each item by 600ms
+            });
             
-            // Stop creating new cards after 10 seconds (longer show time)
+            // Complete after all items have appeared
             setTimeout(() => {
-                clearInterval(rainInterval);
-                console.log('🏥 Spectacular rainbow rain animation completed');
-            }, 10000);
+                console.log('🏥 Elegant multilingual medical rain completed');
+            }, 4000); // Much faster completion
         }
 
         // New flow functions
