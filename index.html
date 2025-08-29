@@ -3756,11 +3756,12 @@
         function switchLanguage(lang) {
             console.log('🔄 Switching language to: ' + lang);
             
-            // Update active state for top language buttons
-            const topLangBtns = document.querySelectorAll('.lang-switch-btn');
-            topLangBtns.forEach(btn => btn.classList.remove('active'));
+            // Update active state for compact language buttons in the language bar
+            const compactLangBtns = document.querySelectorAll('.compact-lang-btn');
+            compactLangBtns.forEach(btn => btn.classList.remove('active'));
             
-            const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
+            // Find the correct button by data-lang attribute among compact buttons
+            const activeBtn = document.querySelector(`.compact-lang-btn[data-lang="${lang}"]`);
             if (activeBtn) {
                 activeBtn.classList.add('active');
             }
