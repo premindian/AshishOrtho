@@ -3631,8 +3631,18 @@
             
             // Apply selected language to main website
             if (selectedLanguage) {
+                currentLanguage = selectedLanguage; // Sync currentLanguage with selectedLanguage
                 updateMainWebsiteContent(selectedLanguage);
                 updateLanguageSwitcher(selectedLanguage);
+                
+                // Update language bar highlighting
+                const compactLangBtns = document.querySelectorAll('.compact-lang-btn');
+                compactLangBtns.forEach(btn => btn.classList.remove('active'));
+                
+                const activeBtn = document.querySelector(`.compact-lang-btn[data-lang="${selectedLanguage}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
             }
             
             // Hide intro with animation
@@ -3735,7 +3745,9 @@
                 selectedBtn.classList.add('active');
             }
             
+            // Set both currentLanguage and selectedLanguage
             currentLanguage = lang;
+            selectedLanguage = lang;
             
             // Delay to show selection feedback, then go to welcome screen
             setTimeout(() => {
@@ -3758,15 +3770,22 @@
             
             // Update active state for compact language buttons in the language bar
             const compactLangBtns = document.querySelectorAll('.compact-lang-btn');
+            console.log('Found compact language buttons:', compactLangBtns.length);
             compactLangBtns.forEach(btn => btn.classList.remove('active'));
             
             // Find the correct button by data-lang attribute among compact buttons
             const activeBtn = document.querySelector(`.compact-lang-btn[data-lang="${lang}"]`);
+            console.log('Found active button for', lang, ':', activeBtn);
             if (activeBtn) {
                 activeBtn.classList.add('active');
+                console.log('✅ Added active class to', lang, 'button');
+            } else {
+                console.log('❌ Could not find button for language:', lang);
             }
             
+            // Set both variables to keep them in sync
             currentLanguage = lang;
+            selectedLanguage = lang;
             
             // Update all website content
             updateMainWebsiteContent(currentLanguage);
@@ -3975,28 +3994,7 @@
             document.getElementById('enterBtnText').textContent = texts.button;
         }
 
-        function enterMainWebsite() {
-            console.log('🏥 Entering main website with language: ' + currentLanguage);
-            
-            // Hide welcome screen
-            document.getElementById('welcomeScreen').style.display = 'none';
-            
-            // Show language switcher
-            const languageSwitcher = document.getElementById('languageSwitcher');
-            if (languageSwitcher) {
-                languageSwitcher.classList.add('show');
-            }
-            
-            // Hide preloader
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('hide');
-            }
-            
-            // Update content with selected language
-            updateMainWebsiteContent(currentLanguage);
-            updateLanguageSwitcher(currentLanguage);
-        }
+        // This duplicate function has been removed - see the main enterMainWebsite function above
 
         // Initialize everything when page loads
         window.addEventListener('load', function() {
