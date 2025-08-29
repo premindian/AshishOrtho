@@ -182,8 +182,8 @@
         /* Hero Section */
         .hero {
             height: fit-content;
-            padding: 0;
-            margin-top: 2rem;
+            padding: 1rem 0 0 0;
+            margin-top: -0.5rem;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: block;
             position: relative;
@@ -569,10 +569,11 @@
         /* Compact Language Bar Section - Clean and Professional */
         .language-bar-section {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-            padding: 15px 0;
+            padding: 15px 0 8px 0;
             text-align: center;
-            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+            border-bottom: none;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 0;
         }
 
         .language-bar-container {
@@ -2738,9 +2739,10 @@
                 flex-wrap: wrap;
             }
 
-            /* Adjust hero top margin for mobile */
+            /* Adjust hero spacing for mobile */
             .hero {
-                margin-top: 1.5rem;
+                margin-top: -0.3rem;
+                padding-top: 0.8rem;
             }
         }
 
