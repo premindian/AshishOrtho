@@ -668,9 +668,8 @@
         /* Professional Floating Share Button */
         .share-float-button {
             position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: 30px;
+            top: 40%;
             width: 56px;
             height: 56px;
             background: linear-gradient(135deg, #ff4444, #ff6b6b);
@@ -686,13 +685,13 @@
         }
 
         .share-float-button:hover {
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(255, 68, 68, 0.4);
         }
 
         .share-float-button.active {
             background: linear-gradient(135deg, #10b981, #34d399);
-            transform: translateY(-50%) rotate(45deg);
+            transform: rotate(45deg);
         }
 
         .share-float-button i {
@@ -704,9 +703,9 @@
         /* Share Popup Panel */
         .share-popup {
             position: fixed;
-            left: 90px;
-            top: 50%;
-            transform: translateY(-50%) scale(0);
+            right: 100px;
+            top: 40%;
+            transform: translateY(-50%) translateX(20px) scale(0.8);
             background: white;
             border-radius: 16px;
             padding: 24px;
@@ -716,11 +715,11 @@
             width: 280px;
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: left center;
+            transform-origin: right center;
         }
 
         .share-popup.active {
-            transform: translateY(-50%) scale(1);
+            transform: translateY(-50%) translateX(0) scale(1);
             opacity: 1;
         }
 
@@ -825,13 +824,15 @@
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .share-float-button {
-                left: 15px;
+                right: 20px;
+                top: 35%;
                 width: 50px;
                 height: 50px;
             }
 
             .share-popup {
-                left: 80px;
+                right: 80px;
+                top: 35%;
                 width: 260px;
                 padding: 20px;
             }
@@ -848,6 +849,31 @@
             .share-popup-btn i {
                 font-size: 20px;
                 margin-bottom: 6px;
+            }
+        }
+
+        /* Extra small mobile screens */
+        @media (max-width: 480px) {
+            .share-float-button {
+                right: 15px;
+                top: 30%;
+                width: 48px;
+                height: 48px;
+            }
+
+            .share-popup {
+                right: 70px;
+                top: 30%;
+                width: 240px;
+                padding: 18px;
+            }
+
+            .share-popup-title {
+                font-size: 16px;
+            }
+
+            .share-popup-subtitle {
+                font-size: 13px;
             }
         }
 
