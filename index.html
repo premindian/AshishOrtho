@@ -5691,8 +5691,8 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
         // Global timer variable so it can be cleared from anywhere
         let welcomeTimer = null;
         
-        // Spectacular Rainbow Rain Animation Function
-        function createMedicalRainCard(content, type, delay) {
+        // Spectacular Rainbow Rain Animation Function with Lane-based Positioning
+        function createMedicalRainCard(content, type, delay, lane = 1) {
             const card = document.createElement('div');
             card.className = 'rain-card';
             
@@ -5804,9 +5804,11 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             card.style.backdropFilter = 'blur(15px)';
             card.style.transform = `rotate(${Math.random() * 10 - 5}deg)`; // Gentle rotation
             
-            // Much slower, more graceful positioning and timing
-            card.style.left = (Math.random() * 85 + 5) + '%'; // Keep more within screen
-            card.style.animationDelay = (delay * 1.5) + 's'; // Slower start intervals
+            // Lane-based positioning to prevent collisions (6 lanes across screen)
+            const laneWidth = 85 / 6; // Divide screen into 6 lanes
+            const lanePosition = 5 + ((lane - 1) * laneWidth) + (Math.random() * (laneWidth * 0.6)); // Add small random within lane
+            card.style.left = lanePosition + '%';
+            card.style.animationDelay = delay + 's'; // Use direct delay
             card.style.animationTimingFunction = 'ease-in-out'; // Smoother animation
             
             return card;
@@ -5831,10 +5833,10 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
                 { content: '💊', type: 'emoji', alt: 'Medicine', lane: 5 }
             ];
             
-            // Create each item with specific timing
+            // Create each item with lane-based positioning to prevent collisions
             rainItems.forEach((item, index) => {
                 setTimeout(() => {
-                    const card = createMedicalRainCard(item.content, item.type, index * 0.3);
+                    const card = createMedicalRainCard(item.content, item.type, index * 0.3, item.lane);
                     if (item.alt) card.setAttribute('data-alt', item.alt);
                     if (item.language) card.setAttribute('data-language', item.language);
                     rainContainer.appendChild(card);
@@ -5845,7 +5847,7 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
                             card.remove();
                         }
                     }, 6000); // Cleanup for shorter animation
-                }, index * 400); // Faster staggering for more items
+                }, index * 500); // Slower staggering to prevent collisions
             });
             
             // Complete after all items have appeared
