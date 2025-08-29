@@ -2758,28 +2758,75 @@
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         }
 
-        /* Step 2: Language Selection Screen */
+        /* Step 2: Spectacular Language Selection Screen */
         .language-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #ff6b6b 75%, #4ecdc4 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 999;
+            overflow: hidden;
+        }
+
+        /* Floating particles background */
+        .language-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: particleFloat 12s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
         }
 
         .language-content {
             text-align: center;
-            padding: 3rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            max-width: 500px;
+            padding: 4rem 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            max-width: 550px;
             width: 90%;
+            position: relative;
+            animation: contentFloat 3s ease-out;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes contentFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-10px) scale(1.02);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* Step 3: Doctor Welcome Screen */
@@ -2956,17 +3003,60 @@
         }
 
         .clinic-title {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
+            animation: titleGradientFlow 3s ease-in-out infinite, titleEntrance 1s ease-out;
+            text-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        @keyframes titleGradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes titleEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.8);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(5px) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .clinic-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
+            font-size: 1.3rem;
+            color: #6b7280;
             margin-bottom: 2rem;
+            font-weight: 500;
+            opacity: 0;
+            animation: subtitleFadeIn 1.2s ease-out 0.5s forwards;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+
+        @keyframes subtitleFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
         }
 
         /* Language Selection */
@@ -2982,39 +3072,154 @@
 
         .lang-options {
             display: flex;
-            gap: 10px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
         .lang-btn {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 12px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 20px;
+            padding: 20px 30px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            min-width: 100px;
+            gap: 12px;
+            color: white;
+            transition: all 0.4s ease;
+            min-width: 140px;
             justify-content: center;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: langButtonEntrance 0.6s ease-out forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .lang-btn:nth-child(1) { --delay: 1; }
+        .lang-btn:nth-child(2) { --delay: 2; }
+        .lang-btn:nth-child(3) { --delay: 3; }
+
+        @keyframes langButtonEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-5px) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .lang-btn:hover::before {
+            left: 100%;
         }
 
         .lang-btn:hover {
-            background: var(--primary-color);
+            background-position: 100% 0%;
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .lang-btn.active {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
+            background-size: 200% 200%;
+            animation: activeGlow 2s ease-in-out infinite;
             color: white;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes activeGlow {
+            0%, 100% { 
+                background-position: 0% 50%;
+                box-shadow: 0 15px 40px rgba(255, 107, 107, 0.6);
+            }
+            50% { 
+                background-position: 100% 50%;
+                box-shadow: 0 20px 50px rgba(254, 202, 87, 0.7);
+            }
+        }
+
+        .lang-btn .flag {
+            font-size: 24px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        /* Selection Animation Keyframes */
+        @keyframes particleExplode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(var(--endX, 0), var(--endY, 0)) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(var(--endX, 0), var(--endY, 0)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes selectionPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 40px 80px rgba(102, 126, 234, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        @keyframes notificationSlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-50px);
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            80% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
         }
 
         /* Enter Website Button */
@@ -5599,26 +5804,116 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
         function selectLanguage(lang) {
             console.log('🌍 Language selected: ' + lang);
             
-            // Add visual feedback for language selection
+            // Add spectacular visual feedback for language selection
             const allLangBtns = document.querySelectorAll('.lang-btn');
             const selectedBtn = document.querySelector(`[data-lang="${lang}"]`);
+            const languageContent = document.querySelector('.language-content');
             
             // Remove active class from all buttons
-            allLangBtns.forEach(btn => btn.classList.remove('active'));
+            allLangBtns.forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.opacity = '0.3';
+                btn.style.transform = 'scale(0.9)';
+                btn.style.filter = 'grayscale(100%)';
+            });
             
-            // Add active class to selected button
+            // Add spectacular active animation to selected button
             if (selectedBtn) {
                 selectedBtn.classList.add('active');
+                selectedBtn.style.opacity = '1';
+                selectedBtn.style.transform = 'scale(1.2)';
+                selectedBtn.style.filter = 'grayscale(0%)';
+                selectedBtn.style.zIndex = '10';
+                
+                // Create celebration particles around selected button
+                createSelectionParticles(selectedBtn);
+                
+                // Pulse effect for language content
+                languageContent.style.animation = 'selectionPulse 0.8s ease-out';
             }
             
             // Set both currentLanguage and selectedLanguage
             currentLanguage = lang;
             selectedLanguage = lang;
             
+            // Show success message with language-specific text
+            const successMessages = {
+                'en': '✨ English Selected! Welcome!',
+                'te': '✨ తెలుగు ఎంపిక! స్వాగతం!',
+                'hi': '✨ हिन्दी चुना गया! स्वागत है!'
+            };
+            
+            // Create success notification
+            showSelectionSuccess(successMessages[lang] || successMessages['en']);
+            
             // Delay to show selection feedback, then go to welcome screen
             setTimeout(() => {
                 showWelcomeScreen();
-            }, 800);
+            }, 2000);
+        }
+
+        // Create spectacular particle effect around selected button
+        function createSelectionParticles(button) {
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.width = '8px';
+                particle.style.height = '8px';
+                particle.style.background = `linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57)`;
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '9999';
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const distance = 100 + Math.random() * 50;
+                const endX = centerX + Math.cos(angle) * distance;
+                const endY = centerY + Math.sin(angle) * distance;
+                
+                particle.style.animation = `particleExplode 1.2s ease-out forwards`;
+                particle.style.setProperty('--endX', endX + 'px');
+                particle.style.setProperty('--endY', endY + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, 1200);
+            }
+        }
+
+        // Show success notification
+        function showSelectionSuccess(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.left = '50%';
+            notification.style.transform = 'translateX(-50%)';
+            notification.style.background = 'linear-gradient(135deg, #4ecdc4, #44a08d)';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 30px';
+            notification.style.borderRadius = '25px';
+            notification.style.fontSize = '18px';
+            notification.style.fontWeight = '600';
+            notification.style.zIndex = '10000';
+            notification.style.animation = 'notificationSlide 2s ease-out forwards';
+            notification.style.boxShadow = '0 10px 30px rgba(78, 205, 196, 0.4)';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 2000);
         }
         
         function getLanguageName(lang) {
