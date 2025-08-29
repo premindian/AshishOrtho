@@ -668,7 +668,7 @@
         /* Social Sharing Buttons - Fixed Sidebar */
         .social-share-sidebar {
             position: fixed;
-            left: 0;
+            left: -25px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
@@ -679,10 +679,10 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 0 25px 25px 0;
+            border-radius: 0 30px 30px 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -695,8 +695,33 @@
         }
 
         .share-toggle:hover {
-            transform: translateX(5px);
+            transform: translateX(10px);
             box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .share-toggle::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid rgba(255, 255, 255, 0.8);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            animation: arrowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% {
+                opacity: 0.6;
+                transform: translateY(-50%) translateX(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) translateX(3px);
+            }
         }
 
         @keyframes shareTogglePulse {
@@ -710,20 +735,21 @@
 
         .share-buttons {
             position: absolute;
-            left: -250px;
+            left: -280px;
             top: 0;
             background: white;
             border-radius: 0 25px 25px 0;
-            padding: 15px 20px 15px 10px;
+            padding: 15px 20px 15px 15px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(37, 99, 235, 0.1);
             backdrop-filter: blur(10px);
+            min-width: 240px;
         }
 
         .social-share-sidebar:hover .share-buttons,
         .social-share-sidebar.active .share-buttons {
-            left: 50px;
+            left: 60px;
         }
 
         .share-label {
