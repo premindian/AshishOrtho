@@ -2864,36 +2864,63 @@
             z-index: 1;
         }
 
-        /* Rain Card Styling */
+        /* Beautiful Rainbow Rain Card Styling */
         .rain-card {
             position: absolute;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: 700;
             color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            animation: medicalRainFall linear infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255,255,255,0.2);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            animation: gentleRainFall ease-in-out infinite;
             font-family: 'Inter', Arial, sans-serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
             z-index: 1;
+            letter-spacing: 0.5px;
         }
 
-        @keyframes medicalRainFall {
+        /* Sparkle animation for rain cards */
+        @keyframes sparkle {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Gentle, graceful falling animation with smooth movements */
+        @keyframes gentleRainFall {
             0% {
-                transform: translateY(-100px) rotate(0deg);
+                transform: translateY(-150px) rotate(0deg) scale(0.7);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
+            5% {
+                opacity: 0.8;
+                transform: translateY(-50px) rotate(1deg) scale(0.9);
             }
-            90% {
+            15% {
                 opacity: 1;
+                transform: translateY(10vh) rotate(-1deg) scale(1);
+            }
+            30% {
+                transform: translateY(30vh) rotate(2deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(50vh) rotate(-1deg) scale(1.02);
+            }
+            70% {
+                transform: translateY(70vh) rotate(1deg) scale(1);
+            }
+            85% {
+                opacity: 1;
+                transform: translateY(85vh) rotate(-0.5deg) scale(0.98);
+            }
+            95% {
+                opacity: 0.6;
+                transform: translateY(98vh) rotate(0deg) scale(0.85);
             }
             100% {
-                transform: translateY(calc(100vh + 100px)) rotate(15deg);
+                transform: translateY(110vh) rotate(0deg) scale(0.7);
                 opacity: 0;
             }
         }
@@ -5678,42 +5705,100 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
         // Global timer variable so it can be cleared from anywhere
         let welcomeTimer = null;
         
-        // Orthopedic Rain Animation Function
+        // Spectacular Rainbow Rain Animation Function
         function createMedicalRainCard(content, type, delay) {
             const card = document.createElement('div');
             card.className = 'rain-card';
             
-            // Different gradients for different medical elements
-            const medicalGradients = [
-                'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)', // Bone/X-ray colors
-                'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // Medical blue
-                'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)', // Healthcare pink
-                'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)', // Soft medical
-                'linear-gradient(135deg, #72afd3 0%, #37ecba 100%)', // Professional
-                'linear-gradient(135deg, #96deda 0%, #50c9c3 100%)', // Medical teal
-                'linear-gradient(135deg, #ebbba7 0%, #cfc7f8 100%)', // Warm medical
-                'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', // Healthcare accent
+            // Spectacular rainbow gradients for magical raindrops
+            const spectacularGradients = [
+                'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)', // Purple-pink magic
+                'linear-gradient(135deg, #4ecdc4 0%, #44a08d 50%, #96ceb4 100%)', // Teal healing
+                'linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #ff9ff3 100%)', // Warm sunset
+                'linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%)', // Cool ocean
+                'linear-gradient(135deg, #fa709a 0%, #fee140 50%, #6c5ce7 100%)', // Vibrant energy
+                'linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d299c2 100%)', // Soft dreams
+                'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffecd2 100%)', // Gentle warmth
+                'linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #ff6b6b 100%)', // Full spectrum
+                'linear-gradient(135deg, #4ecdc4 0%, #45b7d1 30%, #96ceb4 60%, #feca57 100%)', // Nature blend
+                'linear-gradient(135deg, #ff8a80 0%, #ea80fc 30%, #8c7ae6 60%, #00d2d3 100%)', // Electric dreams
+                'linear-gradient(135deg, #fdbb2d 0%, #22c1c3 50%, #ff6b6b 100%)', // Tropical paradise
+                'linear-gradient(135deg, #e96443 0%, #904e95 50%, #96ceb4 100%)', // Sunset glow
+                'linear-gradient(135deg, #ff7eb3 0%, #ff758c 30%, #ff7eb3 60%, #8fd3f4 100%)', // Cotton candy
+                'linear-gradient(135deg, #74b9ff 0%, #0984e3 30%, #6c5ce7 60%, #a29bfe 100%)', // Sky magic
+                'linear-gradient(135deg, #fd79a8 0%, #fdcb6e 30%, #6c5ce7 60%, #74b9ff 100%)' // Rainbow burst
             ];
             
+            const randomGradient = spectacularGradients[Math.floor(Math.random() * spectacularGradients.length)];
+            
+            // Create sparkle overlay container
+            const sparkleContainer = document.createElement('div');
+            sparkleContainer.style.position = 'relative';
+            sparkleContainer.style.overflow = 'hidden';
+            sparkleContainer.style.width = '100%';
+            sparkleContainer.style.height = '100%';
+            sparkleContainer.style.borderRadius = 'inherit';
+            
+            // Create sparkle effect
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'absolute';
+            sparkle.style.top = '0';
+            sparkle.style.left = '-100%';
+            sparkle.style.width = '100%';
+            sparkle.style.height = '100%';
+            sparkle.style.background = 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)';
+            sparkle.style.animation = 'sparkle 4s infinite';
+            
             if (type === 'emoji') {
-                card.innerHTML = content;
-                card.style.fontSize = '20px';
-                card.style.padding = '10px';
-                card.style.background = medicalGradients[Math.floor(Math.random() * medicalGradients.length)];
-                card.style.border = '3px solid rgba(255, 255, 255, 0.7)';
-                card.style.animationDuration = (6 + Math.random() * 2) + 's';
+                card.innerHTML = '';
+                const textSpan = document.createElement('span');
+                textSpan.innerHTML = content;
+                textSpan.style.position = 'relative';
+                textSpan.style.zIndex = '2';
+                
+                card.style.fontSize = '24px';
+                card.style.padding = '15px 18px';
+                card.style.background = randomGradient;
+                card.style.border = '4px solid rgba(255, 255, 255, 0.4)';
+                card.style.borderRadius = '20px';
+                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2)';
+                card.style.animationDuration = (10 + Math.random() * 8) + 's'; // Much slower: 10-18 seconds
+                
+                sparkleContainer.appendChild(sparkle);
+                sparkleContainer.appendChild(textSpan);
+                card.appendChild(sparkleContainer);
             } else {
-                card.textContent = content;
-                card.style.fontSize = '14px';
-                card.style.padding = '8px 12px';
-                card.style.background = medicalGradients[Math.floor(Math.random() * medicalGradients.length)];
-                card.style.border = '2px solid rgba(255, 255, 255, 0.5)';
-                card.style.animationDuration = (5 + Math.random() * 2) + 's';
+                card.innerHTML = '';
+                const textSpan = document.createElement('span');
+                textSpan.textContent = content;
+                textSpan.style.position = 'relative';
+                textSpan.style.zIndex = '2';
+                textSpan.style.fontWeight = '700';
+                textSpan.style.letterSpacing = '0.5px';
+                
+                card.style.fontSize = '16px';
+                card.style.padding = '12px 20px';
+                card.style.background = randomGradient;
+                card.style.border = '3px solid rgba(255, 255, 255, 0.3)';
+                card.style.borderRadius = '18px';
+                card.style.boxShadow = '0 8px 25px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.15)';
+                card.style.animationDuration = (8 + Math.random() * 6) + 's'; // Slower: 8-14 seconds
+                
+                sparkleContainer.appendChild(sparkle);
+                sparkleContainer.appendChild(textSpan);
+                card.appendChild(sparkleContainer);
             }
             
-            // Random position across screen
-            card.style.left = Math.random() * 100 + '%';
-            card.style.animationDelay = delay + 's';
+            // Enhanced styling for all cards
+            card.style.color = 'white';
+            card.style.textShadow = '2px 2px 4px rgba(0,0,0,0.7)';
+            card.style.backdropFilter = 'blur(15px)';
+            card.style.transform = `rotate(${Math.random() * 10 - 5}deg)`; // Gentle rotation
+            
+            // Much slower, more graceful positioning and timing
+            card.style.left = (Math.random() * 85 + 5) + '%'; // Keep more within screen
+            card.style.animationDelay = (delay * 1.5) + 's'; // Slower start intervals
+            card.style.animationTimingFunction = 'ease-in-out'; // Smoother animation
             
             return card;
         }
@@ -5762,35 +5847,35 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
                     rainContainer.appendChild(card);
                     cardCount++;
                     
-                    // Remove card after animation completes
+                    // Remove card after much longer animation completes
                     setTimeout(() => {
                         if (card.parentElement) {
                             card.remove();
                         }
-                    }, 8000);
+                    }, 18000); // Longer cleanup time for slower animation
                 }
                 
                 // Create emoji card (30% probability)
                 if (Math.random() > 0.7) {
                     const emoji = medicalEmojis[Math.floor(Math.random() * medicalEmojis.length)];
-                    const card = createMedicalRainCard(emoji, 'emoji', Math.random() * 2);
+                    const card = createMedicalRainCard(emoji, 'emoji', Math.random() * 3);
                     rainContainer.appendChild(card);
                     cardCount++;
                     
-                    // Remove card after animation completes
+                    // Remove card after much longer animation completes
                     setTimeout(() => {
                         if (card.parentElement) {
                             card.remove();
                         }
-                    }, 8000);
+                    }, 20000); // Even longer for emoji cards
                 }
-            }, 200); // Create new card every 200ms
+            }, 800); // Create new card every 800ms (much slower generation)
             
-            // Stop creating new cards after 6 seconds
+            // Stop creating new cards after 10 seconds (longer show time)
             setTimeout(() => {
                 clearInterval(rainInterval);
-                console.log('🏥 Medical rain animation completed');
-            }, 6000);
+                console.log('🏥 Spectacular rainbow rain animation completed');
+            }, 10000);
         }
 
         // New flow functions
