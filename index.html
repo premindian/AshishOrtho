@@ -669,7 +669,7 @@
         .share-float-button {
             position: fixed;
             right: 30px;
-            top: 40%;
+            bottom: 120px;
             width: 56px;
             height: 56px;
             background: linear-gradient(135deg, #ff4444, #ff6b6b);
@@ -678,7 +678,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 9999;
+            z-index: 500;
             box-shadow: 0 4px 20px rgba(255, 68, 68, 0.3);
             transition: all 0.3s ease;
             border: 3px solid white;
@@ -704,22 +704,22 @@
         .share-popup {
             position: fixed;
             right: 100px;
-            top: 40%;
-            transform: translateY(-50%) translateX(20px) scale(0.8);
+            bottom: 180px;
+            transform: translateX(20px) scale(0.8);
             background: white;
             border-radius: 16px;
             padding: 24px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             border: 2px solid #f1f5f9;
-            z-index: 10000;
+            z-index: 600;
             width: 280px;
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: right center;
+            transform-origin: right bottom;
         }
 
         .share-popup.active {
-            transform: translateY(-50%) translateX(0) scale(1);
+            transform: translateX(0) scale(1);
             opacity: 1;
         }
 
@@ -825,14 +825,14 @@
         @media (max-width: 768px) {
             .share-float-button {
                 right: 20px;
-                top: 35%;
+                bottom: 100px;
                 width: 50px;
                 height: 50px;
             }
 
             .share-popup {
                 right: 80px;
-                top: 35%;
+                bottom: 160px;
                 width: 260px;
                 padding: 20px;
             }
@@ -856,14 +856,14 @@
         @media (max-width: 480px) {
             .share-float-button {
                 right: 15px;
-                top: 30%;
+                bottom: 80px;
                 width: 48px;
                 height: 48px;
             }
 
             .share-popup {
                 right: 70px;
-                top: 30%;
+                bottom: 140px;
                 width: 240px;
                 padding: 18px;
             }
