@@ -1274,6 +1274,29 @@
             50% { transform: scale(1.05); }
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
         /* Service Page CTA Button Hover Effects */
         .service-page-content button[onclick*="openBookingForm"]:hover,
         .service-page-content button[onclick*="alert"]:hover {
@@ -2182,14 +2205,144 @@
         }
 
         .contact-form {
-            background: white;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
             padding: 3rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
+            border-radius: 25px;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(255,255,255,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 25px;
+            padding: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #ff6b6b, #4ecdc4, #45b7d1);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            z-index: -1;
+            animation: rainbowGlow 4s linear infinite;
+        }
+
+        .contact-form h3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+            animation: pulse 2s infinite;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .contact-form .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-form .form-control {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .contact-form .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 
+                0 0 0 3px rgba(102, 126, 234, 0.1),
+                inset 0 2px 4px rgba(0,0,0,0.06),
+                0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
+        }
+
+        .contact-form .form-control::placeholder {
+            color: #a0aec0;
+            font-style: italic;
+        }
+
+        .contact-form .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #ff6b6b 100%);
+            color: white;
+            padding: 1.5rem 2.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-form .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-form .btn-submit:hover::before {
+            left: 100%;
+        }
+
+        .contact-form .btn-submit:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-form .btn-submit:active {
+            transform: translateY(-1px) scale(0.98);
         }
 
         .form-group label {
@@ -4482,7 +4635,11 @@
             </div>
 
             <div class="contact-form animate-on-scroll" id="appointment">
-                <h3 style="margin-bottom: 1.5rem; color: var(--text-primary);">Book Your Appointment</h3>
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite;">📅</div>
+                    <h3 style="margin: 0;">Book Your Appointment</h3>
+                    <p style="color: #666; font-size: 1.1rem; margin-top: 0.5rem; font-style: italic;">Take the first step towards better health</p>
+                </div>
                 <form id="appointmentForm">
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -5810,117 +5967,7 @@ Your request has been submitted and Dr. Ashish will contact you within 24 hours.
             });
         });
 
-        // 🚀 COMPLETE EMAILJS SETUP GUIDE
-        // =====================================
-        
-        /* 📧 EmailJS Setup Instructions:
-        
-        STEP 1: Create EmailJS Account
-        ------------------------------
-        1. Go to https://www.emailjs.com/
-        2. Click "Sign Up" and create a free account
-        3. Verify your email address
-        
-        STEP 2: Add Email Service
-        -------------------------
-        1. In EmailJS dashboard, click "Add New Service"
-        2. Choose your email provider (Gmail, Outlook, etc.)
-        3. Connect your email: premindian2025@gmail.com
-        4. Note down the SERVICE ID (e.g., "service_gmail123")
-        
-        STEP 3: Create Email Templates
-        ------------------------------
-        
-        Template 1 - Main Appointment Form:
-        Template ID: template_appointment
-        Subject: 🏥 New Appointment Request - {{patient_name}}
-        
-        Body:
-        Dear Dr. Ashish,
-        
-        You have received a new appointment request:
-        
-        👤 Patient Details:
-        Name: {{patient_name}}
-        Email: {{patient_email}}
-        Phone: {{patient_phone}}
-        
-        📅 Appointment Details:
-        Service: {{service_requested}}
-        Preferred Date: {{appointment_date}}
-        Preferred Time: {{appointment_time}}
-        
-        💬 Message:
-        {{message}}
-        
-        📧 This request was submitted on {{submission_date}} at {{submission_time}}
-        
-        Please contact the patient within 24 hours to confirm the appointment.
-        
-        Best regards,
-        Ashish Ortho Website
-        
-        
-        Template 2 - Service Booking Form:
-        Template ID: template_booking
-        Subject: 📋 Service Booking Request - {{service_requested}}
-        
-        Body:
-        Dear Dr. Ashish,
-        
-        New service booking request received:
-        
-        👤 Patient Information:
-        Name: {{patient_name}}
-        Age: {{patient_age}}
-        Phone: {{patient_phone}}
-        Email: {{patient_email}}
-        
-        🏥 Service Details:
-        Service: {{service_requested}}
-        Urgency: {{urgency}}
-        
-        📅 Preferences:
-        Date: {{preferred_date}}
-        Time: {{preferred_time}}
-        
-        🩺 Medical Information:
-        Symptoms: {{symptoms}}
-        Medical History: {{medical_history}}
-        
-        📧 Submitted: {{booking_date}} at {{booking_time}}
-        
-        Please contact the patient to schedule their {{service_requested}} consultation.
-        
-        Best regards,
-        Ashish Ortho Website
-        
-        STEP 4: Get Public Key
-        ----------------------
-        1. Go to "Account" in EmailJS dashboard
-        2. Copy your "Public Key" (starts with "user_")
-        3. Replace 'YOUR_PUBLIC_KEY' below with your actual key
-        
-        STEP 5: Update Code
-        -------------------
-        1. Replace YOUR_PUBLIC_KEY with your actual public key
-        2. Replace service_orthopedic with your actual service ID
-        3. Replace template_appointment and template_booking with your template IDs
-        4. Test the forms!
-        
-        STEP 6: Testing
-        ---------------
-        1. Fill out the appointment form
-        2. Check if email arrives at premindian2025@gmail.com
-        3. Test both main form and service booking forms
-        4. Verify all variables are populated correctly
-        
-        💡 Pro Tips:
-        - EmailJS free plan allows 200 emails/month
-        - Test with a different email first
-        - Check spam folder if emails don't arrive
-        - Use email filters to organize appointment requests
-        */
+        // EmailJS Configuration (see chat for setup instructions)
         
         emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your actual EmailJS public key
 
