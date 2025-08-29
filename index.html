@@ -1384,11 +1384,11 @@
 
         .service-page-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             display: flex;
@@ -1396,14 +1396,32 @@
             justify-content: center;
             cursor: pointer;
             color: white;
-            font-size: 24px;
+            font-size: 20px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            z-index: 1000;
         }
 
         .service-page-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+            background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
+            transform: scale(1.15) rotate(90deg);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .service-page-close:active {
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        /* Mobile responsive close button */
+        @media (max-width: 768px) {
+            .service-page-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
         }
 
         .service-page-content {
@@ -4545,7 +4563,7 @@
     <!-- Service Page Overlay -->
     <div class="service-page-overlay" id="servicePageOverlay">
         <div class="service-page-container">
-            <div class="service-page-close" onclick="hideServicePage()">
+            <div class="service-page-close" onclick="hideServicePage()" title="Close">
                 <i class="fas fa-times"></i>
             </div>
             
