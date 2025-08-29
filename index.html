@@ -3747,7 +3747,7 @@
                     </div>
                     <h3>Joint Replacement Surgery</h3>
                     <p>Advanced knee, hip, and shoulder replacement procedures using minimally invasive techniques for faster recovery and better outcomes.</p>
-                    <button type="button" onclick="openServicePage('joint-replacement')" class="service-link">
+                    <button type="button" onclick="console.log('Button clicked!'); window.openServicePage('joint-replacement'); return false;" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3758,7 +3758,7 @@
                     </div>
                     <h3>Sports Medicine</h3>
                     <p>Comprehensive care for athletes and active individuals, from injury prevention to rehabilitation and performance optimization.</p>
-                    <button type="button" onclick="openServicePage('sports-medicine')" class="service-link">
+                    <button type="button" onclick="console.log('Sports Medicine clicked!'); window.openServicePage('sports-medicine'); return false;" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3769,7 +3769,7 @@
                     </div>
                     <h3>Spine Surgery</h3>
                     <p>Expert treatment for spinal conditions including herniated discs, stenosis, and scoliosis using cutting-edge techniques.</p>
-                    <button type="button" onclick="openServicePage('spine-surgery')" class="service-link">
+                    <button type="button" onclick="console.log('Spine Surgery clicked!'); window.openServicePage('spine-surgery'); return false;" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3780,7 +3780,7 @@
                     </div>
                     <h3>Hand & Wrist Surgery</h3>
                     <p>Specialized microsurgical procedures for carpal tunnel, trigger finger, and complex hand trauma reconstruction.</p>
-                    <button type="button" onclick="openServicePage('hand-wrist-surgery')" class="service-link">
+                    <button type="button" onclick="console.log('Hand & Wrist clicked!'); window.openServicePage('hand-wrist-surgery'); return false;" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3791,7 +3791,7 @@
                     </div>
                     <h3>Trauma Surgery</h3>
                     <p>Emergency orthopedic trauma care and complex fracture repair with 24/7 availability for urgent cases.</p>
-                    <button type="button" onclick="openServicePage('trauma-surgery')" class="service-link">
+                    <button type="button" onclick="console.log('Trauma Surgery clicked!'); window.openServicePage('trauma-surgery'); return false;" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -3802,7 +3802,7 @@
                     </div>
                     <h3>Pediatric Orthopedics</h3>
                     <p>Specialized care for children's bone and joint conditions, growth disorders, and developmental issues.</p>
-                    <button type="button" onclick="openServicePage('pediatric-orthopedics')" class="service-link">
+                    <button type="button" onclick="console.log('Pediatric clicked!'); window.openServicePage('pediatric-orthopedics'); return false;" class="service-link">
                         Learn More <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -5432,6 +5432,17 @@
             console.log('✅ DOM loaded, service pages ready!');
             console.log('Service data available:', !!serviceData);
             console.log('Number of services:', Object.keys(serviceData).length);
+            
+            // Make functions globally accessible for testing
+            window.testServicePage = function() {
+                console.log('🧪 Testing service page...');
+                openServicePage('joint-replacement');
+            };
+            
+            window.openServicePage = openServicePage;
+            window.closeServicePage = closeServicePage;
+            
+            console.log('🔧 Test functions available: window.testServicePage(), window.openServicePage(id), window.closeServicePage()');
         });
 
         // No complex initialization needed - buttons work directly with onclick!
