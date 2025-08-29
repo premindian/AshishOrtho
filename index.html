@@ -754,6 +754,12 @@
             left: 80px;
             opacity: 1;
             visibility: visible;
+            transform: translateX(0) scale(1);
+        }
+
+        .social-share-sidebar.active .share-toggle {
+            background: #00cc44;
+            transform: rotate(45deg);
         }
 
         .share-label {
@@ -4563,15 +4569,30 @@
 
         // Social Sharing Functionality
         function initSocialSharing() {
+            console.log('🔧 Initializing social sharing...');
+            
             const shareToggle = document.getElementById('shareToggle');
             const shareButtons = document.getElementById('shareButtons');
             const sidebar = document.querySelector('.social-share-sidebar');
             
-            // Toggle share buttons on click (mobile)
+            console.log('Share elements found:', {
+                shareToggle: !!shareToggle,
+                shareButtons: !!shareButtons,
+                sidebar: !!sidebar
+            });
+            
+            // Toggle share buttons on click
             if (shareToggle) {
-                shareToggle.addEventListener('click', function() {
+                shareToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🖱️ Share toggle clicked!');
                     sidebar.classList.toggle('active');
+                    console.log('Active class toggled, sidebar has active:', sidebar.classList.contains('active'));
                 });
+                console.log('✅ Click handler added to share toggle');
+            } else {
+                console.error('❌ Share toggle element not found!');
             }
 
             // Close share buttons when clicking outside
@@ -4583,12 +4604,16 @@
 
             // Add click handlers for each share button
             const shareLinks = document.querySelectorAll('.share-btn[data-platform]');
-            shareLinks.forEach(btn => {
+            console.log('Found share buttons:', shareLinks.length);
+            shareLinks.forEach((btn, index) => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
                     const platform = this.dataset.platform;
+                    console.log(`📤 Share button clicked: ${platform}`);
                     shareToSocial(platform);
                 });
+                console.log(`✅ Added click handler to ${btn.dataset.platform} button`);
             });
 
             // Copy link functionality
@@ -4596,16 +4621,21 @@
             if (copyLinkBtn) {
                 copyLinkBtn.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    console.log('📋 Copy link button clicked');
                     copyToClipboard();
                 });
+                console.log('✅ Added click handler to copy link button');
             }
         }
 
         function shareToSocial(platform) {
+            console.log(`🚀 shareToSocial called for platform: ${platform}`);
             const url = encodeURIComponent(window.location.href);
             const title = encodeURIComponent('Dr. Ashish Orthopedic Clinic - Expert Bone & Joint Care');
             const description = encodeURIComponent('Professional orthopedic care with 15+ years of experience. Advanced bone and joint treatments using minimally invasive techniques.');
             
+            console.log('Share data:', { url: window.location.href, title, platform });
             let shareUrl = '';
             
             switch (platform) {
@@ -4630,7 +4660,10 @@
             }
             
             if (shareUrl) {
+                console.log(`🌐 Opening share URL: ${shareUrl}`);
                 window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+            } else {
+                console.error(`❌ No share URL generated for platform: ${platform}`);
             }
         }
 
