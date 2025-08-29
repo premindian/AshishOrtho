@@ -668,30 +668,29 @@
         /* Social Sharing Buttons - Fixed Sidebar */
         .social-share-sidebar {
             position: fixed;
-            left: -25px;
+            left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 1000;
+            z-index: 9999;
             font-family: inherit;
         }
 
         .share-toggle {
-            position: absolute;
-            left: 0;
-            top: 0;
+            position: relative;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 0 30px 30px 0;
+            background: #ff4444;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             color: white;
-            font-size: 18px;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            font-size: 20px;
+            box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
             transition: all 0.3s ease;
-            animation: shareTogglePulse 3s ease-in-out infinite;
+            animation: shareTogglePulse 2s ease-in-out infinite;
+            border: 3px solid white;
         }
 
         .share-toggle:hover {
@@ -726,30 +725,35 @@
 
         @keyframes shareTogglePulse {
             0%, 100% {
-                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+                transform: scale(1);
+                box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
             }
             50% {
-                box-shadow: 0 4px 20px rgba(37, 99, 235, 0.5);
+                transform: scale(1.1);
+                box-shadow: 0 6px 30px rgba(255, 68, 68, 0.6);
             }
         }
 
         .share-buttons {
             position: absolute;
-            left: -280px;
-            top: 0;
+            left: -250px;
+            top: -150px;
             background: white;
-            border-radius: 0 25px 25px 0;
-            padding: 15px 20px 15px 15px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(37, 99, 235, 0.1);
-            backdrop-filter: blur(10px);
-            min-width: 240px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            border: 2px solid #ff4444;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
         }
 
         .social-share-sidebar:hover .share-buttons,
         .social-share-sidebar.active .share-buttons {
-            left: 60px;
+            left: 80px;
+            opacity: 1;
+            visibility: visible;
         }
 
         .share-label {
@@ -856,54 +860,50 @@
             .social-share-sidebar {
                 position: fixed;
                 left: auto;
-                right: 15px;
+                right: 20px;
                 top: auto;
-                bottom: 80px;
+                bottom: 100px;
                 transform: none;
             }
 
             .share-toggle {
-                width: 45px;
-                height: 45px;
-                border-radius: 50%;
-                font-size: 16px;
+                width: 55px;
+                height: 55px;
+                font-size: 18px;
             }
 
             .share-buttons {
                 position: absolute;
                 left: auto;
                 right: 0;
-                bottom: 55px;
+                bottom: 65px;
                 top: auto;
-                border-radius: 20px;
-                padding: 10px;
+                border-radius: 15px;
+                padding: 15px;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-                width: 200px;
-                transform: translateX(100%);
-                opacity: 0;
+                gap: 10px;
+                width: 220px;
+                transform: translateY(100%);
             }
 
             .social-share-sidebar:hover .share-buttons,
             .social-share-sidebar.active .share-buttons {
-                left: auto;
-                right: 0;
-                transform: translateX(0);
-                opacity: 1;
+                transform: translateY(0);
             }
 
             .share-label {
                 grid-column: 1 / -1;
-                margin-bottom: 5px;
-                font-size: 12px;
+                margin-bottom: 8px;
+                font-size: 13px;
+                text-align: center;
             }
 
             .share-btn {
-                width: 35px;
-                height: 35px;
+                width: 40px;
+                height: 40px;
                 margin: 0;
-                font-size: 14px;
+                font-size: 16px;
             }
         }
 
