@@ -3627,7 +3627,13 @@
         }
 
         function enterMainWebsite() {
-            const introElement = document.getElementById('orthopedicIntro');
+            console.log('🏥 Entering main website with language: ' + currentLanguage);
+            
+            // Hide welcome screen
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            if (welcomeScreen) {
+                welcomeScreen.style.display = 'none';
+            }
             
             // Apply selected language to main website
             if (selectedLanguage) {
@@ -3645,22 +3651,21 @@
                 }
             }
             
-            // Hide intro with animation
-            introElement.classList.add('hide');
+            // Show language switcher
+            const languageSwitcher = document.getElementById('languageSwitcher');
+            if (languageSwitcher) {
+                languageSwitcher.classList.add('show');
+            }
             
-            setTimeout(() => {
-                introElement.style.display = 'none';
-                
-                // Show language switcher
-                document.getElementById('languageSwitcher').classList.add('show');
-                
-                // Hide preloader
-                const preloader = document.getElementById('preloader');
-                setTimeout(() => {
-                    preloader.classList.add('hide');
-                }, 300);
-                
-            }, 1000);
+            // Hide preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('hide');
+            }
+            
+            // Update content with selected language
+            updateMainWebsiteContent(currentLanguage);
+            updateLanguageSwitcher(currentLanguage);
         }
 
         function updateMainWebsiteContent(lang) {
